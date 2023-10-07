@@ -1,0 +1,17 @@
+.random-input {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.random-input__input {
+    font-size: 1rem;
+    padding: 0.5rem;
+    width: 5rem;
+    min-width: 5rem;
+    border: 1px solid #555;
+}
+
+.random-input__button {
+    padding: 0.5rem;
+    cursor: pointer;
+}

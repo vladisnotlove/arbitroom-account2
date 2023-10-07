@@ -1,0 +1,31 @@
+---
+import classNames from "classnames";
+import "./Navigation.scss";
+
+type Props = {
+    active?: "plus" | "square"
+}
+
+const {active} = Astro.props;
+---
+
+<div class="navigation">
+    <a 
+        class="navigation__logo" 
+        href="/"
+    >
+        RAND
+    </a>
+    <a 
+        class={classNames("navigation__item", {active: active === "plus"})} 
+        href="/plus"
+    >
+        Сложение
+    </a>
+    <a 
+        class={classNames("navigation__item", {active: active === "square"})} 
+        href="/square"
+    >
+        Квадрат
+    </a>
+</div>

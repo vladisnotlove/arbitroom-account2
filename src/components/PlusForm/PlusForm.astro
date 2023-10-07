@@ -1,0 +1,26 @@
+---
+import RandomInput from "components/@uikit/RandomInput/RandomInput.astro";
+import Button from "components/@uikit/Button/Button.astro";
+---
+
+<form class="plus-form" id="plusForm">
+    <RandomInput name="a" min={-100} max={100} defaultValue={0} />
+    <br />
+    <RandomInput name="b" min={-100} max={100} defaultValue={0} />
+    <br />
+    <Button>
+        Сложить числа
+    </Button>
+    <br />
+    <br />
+    <div>
+        <span>Результат: </span>
+        <span data-result>
+
+        </span>
+    </div>
+</form>
+
+<script>
+    import "./PlusForm";
+</script>
