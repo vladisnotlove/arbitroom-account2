@@ -1,17 +1,25 @@
 {
-  "name": "arbitroom-account2",
-  "version": "0.0.0",
-  "description": "Frontend project for arbitroom account",
-  "scripts": {
-    "build": "astro build",
-    "dev": "astro dev"
-  },
-  "author": "Vladislav",
-  "dependencies": {
-    "astro": "^3.2.2",
-    "classnames": "^2.3.2"
-  },
-  "devDependencies": {
-    "sass": "^1.69.0"
-  }
+	"name": "arbitroom-account2",
+	"version": "0.0.0",
+	"description": "Frontend project for arbitroom account",
+	"scripts": {
+		"prepare-husky": "husky install",
+		"build": "astro build",
+		"dev": "astro dev"
+	},
+	"lint-staged": {
+		"**/*.{js,ts,json,astro,css,sass,scss}": "prettier --write"
+	},
+	"author": "Vladislav",
+	"dependencies": {
+		"astro": "^3.2.2",
+		"classnames": "^2.3.2"
+	},
+	"devDependencies": {
+		"husky": "^8.0.3",
+		"lint-staged": "^14.0.1",
+		"prettier": "^3.0.3",
+		"prettier-plugin-astro": "^0.12.0",
+		"sass": "^1.69.0"
+	}
 }
