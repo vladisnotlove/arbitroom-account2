@@ -1,0 +1,104 @@
+---
+import classNames from "classnames";
+import IconButton from "components/@uikit/IconButton/IconButton.astro";
+import Icon from "components/@uikit/Icon/Icon.astro";
+import PseudoSvg from "components/@uikit/PseudoSvg/PseudoSvg.astro";
+import PseudoSvgRect from "components/@uikit/PseudoSvg/PseudoSvgRect.astro";
+import LanguageButton from "../LanguageButton/LanguageButton.astro";
+import "./Header.scss";
+
+export interface Props {
+	title?:
+		| {
+				type: "back";
+				href: string;
+		  }
+		| {
+				type: "logo";
+		  }
+		| {
+				type: "title";
+				text: string;
+		  };
+	noBurger?: boolean;
+	backHref?: string;
+}
+
+const { title, noBurger } = Astro.props;
+---
+
+<header class="header" id="header">
+	<div class="header__left">
+		{
+			!noBurger && (
+				<IconButton
+					className={"header__burger-btn"}
+					variant={"text"}
+					color={"text-color"}
+					size={"large"}
+				>
+					<PseudoSvg>
+						<PseudoSvgRect style="top: 20%; left: 10%; width: 80%; height: 7.5%; border-radius: 10px" />
+						<PseudoSvgRect style="top: 45%; left: 10%; width: 80%; height: 7.5%; border-radius: 10px" />
+						<PseudoSvgRect style="top: 70%; left: 10%; width: 80%; height: 7.5%; border-radius: 10px" />
+					</PseudoSvg>
+				</IconButton>
+			)
+		}
+		<div
+			class={classNames("header__title overflow", {
+				["back"]: title.type === "back",
+				["logo"]: title.type === "logo",
+			})}
+		>
+			{
+				title.type === "logo" && (
+					<img class="header__logo" src="/_layout-assets/img/logo.svg" />
+				)
+			}
+			{
+				title.type === "back" && (
+					<IconButton
+						as="a"
+						variant={"text"}
+						color={"text-color"}
+						props={{
+							href: title.href,
+						}}
+					>
+						<Icon iconName={"arrow-left"} />
+					</IconButton>
+				)
+			}
+			{title.type === "title" && title.text}
+		</div>
+	</div>
+	<div class="header__right">
+		<div class="header__balance">
+			<div class="header__balance-icon">
+				<Icon iconName="wallet-outlined" />
+			</div>
+			<div class="header__balance-value">0 USDT</div>
+		</div>
+		<div class="header__widgets">
+			<div class="header__widget">
+				<div class="header__widget-icon">
+					<!-- icon: mail -->
+					<Icon iconName="mail" />
+				</div>
+			</div>
+			<div class="header__widget" id="notifyBtn">
+				<div class="header__widget-icon">
+					<!-- icon: alert -->
+					<Icon iconName="alert" />
+				</div>
+			</div>
+		</div>
+		<LanguageButton className="header__language" />
+		<a class="header__exit mdn" href="#">Выйти</a>
+	</div>
+</header>
+
+<script>
+	import "./Header";
+</script>

@@ -1,0 +1,14 @@
+---
+import { HTMLAttributes } from "astro/types";
+import "./PseudoSvg.scss";
+
+export interface Props {
+	style?: HTMLAttributes<"div">["style"];
+}
+
+const props = Astro.props;
+---
+
+<div class="pseudo-svg" {...props}>
+	<slot />
+</div>

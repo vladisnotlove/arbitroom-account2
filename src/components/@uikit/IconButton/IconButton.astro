@@ -1,0 +1,31 @@
+---
+import classNames from "classnames";
+import "./IconButton.scss";
+
+export interface Props {
+	as?: keyof HTMLElementTagNameMap;
+	className?: string;
+	variant: "text" | "contained";
+	color?: "text-color" | "gray";
+	size?: "small" | "large";
+	props?: Record<string, string | undefined>;
+}
+
+const {
+	as: As = "button",
+	className,
+	variant,
+	color,
+	size,
+	props = {},
+} = Astro.props;
+
+const colorClass = color ? "color-" + color : undefined;
+---
+
+<As
+	class={classNames(className, "icon-button", variant, colorClass, size)}
+	{...props}
+>
+	<slot />
+</As>

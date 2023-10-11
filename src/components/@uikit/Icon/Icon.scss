@@ -1,0 +1,15 @@
+.svg-icon {
+    color: inherit;
+    fill: currentColor;
+    font-size: 1.25rem;
+    width: 1em;
+    height: 1em;
+
+    &.color-prime {
+        color: $color-prime-main;
+    }
+
+    &.large {
+        font-size: 1.5rem;
+    }
+}

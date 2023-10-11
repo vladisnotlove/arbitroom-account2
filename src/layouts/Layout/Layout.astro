@@ -1,12 +1,17 @@
 ---
+// global styles
+import "styles/reset.scss";
 import "styles/fonts.scss";
 import "styles/global.scss";
+// other imports
+import Header from "components/@common/Header/Header.astro";
 
-type Props = {
+export interface Props {
 	title: string;
-};
+	noSider?: boolean;
+}
 
-const { title } = Astro.props;
+const { title, noSider } = Astro.props;
 ---
 
 <!doctype html>
@@ -36,6 +41,12 @@ const { title } = Astro.props;
 		<link rel="manifest" href="/site.webmanifest" />
 	</head>
 	<body>
-		<slot />
+		<Header
+			noBurger={noSider}
+			title={noSider ? { type: "logo" } : { type: "title", text: "title" }}
+		/>
+		<main class="content">
+			<slot />
+		</main>
 	</body>
 </html>

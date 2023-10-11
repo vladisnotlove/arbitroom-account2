@@ -1,0 +1,14 @@
+.pseudo-svg {
+	position: relative;
+
+	& > * {
+		color: inherit;
+	}
+}
+
+.pseudo-svg__rect {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: currentColor;
+}

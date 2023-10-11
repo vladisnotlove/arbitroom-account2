@@ -1,0 +1,16 @@
+---
+import classNames from "classnames";
+import Icon from "components/@uikit/Icon/Icon.astro";
+import "./LanguageButton.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<div class={classNames(className, "language-btn")} id="languageBtn">
+	<span class="language-btn__text">RU</span>
+	<Icon iconName="chevron-bottom" />
+</div>

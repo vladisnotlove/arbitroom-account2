@@ -5,7 +5,7 @@ $color-text-prime: rgba(255, 255, 255, 0.92);
 $color-text-secondary: rgba(255, 255, 255, 0.64);
 $color-text-more-secondary: rgba(255, 255, 255, 0.32);
 
-$color-prime-main: #ff6500;
+$color-prime-main: #2ebeff;
 $color-prime-light: #ffd1b21f;
 $color-prime-overlay: rgba(255, 101, 0, 0.08);
 $color-prime-contrast-text: #fff;
@@ -23,7 +23,7 @@ $color-error-main: #fc4141;
 $color-error-overlay: rgba(252, 65, 65, 0.24);
 $color-error-contrast-text: #fff;
 
-$color-divider: rgba(255, 255, 255, 0.08);
+$color-divider: rgba(255, 255, 255, 0.12);
 
 $color-action-hover: rgba(255, 255, 255, 0.06);
 $color-action-hover-opacity: 0.06;
@@ -31,6 +31,7 @@ $color-action-selected: rgba(255, 255, 255, 0.1);
 $color-action-selected-opacity: 0.1;
 
 $color-overlay: rgba(0, 0, 0, 0.5);
+$color-paper: rgba(0, 0, 0, 0.16);
 
 $gradient-border: linear-gradient(
 	127.08deg,
@@ -60,6 +61,7 @@ $gradient-border-bright: linear-gradient(
 	#ff741a 77.04%
 );
 
+$header-height: 4.5rem;
 $scrollbar-width: 0.5rem;
 $popper-viewport-padding: 16px; // it is used in js, so px is more safe
 
