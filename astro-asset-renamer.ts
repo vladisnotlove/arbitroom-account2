@@ -97,7 +97,10 @@ const astroAssetRenamer = (
 									pathLib.basename(path),
 									renamedBasename
 								);
-								const newLink = `${parts[0]}"${renamedPath}"`;
+								const newLink = `${parts[0]}"${renamedPath.replaceAll(
+									"\\",
+									"/"
+								)}"`;
 
 								newHtml = newHtml
 									? newHtml.replace(link, newLink)
