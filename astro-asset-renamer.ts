@@ -1,17 +1,23 @@
-import type { AstroConfig, AstroIntegration } from "astro";
-import pathLib from "path";
+import type { AstroIntegration } from "astro";
+import pth from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
 import { globSync } from "glob";
 import chalk from "chalk";
 
-let astroConfig: AstroConfig | undefined;
+// HELPERS
+
+const toPosix = (path: string) => {
+	return path.split(pth.sep).join(pth.posix.sep);
+};
+
+// MAIN
 
 const astroAssetRenamer = (
-	getNewBasenameFn: (
-		assetInfo: { basename: string; path: string; pathInOS: string },
-		pageInfo: { basename: string; path: string; pathInOS: string }
-	) => string | null | undefined,
+	renameAsset: (params: {
+		asset: { basename: string; path: string; extname: string };
+		pages: Array<{ basename: string; path: string; extname: string }>;
+	}) => string | null | undefined,
 	options: {
 		assetExtensions?: string[];
 	} = {}
@@ -22,18 +28,12 @@ const astroAssetRenamer = (
 	return {
 		name: "asset-renamer",
 		hooks: {
-			"astro:config:done": ({ config }) => {
-				astroConfig = config;
-			},
-			"astro:build:done": async ({ dir }) => {
+			"astro:build:done": async ({ dir: dirUrl }) => {
 				try {
-					if (!astroConfig) return;
-
-					const outDir = fileURLToPath(astroConfig.outDir);
-					const htmlPaths = globSync(
-						`${decodeURI(dir.pathname)}**/*.html`
-					);
-
+					const dir = fileURLToPath(dirUrl);
+					const htmlPaths = globSync(`${dir}**/*.html`, {
+						windowsPathsNoEscape: true,
+					});
 					const attrs = attributeNames.join("|");
 					const exts = assetExtensions.join("|");
 					const linkPattern = new RegExp(
@@ -41,83 +41,98 @@ const astroAssetRenamer = (
 						"g"
 					);
 
-					console.log("");
-					console.log("Assets renamed:");
+					// collect candidates to rename
+					const candidates: Array<{
+						htmlPath: string;
+						htmlPathInWebsite: string;
+						assetPath: string;
+						assetPathInWebsite: string;
+						link: string;
+					}> = [];
 
-					htmlPaths.forEach((htmlPathInOS) => {
-						const htmlPath = pathLib.relative(outDir, htmlPathInOS);
-						const html = fs.readFileSync(htmlPathInOS, "utf8");
+					htmlPaths.forEach((htmlPath) => {
+						const htmlPathInWebsite = pth.relative(dir, htmlPath);
+						const html = fs.readFileSync(htmlPath, "utf8");
 						const links = html.match(linkPattern);
-						let newHtml: string | undefined;
 
 						links?.forEach((link) => {
 							const parts = link.split('"'); // example: [' src=', 'something.js', '']
-							const path = pathLib.normalize(parts[1]);
-							const pathInOS = pathLib.join(outDir, path);
+							const assetPathInWebsite = pth.normalize(parts[1]);
+							const assetPath = pth.join(dir, assetPathInWebsite);
 
-							const asssetInfo = {
-								basename: pathLib.basename(path),
-								path,
-								pathInOS,
-							};
-							const pageInfo = {
-								basename: pathLib.basename(htmlPathInOS),
-								path: htmlPath,
-								pathInOS: htmlPathInOS,
-							};
+							candidates.push({
+								htmlPath: toPosix(htmlPath),
+								htmlPathInWebsite: toPosix(htmlPathInWebsite),
+								assetPath: toPosix(assetPath),
+								assetPathInWebsite: toPosix(assetPathInWebsite),
+								link: toPosix(link),
+							});
+						});
+					});
 
-							const renamedBasename = getNewBasenameFn(
-								asssetInfo,
-								pageInfo
-							);
+					if (candidates.length === 0) return;
 
-							if (renamedBasename) {
-								// rename file
-								const renamedPathInOS = pathInOS.replace(
-									pathLib.basename(pathInOS),
-									renamedBasename
-								);
+					// group candidates by assetPath
+					const groups = new Map<string, typeof candidates>();
 
-								if (
-									fs.existsSync(renamedPathInOS) &&
-									pathInOS !== renamedPathInOS
-								) {
-									throw new Error(
-										`ERROR: Operation of rename: \n  ${pathInOS}\n  ↓\n  ${renamedPathInOS}\ncannot be done. \n\nBecause file with name "${renamedPathInOS}" already exists.`
-									);
-								}
+					candidates.forEach((candidate) => {
+						const group = groups.get(candidate.assetPath);
+						if (group) {
+							groups.set(candidate.assetPath, [...group, candidate]);
+						} else {
+							groups.set(candidate.assetPath, [candidate]);
+						}
+					});
 
-								fs.mkdirSync(pathLib.dirname(renamedPathInOS), {
-									recursive: true,
-								});
-								fs.renameSync(pathInOS, renamedPathInOS);
+					console.log("");
+					console.log("Assets renamed:");
 
-								// change link in html
-								const renamedPath = path.replace(
-									pathLib.basename(path),
-									renamedBasename
-								);
-								const newLink = `${parts[0]}"${renamedPath.replaceAll(
-									"\\",
-									"/"
-								)}"`;
+					groups.forEach((candidates) => {
+						if (!candidates[0]) return;
 
-								newHtml = newHtml
-									? newHtml.replace(link, newLink)
-									: html.replace(link, newLink);
-
-								console.log(chalk.green(`${path} -> ${renamedPath}`));
-							}
+						// get new asset basename
+						const newAssetBasename = renameAsset({
+							asset: {
+								basename: pth.basename(candidates[0].assetPathInWebsite),
+								path: candidates[0].assetPathInWebsite,
+								extname: pth.extname(candidates[0].assetPathInWebsite),
+							},
+							pages: candidates.map(({ htmlPathInWebsite }) => ({
+								basename: pth.basename(htmlPathInWebsite),
+								path: htmlPathInWebsite,
+								extname: pth.extname(htmlPathInWebsite),
+							})),
 						});
 
-						if (newHtml) {
-							fs.writeFileSync(htmlPathInOS, newHtml);
+						if (!newAssetBasename) return;
+
+						// rename asset
+						const { assetPath } = candidates[0];
+						const assetBasename = pth.basename(assetPath);
+						const newAssetPath = assetPath.replace(assetBasename, newAssetBasename);
+
+						if (fs.existsSync(newAssetPath) && assetPath !== newAssetPath) {
+							throw new Error(
+								`ERROR: Operation of rename: \n  ${assetPath}\n  ↓\n  ${newAssetPath}\ncannot be done. \n\nBecause file with name "${newAssetPath}" already exists.`
+							);
 						}
+
+						fs.mkdirSync(pth.dirname(newAssetPath), { recursive: true });
+						fs.renameSync(assetPath, newAssetPath);
+
+						// update links in html
+						candidates.forEach(({ htmlPath, link }) => {
+							const newLink = link.replace(assetBasename, newAssetBasename);
+							const html = fs.readFileSync(htmlPath, "utf8");
+							const newHtml = html.replaceAll(link, newLink);
+							fs.writeFileSync(htmlPath, newHtml);
+						});
+
+						console.log(chalk.green(`${assetPath} -> ${newAssetPath}`));
 					});
 
 					console.log();
 				} catch (error) {
-					console.log();
 					console.log(chalk.red(error.message));
 					console.log();
 				}

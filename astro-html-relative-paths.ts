@@ -27,17 +27,10 @@ function astroHtmlRelativePaths(
 					if (!astroConfig) return;
 
 					const outDir = astroConfig.outDir;
-					const htmlPaths = globSync(
-						`${decodeURI(dir.pathname)}**/*.html`
-					);
-					const linkPattern = new RegExp(
-						`(\\s(${attributeNames.join("|")}))="\/[^"]*"`,
-						"g"
-					);
+					const htmlPaths = globSync(`${decodeURI(dir.pathname)}**/*.html`);
+					const linkPattern = new RegExp(`(\\s(${attributeNames.join("|")}))="\/[^"]*"`, "g");
 
-					console.log(
-						"HTHML pages, in which absolute paths was replaced with relative:"
-					);
+					console.log("HTML pages, in which absolute paths was replaced with relative:");
 
 					htmlPaths.forEach((htmlPath) => {
 						const html = fs.readFileSync(htmlPath, "utf8");
@@ -50,29 +43,19 @@ function astroHtmlRelativePaths(
 							if (exclude.find((item) => item === parts[1])) return;
 
 							const pathname = path.normalize(parts[1]);
-							const pathnameInOS = path.join(
-								fileURLToPath(outDir),
-								pathname
-							);
+							const pathnameInOS = path.join(fileURLToPath(outDir), pathname);
 							const relativePathname = path
 								.relative(path.dirname(htmlPath), pathnameInOS)
 								.replaceAll(path.sep, path.posix.sep);
 							const newLink = `${parts[0]}"${relativePathname}"`;
-							newHtml = newHtml
-								? newHtml.replace(link, newLink)
-								: html.replace(link, newLink);
+							newHtml = newHtml ? newHtml.replace(link, newLink) : html.replace(link, newLink);
 						});
 
 						if (newHtml) {
 							fs.writeFileSync(htmlPath, newHtml);
 
-							const htmlDir = path.relative(
-								fileURLToPath(outDir),
-								htmlPath
-							);
-							console.log(
-								chalk.green(`${htmlDir}/${path.basename(htmlPath)}`)
-							);
+							const htmlDir = path.relative(fileURLToPath(outDir), htmlPath);
+							console.log(chalk.green(`${htmlDir}/${path.basename(htmlPath)}`));
 						}
 					});
 

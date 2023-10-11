@@ -24,7 +24,8 @@ export default defineConfig({
 						if (
 							id.includes("src/components/@uikit") ||
 							id.includes("src/components/@common") ||
-							id.includes("src/layouts")
+							id.includes("src/layouts") ||
+							id.includes("src/styles")
 						) {
 							return "_common";
 						}
@@ -53,25 +54,23 @@ export default defineConfig({
 			},
 		},
 		astroHtmlBeautifier(),
-		astroAssetRenamer((assetInfo, pageInfo) => {
-			// ignore common.js, common.css
-			if (assetInfo.basename.includes("_common.js")) return null;
-			if (assetInfo.basename.includes("_common.css")) return null;
-			// rename hoisted.19h1jh1.js -> [path_to_page].js
-			const assetExtname = pathLib.extname(assetInfo.path);
-			const pageBasename = pageInfo.basename;
-			const pagePath = pageInfo.path;
+		astroAssetRenamer(({ asset, pages }) => {
+			// todo: make better name generation for cases when asset is used in many pages
+			const page = pages[0];
 
-			if (pagePath === "index.html") {
-				return "index" + assetExtname;
-			} else if (pageBasename === "index.html") {
-				const pageFolder = pathLib.dirname(pagePath);
-				const basename = pageFolder + assetExtname;
-				return basename;
+			if (!page) return null;
+			// ignore common.js, common.css
+			if (asset.basename.includes("_common.js")) return null;
+			if (asset.basename.includes("_common.css")) return null;
+			// rename hoisted.19h1jh1.js -> [path_to_page].js
+
+			if (page.path === "index.html") {
+				return "index" + asset.extname;
+			} else if (page.basename === "index.html") {
+				const pageFolder = pathLib.dirname(page.path);
+				return pageFolder + asset.extname;
 			} else {
-				const pageExtname = pathLib.extname(pagePath);
-				const basename = pagePath.replace(pageExtname, assetExtname);
-				return basename;
+				return page.path.replace(page.extname, asset.extname);
 			}
 		}),
 		astroHtmlRelativePaths(),
