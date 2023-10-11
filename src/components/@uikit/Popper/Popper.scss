@@ -1,0 +1,23 @@
+@import "../../../styles/mixins.scss";
+
+.popper {
+	display: inline-block;
+	position: fixed;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity $animation-slow;
+	z-index: $z-index-popper;
+
+	@include paper;
+	@include paper-elevation1;
+
+	&.open {
+		opacity: 1;
+		pointer-events: auto;
+		transition: opacity $animation-normal;
+	}
+}
+
+.popper-overlay {
+	@include overlay($z-index-popper - 1);
+}

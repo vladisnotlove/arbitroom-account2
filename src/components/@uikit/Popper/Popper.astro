@@ -1,0 +1,30 @@
+---
+import classNames from "classnames";
+import "./Popper.scss";
+
+export interface Props {
+	as?: keyof HTMLElementTagNameMap | ((...args: any) => any);
+	className?: string;
+	anchorElement?: string;
+	openOnHover?: boolean;
+	placement?: "top" | "left" | "right" | "bottom";
+}
+
+const { as: As = "div", className, anchorElement, openOnHover, placement } = Astro.props;
+
+const fullClassName = classNames(className, "popper");
+---
+
+<As
+	class={typeof As === "string" && fullClassName}
+	className={typeof As === "function" && fullClassName}
+	data-popper-anchor-element={anchorElement}
+	data-popper-on-hover={openOnHover}
+	data-popper-placement={placement}
+>
+	<slot />
+</As>
+
+<script>
+	import "./Popper";
+</script>

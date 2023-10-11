@@ -1,0 +1,22 @@
+---
+import Menu from "components/@uikit/Menu/Menu.astro";
+import MenuItem from "components/@uikit/Menu/MenuItem.astro";
+import Popper from "components/@uikit/Popper/Popper.astro";
+---
+
+<Popper anchorElement="#languageBtn, #sideMenuLanguageBtn" elevated>
+	<Menu>
+		<MenuItem selected>
+			<img src={"/_layout-assets/img/flags/lang-1.svg"} alt="" />RU
+		</MenuItem>
+		<MenuItem>
+			<img src={"/_layout-assets/img/flags/lang-4.svg"} alt="" />EN
+		</MenuItem>
+		<MenuItem>
+			<img src={"/_layout-assets/img/flags/lang-3.svg"} alt="" />FN
+		</MenuItem>
+		<MenuItem>
+			<img src={"/_layout-assets/img/flags/lang-2.svg"} alt="" />KZ
+		</MenuItem>
+	</Menu>
+</Popper>

@@ -1,0 +1,21 @@
+---
+import classNames from "classnames";
+
+export interface Props extends Record<string, any> {
+	className?: string;
+	elevation?: 1;
+	solid?: boolean;
+}
+
+const { className, elevation, solid, ...props } = Astro.props;
+---
+
+<div
+	class={classNames(className, "paper", {
+		elevation1: elevation === 1,
+		solid: solid,
+	})}
+	{...props}
+>
+	<slot />
+</div>

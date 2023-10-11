@@ -1,0 +1,19 @@
+---
+import classNames from "classnames";
+import "./Menu.scss";
+
+export interface Props extends Record<string, any> {
+	as?: keyof HTMLElementTagNameMap | ((...args: any) => any);
+	className?: string;
+}
+
+const { as: As = "div", className, ...props } = Astro.props;
+---
+
+<As
+	{...props}
+	class={typeof As === "string" && classNames(className, "menu")}
+	className={typeof As === "function" && classNames(className, "menu")}
+>
+	<slot />
+</As>

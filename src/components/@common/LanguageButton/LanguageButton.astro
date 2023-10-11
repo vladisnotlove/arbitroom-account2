@@ -5,12 +5,13 @@ import "./LanguageButton.scss";
 
 export interface Props {
 	className?: string;
+	id: "languageBtn" | "sideMenuLanguageBtn";
 }
 
-const { className } = Astro.props;
+const { className, id } = Astro.props;
 ---
 
-<div class={classNames(className, "language-btn")} id="languageBtn">
+<div class={classNames(className, "language-btn")} id={id}>
 	<span class="language-btn__text">RU</span>
 	<Icon iconName="chevron-bottom" />
 </div>

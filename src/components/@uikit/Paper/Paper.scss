@@ -1,0 +1,11 @@
+@import "../../../styles/mixins.scss";
+
+// paper
+
+.paper {
+	@include paper;
+
+	&.elevation1 {
+		@include paper-elevation1;
+	}
+}

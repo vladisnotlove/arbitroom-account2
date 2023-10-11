@@ -31,12 +31,7 @@ const { title, noBurger } = Astro.props;
 	<div class="header__left">
 		{
 			!noBurger && (
-				<IconButton
-					className={"header__burger-btn"}
-					variant={"text"}
-					color={"text-color"}
-					size={"large"}
-				>
+				<IconButton className={"header__burger-btn"} variant={"text"} color={"text-color"} size={"large"}>
 					<PseudoSvg>
 						<PseudoSvgRect style="top: 20%; left: 10%; width: 80%; height: 7.5%; border-radius: 10px" />
 						<PseudoSvgRect style="top: 45%; left: 10%; width: 80%; height: 7.5%; border-radius: 10px" />
@@ -51,11 +46,7 @@ const { title, noBurger } = Astro.props;
 				["logo"]: title.type === "logo",
 			})}
 		>
-			{
-				title.type === "logo" && (
-					<img class="header__logo" src="/_layout-assets/img/logo.svg" />
-				)
-			}
+			{title.type === "logo" && <img class="header__logo" src="/_layout-assets/img/logo.svg" />}
 			{
 				title.type === "back" && (
 					<IconButton
@@ -94,7 +85,7 @@ const { title, noBurger } = Astro.props;
 				</div>
 			</div>
 		</div>
-		<LanguageButton className="header__language" />
+		<LanguageButton className="header__language" id="languageBtn" />
 		<a class="header__exit mdn" href="#">Выйти</a>
 	</div>
 </header>

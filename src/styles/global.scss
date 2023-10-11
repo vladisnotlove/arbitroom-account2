@@ -1,6 +1,9 @@
 @import "./variables.scss";
 
 html {
+	--animation-slow: #{$animation-slow};
+	--popper-viewport-padding: #{$popper-viewport-padding};
+
 	scroll-behavior: smooth;
 	font-family: Golos;
 
