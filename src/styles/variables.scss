@@ -1,0 +1,231 @@
+$color-background: #0e213e;
+
+$color-text: rgba(255, 255, 255, 0.92);
+$color-text-prime: rgba(255, 255, 255, 0.92);
+$color-text-secondary: rgba(255, 255, 255, 0.64);
+$color-text-more-secondary: rgba(255, 255, 255, 0.32);
+
+$color-prime-main: #ff6500;
+$color-prime-light: #ffd1b21f;
+$color-prime-overlay: rgba(255, 101, 0, 0.08);
+$color-prime-contrast-text: #fff;
+$color-prime-contrast-secondary-text: rgba(255, 255, 255, 0.64);
+$color-prime-contrast-more-secondary-text: rgba(255, 255, 255, 0.32);
+
+$color-tertiary-main: #ff20ff;
+
+$color-success-main: #2e906d;
+$color-success-light: #42d4a0;
+$color-success-overlay: rgba(46, 144, 109, 0.24);
+$color-success-contrast-text: #fff;
+
+$color-error-main: #fc4141;
+$color-error-overlay: rgba(252, 65, 65, 0.24);
+$color-error-contrast-text: #fff;
+
+$color-divider: rgba(255, 255, 255, 0.08);
+
+$color-action-hover: rgba(255, 255, 255, 0.06);
+$color-action-hover-opacity: 0.06;
+$color-action-selected: rgba(255, 255, 255, 0.1);
+$color-action-selected-opacity: 0.1;
+
+$color-overlay: rgba(0, 0, 0, 0.5);
+
+$gradient-border: linear-gradient(
+	127.08deg,
+	rgba(255, 255, 255, 0.16) 0%,
+	rgba(0, 0, 0, 0.08) 99.96%
+);
+$gradient-border-primary: linear-gradient(
+	127.08deg,
+	rgba(255, 127, 81, 0.6) 0%,
+	rgba(255, 127, 81, 0.08) 99.96%,
+	rgba(255, 127, 81, 0.16) 99.96%
+);
+$gradient-border-secondary: linear-gradient(
+	127.08deg,
+	rgba(125, 251, 248, 0.8) 0%,
+	rgba(125, 251, 248, 0.2) 99.96%
+);
+$gradient-border-tertiary: linear-gradient(
+	127.08deg,
+	rgba(255, 103, 255, 0.8) 0%,
+	rgba(255, 103, 255, 0.2) 99.96%
+);
+$gradient-border-bright: linear-gradient(
+	143.45deg,
+	#20fffa -30.19%,
+	#ff20ff 46.69%,
+	#ff741a 77.04%
+);
+
+$scrollbar-width: 0.5rem;
+$popper-viewport-padding: 16px; // it is used in js, so px is more safe
+
+$typography-font-family: "Golos";
+$typography-h1-adaptive-font-weight: 500;
+$typography-h1-adaptive-font-size: 3rem;
+$typography-h1-adaptive-line-height: 1.16667;
+
+@mixin typography-h1-adaptive {
+	font-weight: $typography-h1-adaptive-font-weight;
+	font-size: $typography-h1-adaptive-font-size;
+	line-height: $typography-h1-adaptive-line-height;
+}
+
+$typography-h3-font-weight: 400;
+$typography-h3-font-size: 3.5rem;
+$typography-h3-line-height: 1.28571428571;
+
+@mixin typography-h3 {
+	font-weight: $typography-h3-font-weight;
+	font-size: $typography-h3-font-size;
+	line-height: $typography-h3-line-height;
+}
+
+$typography-h3-adaptive-font-weight: 400;
+$typography-h3-adaptive-font-size: 1.75rem;
+$typography-h3-adaptive-line-height: 1.28;
+
+@mixin typography-h3-adaptive {
+	font-weight: $typography-h3-adaptive-font-weight;
+	font-size: $typography-h3-adaptive-font-size;
+	line-height: $typography-h3-adaptive-line-height;
+}
+
+$typography-h4-font-weight: 400;
+$typography-h4-font-size: 2.25rem;
+$typography-h4-line-height: 3rem;
+
+@mixin typography-h4 {
+	font-weight: $typography-h4-font-weight;
+	font-size: $typography-h4-font-size;
+	line-height: $typography-h4-line-height;
+}
+
+$typography-h4-adaptive-font-weight: 400;
+$typography-h4-adaptive-font-size: 1.25rem;
+$typography-h4-adaptive-line-height: 1.4;
+
+@mixin typography-h4-adaptive {
+	font-weight: $typography-h4-adaptive-font-weight;
+	font-size: $typography-h4-adaptive-font-size;
+	line-height: $typography-h4-adaptive-line-height;
+}
+
+$typography-h5-font-weight: 500;
+$typography-h5-font-size: 1.5rem;
+$typography-h5-line-height: 2.25rem;
+
+@mixin typography-h5 {
+	font-weight: $typography-h5-font-weight;
+	font-size: $typography-h5-font-size;
+	line-height: $typography-h5-line-height;
+}
+
+$typography-h6-font-weight: 500;
+$typography-h6-font-size: 1.25rem;
+$typography-h6-line-height: 1.75rem;
+
+@mixin typography-h6 {
+	font-weight: $typography-h6-font-weight;
+	font-size: $typography-h6-font-size;
+	line-height: $typography-h6-line-height;
+}
+
+$typography-subtitle1-font-weight: 500;
+$typography-subtitle1-font-size: 1rem;
+$typography-subtitle1-line-height: 1.5rem;
+
+@mixin typography-subtitle1 {
+	font-weight: $typography-subtitle1-font-weight;
+	font-size: $typography-subtitle1-font-size;
+	line-height: $typography-subtitle1-line-height;
+}
+
+$typography-subtitle2-font-weight: 500;
+$typography-subtitle2-font-size: 0.875rem;
+$typography-subtitle2-line-height: 1.25rem;
+
+@mixin typography-subtitle2 {
+	font-weight: $typography-subtitle2-font-weight;
+	font-size: $typography-subtitle2-font-size;
+	line-height: $typography-subtitle2-line-height;
+}
+
+$typography-body1-font-weight: 400;
+$typography-body1-font-size: 1.25rem;
+$typography-body1-line-height: 1.75rem;
+
+@mixin typography-body1 {
+	font-weight: $typography-body1-font-weight;
+	font-size: $typography-body1-font-size;
+	line-height: $typography-body1-line-height;
+}
+
+$typography-body2-font-weight: 400;
+$typography-body2-font-size: 1rem;
+$typography-body2-line-height: 1.5rem;
+
+@mixin typography-body2 {
+	font-weight: $typography-body2-font-weight;
+	font-size: $typography-body2-font-size;
+	line-height: $typography-body2-line-height;
+}
+
+$typography-body2-adaptive-font-weight: 400;
+$typography-body2-adaptive-font-size: 0.875rem;
+$typography-body2-adaptive-line-height: 1.25rem;
+
+@mixin typography-body2-adaptive {
+	font-weight: $typography-body2-adaptive-font-weight;
+	font-size: $typography-body2-adaptive-font-size;
+	line-height: $typography-body2-adaptive-line-height;
+}
+
+$typography-body2-text-font-weight: 400;
+$typography-body2-text-font-size: 0.875rem;
+$typography-body2-text-line-height: 1.25rem;
+$typography-body2-text-letter-spacing: 0.15px;
+
+@mixin typography-body2-text {
+	font-weight: $typography-body2-text-font-weight;
+	font-size: $typography-body2-text-font-size;
+	line-height: $typography-body2-text-line-height;
+	letter-spacing: $typography-body2-text-letter-spacing;
+}
+
+$typography-caption-font-weight: 400;
+$typography-caption-font-size: 0.75rem;
+$typography-caption-line-height: 1rem;
+
+@mixin typography-caption {
+	font-weight: $typography-caption-font-weight;
+	font-size: $typography-caption-font-size;
+	line-height: $typography-caption-line-height;
+}
+
+$shadow-1: 0 0.5rem 0.75rem rgba(51, 20, 0, 0.08);
+$shadow-2: 0 0.5rem 0.75rem rgba(0, 0, 0, 0.2);
+
+$animation-fast: 0.2s;
+$animation-normal: 0.35s;
+$animation-slow: 0.5s;
+$animation-very-slow: 1s;
+
+$z-index-header: 200;
+$z-index-side-menu: 300;
+$z-index-chat: 400;
+$z-index-modal: 500;
+$z-index-video: 600;
+$z-index-media: 700;
+$z-index-popper: 800;
+$z-index-tooltip: 900;
+
+$breakpoint-mobile: 360px;
+$breakpoint-mobile-big: 480px;
+$breakpoint-tablet-small: 860px;
+$breakpoint-tablet: 1100px;
+$breakpoint-laptop-small: 1280px;
+$breakpoint-laptop: 1440px;

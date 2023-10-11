@@ -1,0 +1,13 @@
+@import "./variables.scss";
+
+html {
+	scroll-behavior: smooth;
+	font-size: 16px;
+
+	min-height: 500vh;
+	background-image: url("/_layout-assets/img/background.svg"),
+		linear-gradient($color-background 0%, $color-background 100%);
+	background-size: max(100vw, 1337px);
+	background-position-x: 33%;
+	background-repeat: no-repeat;
+}
