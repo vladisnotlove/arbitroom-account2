@@ -1,8 +1,9 @@
 import { defineConfig } from "astro/config";
 import pathLib from "path";
-import astroHtmlBeautifier from "./astro-html-beautifier";
 import astroAssetRenamer from "./astro-asset-renamer";
-import astroAbsoluteToRelative from "./astro-absolute-to-relative";
+import astroHtmlBeautifier from "./astro-html-beautifier";
+import astroHtmlRelativePaths from "./astro-html-relative-paths";
+import astroCssRelativePaths from "./astro-css-relative-paths";
 
 // build
 
@@ -73,6 +74,7 @@ export default defineConfig({
 				return basename;
 			}
 		}),
-		astroAbsoluteToRelative(),
+		astroHtmlRelativePaths(),
+		astroCssRelativePaths(),
 	],
 });

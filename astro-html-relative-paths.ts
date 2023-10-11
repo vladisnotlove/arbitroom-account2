@@ -7,7 +7,7 @@ import chalk from "chalk";
 
 let astroConfig: AstroConfig | undefined;
 
-export default function (
+function astroHtmlRelativePaths(
 	options: {
 		exclude?: string[];
 		attributeNames?: string[];
@@ -78,9 +78,13 @@ export default function (
 
 					console.log();
 				} catch (error) {
-					console.log(error);
+					console.log();
+					console.log(chalk.red(error.message));
+					console.log();
 				}
 			},
 		},
 	};
 }
+
+export default astroHtmlRelativePaths;
