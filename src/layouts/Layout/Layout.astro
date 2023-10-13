@@ -6,6 +6,7 @@ import "styles/global.scss";
 // other imports
 import Header from "components/@common/Header/Header.astro";
 import LangaugeMenu from "components/@common/LanguageMenu/LangaugeMenu.astro";
+import Loader from "components/@common/Loader/Loader.astro";
 
 export interface Props {
 	title: string;
@@ -27,6 +28,9 @@ const { title, noSider } = Astro.props;
 		<link rel="manifest" href="/site.webmanifest" />
 	</head>
 	<body>
+		<!-- LOADER -->
+		<Loader />
+
 		<!-- POPPERS -->
 		<LangaugeMenu />
 

@@ -1,0 +1,116 @@
+<div class="loader" id="loader">
+	<div class="loader__spinner">
+		<svg viewBox="25 25 50 50">
+			<circle
+				class="path"
+				cx="50"
+				cy="50"
+				r="20"
+				style={{
+					fill: "none",
+					strokeWidth: "2",
+					strokeMiterlimit: "10",
+				}}></circle>
+		</svg>
+	</div>
+</div>
+
+<style is:inline>
+	.loader {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100vh;
+		width: 100vw;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		gap: 0.5rem;
+
+		z-index: 100000000;
+		background: var(--color-background);
+
+		transition: opacity 0.4s;
+	}
+
+	.loader.hidding {
+		opacity: 0;
+	}
+
+	.loader.hidden {
+		display: none;
+	}
+
+	.loader__spinner {
+		position: relative;
+		margin: 0 auto;
+		width: 80px;
+	}
+
+	.loader__spinner:before {
+		content: "";
+		display: block;
+		padding-top: 100%;
+	}
+
+	.loader__spinner svg {
+		animation: rotate 2s linear infinite;
+		height: 100%;
+		transform-origin: center center;
+		width: 100%;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
+
+	.loader__spinner circle {
+		stroke: var(--color-prime-main);
+		stroke-dasharray: 1, 200;
+		stroke-dashoffset: 0;
+		animation:
+			dash 1.5s ease-in-out infinite,
+			color 6s ease-in-out infinite;
+		stroke-linecap: round;
+	}
+
+	@keyframes rotate {
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes dash {
+		0% {
+			stroke-dasharray: 1, 200;
+			stroke-dashoffset: 0;
+		}
+		50% {
+			stroke-dasharray: 89, 200;
+			stroke-dashoffset: -35px;
+		}
+		100% {
+			stroke-dasharray: 89, 200;
+			stroke-dashoffset: -124px;
+		}
+	}
+</style>
+
+<script is:inline>
+	window.addEventListener("load", () => {
+		const loader = document.getElementById("loader");
+		loader.classList.add("hidding");
+
+		const onHiddingEnd = () => {
+			loader.classList.remove("hidding");
+			loader.classList.add("hidden");
+			loader.removeEventListener(onHiddingEnd);
+		};
+
+		loader.addEventListener("transitionend", onHiddingEnd);
+	});
+</script>

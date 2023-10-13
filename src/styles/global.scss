@@ -3,6 +3,8 @@
 html {
 	--animation-slow: #{$animation-slow};
 	--popper-viewport-padding: #{$popper-viewport-padding};
+	--color-background: #{$color-background};
+	--color-prime-main: #{$color-prime-main};
 
 	scroll-behavior: smooth;
 	font-family: Golos;
