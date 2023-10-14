@@ -1,0 +1,37 @@
+---
+import Icon from "components/@uikit/Icon/Icon.astro";
+import Popper from "components/@uikit/Popper/Popper.astro";
+import Button from "components/@uikit/Button/Button.astro";
+import "./Notifications.scss";
+---
+
+<Popper className="notifications" anchorElement="#notifyBtn" elevated>
+	<div class="notifications__header">
+		<div class="notifications__header-title">2 новых уведомления</div>
+		<div class="notifications__header-subtitle">
+			<Button className="notifications__clean-btn" variant="text" size="small">Очистить список</Button>
+			<a
+				class="notifications__view-all-btn button text small neutral"
+				data-popper-close-element
+				href={"/notifications"}
+			>
+				Посмотреть все
+				<Icon iconName="chevron-right" />
+			</a>
+		</div>
+	</div>
+	<div class="notifications__body">
+		<div class="notification new">
+			<div class="notification__status status-dot"></div>
+			<div class="notification__title">Deoposit Successful</div>
+			<div class="notification__subtitle">You have have deposites 13 13 TX at 2021...</div>
+			<div class="notification__date">1 час назад</div>
+		</div>
+		<div class="notification new">
+			<div class="notification__status status-dot"></div>
+			<div class="notification__title">Deoposit Successful</div>
+			<div class="notification__subtitle">You have have deposites 13 13 TX at 2021...</div>
+			<div class="notification__date">1 час назад</div>
+		</div>
+	</div>
+</Popper>

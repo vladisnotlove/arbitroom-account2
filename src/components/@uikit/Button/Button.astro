@@ -1,0 +1,30 @@
+---
+import classNames from "classnames";
+import "./Button.scss";
+
+export interface Props extends Record<string, any> {
+	className?: string;
+	as?: keyof HTMLElementTagNameMap;
+	variant: "text" | "contained" | "outlined";
+	color?: "success" | "error" | "neutral";
+	size?: "medium" | "small";
+	attach?: "left" | "right" | "vertical" | "horizonatal";
+	fullWidth?: boolean;
+	form?: string;
+	disabled?: boolean;
+}
+
+const { className, as: As = "button", variant, size, attach, color, fullWidth, form, disabled, ...props } = Astro.props;
+---
+
+<As
+	class={classNames(className, "button", variant, color, size, {
+		[`attach-${attach}`]: attach !== undefined,
+		["disabled"]: disabled,
+		["full-width"]: fullWidth,
+	})}
+	form={form}
+	{...props}
+>
+	<slot />
+</As>

@@ -5,8 +5,9 @@ import "styles/fonts.scss";
 import "styles/global.scss";
 // other imports
 import Header from "components/@common/Header/Header.astro";
-import LangaugeMenu from "components/@common/LanguageMenu/LangaugeMenu.astro";
 import Loader from "components/@common/Loader/Loader.astro";
+import LangaugeMenu from "components/@common/LanguageMenu/LangaugeMenu.astro";
+import Notifications from "components/@common/Notifications/Notifications.astro";
 
 export interface Props {
 	title: string;
@@ -33,6 +34,7 @@ const { title, noSider } = Astro.props;
 
 		<!-- POPPERS -->
 		<LangaugeMenu />
+		<Notifications />
 
 		<!-- MAIN -->
 		<Header noBurger={noSider} title={noSider ? { type: "logo" } : { type: "title", text: "title" }} />

@@ -1,0 +1,130 @@
+@import "../../../styles/mixins.scss";
+
+// button
+
+.button {
+	display: flex;
+	justify-content: center;
+	gap: 0.75rem;
+	padding: 0.875rem 1.5rem;
+	border: none;
+	cursor: pointer;
+
+	&.text {
+		border-radius: 2rem;
+
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 1.25;
+
+		background: transparent;
+		color: $color-prime-main;
+
+		&.attach-right {
+			margin-right: -0.75rem;
+		}
+
+		&.attach-left {
+			margin-left: -0.75rem;
+		}
+
+		&.attach-vertical {
+			margin-top: -0.875rem;
+			margin-bottom: -0.875rem;
+		}
+
+		svg {
+			fill: $color-prime-main;
+		}
+
+		&.neutral {
+			color: $color-text-secondary;
+
+			svg {
+				fill: $color-text-secondary;
+			}
+		}
+	}
+
+	&.contained {
+		border-radius: 2rem;
+
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 1.25;
+
+		background: $color-prime-main;
+		color: $color-prime-contrast-text;
+		transition: box-shadow $animation-normal;
+
+		& > svg {
+			fill: $color-prime-contrast-text;
+		}
+
+		&:hover {
+			box-shadow: 0 0 0 0.375rem change-color($color-prime-main, $alpha: 0.25);
+			transition: box-shadow $animation-fast;
+		}
+
+		&.success {
+			background: $color-success-main;
+
+			&:hover {
+				box-shadow: 0 0 0 0.375rem change-color($color-success-main, $alpha: 0.25);
+			}
+		}
+
+		&.error {
+			background: $color-error-main;
+
+			&:hover {
+				box-shadow: 0 0 0 0.375rem change-color($color-error-main, $alpha: 0.25);
+			}
+		}
+
+		&.neutral {
+			background: rgba(255, 255, 255, 0.12);
+			color: $color-text-prime;
+
+			&:hover {
+				box-shadow: 0 0 0 0.375rem rgba(255, 255, 255, 0.06);
+			}
+		}
+	}
+
+	&.outlined {
+		border: 1px solid $color-prime-main;
+		border-radius: 2rem;
+
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 1.25;
+
+		background: transparent;
+		color: $color-text;
+		transition: background $animation-normal;
+
+		& > .svg {
+			color: $color-prime-main;
+		}
+
+		&:hover {
+			background: $color-action-hover;
+			transition: background $animation-fast;
+		}
+	}
+
+	&.small {
+		@include button-small;
+	}
+
+	&.medium {
+		padding: 0.5rem 1rem;
+		line-height: 1.5;
+	}
+
+	&.disabled {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+}
