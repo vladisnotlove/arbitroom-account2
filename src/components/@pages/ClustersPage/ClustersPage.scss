@@ -1,0 +1,12 @@
+@import "../../../styles/mixins.scss";
+
+.clusters__dashboard-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 4rem;
+	width: 100%;
+	@include typography-h5;
+	@include paper;
+	@include with-glow-ellipse;
+}

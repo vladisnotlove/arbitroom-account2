@@ -1,12 +1,14 @@
 ---
 import Layout from "layouts/Layout/Layout.astro";
 import ClusterSummary from "./ClusterSummary/ClusterSummary.astro";
+import "./ClustersPage.scss";
 ---
 
 <Layout title="Кластеры" variant="langing">
 	<div class="clusters">
 		<div class="clusters__menu">
 			<ClusterSummary className="clusters__cluster-summary" />
+			<a class="clusters__dashboard-btn" href="/dashboard">Dashboard</a>
 		</div>
 	</div>
 </Layout>
