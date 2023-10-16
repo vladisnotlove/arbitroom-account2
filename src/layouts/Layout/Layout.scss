@@ -1,0 +1,19 @@
+@import "../../styles/variables.scss";
+
+.container {
+	max-width: 2560px;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+}
+
+.main {
+	flex-grow: 1;
+	min-width: 0;
+	max-width: 100%;
+}
+
+.content {
+	padding: 1.5rem 2.5rem;
+}

@@ -1,0 +1,386 @@
+@import "../../../styles/mixins.scss";
+
+$side-menu-padding-left: 1.5rem;
+
+.side-menu {
+	position: relative;
+	min-height: 100vh;
+	height: 100%;
+	min-width: 280px;
+	width: 280px;
+	z-index: 20;
+	background: rgba(0, 0, 0, 0.32);
+}
+
+.side-menu__body {
+	height: 100%;
+	padding-bottom: 6rem;
+}
+
+.side-menu__link {
+	display: flex;
+	align-items: center;
+	padding: 0 $side-menu-padding-left;
+	font-size: 0.75rem;
+	color: $color-text-secondary;
+	transition: color $animation-normal;
+	height: $header-height;
+
+	svg {
+		margin-right: 1rem;
+		fill: $color-text-more-secondary;
+		transition: fill $animation-normal;
+	}
+}
+
+.side-menu__link:hover {
+	text-decoration: none;
+	color: $color-prime-main;
+	transition: color $animation-fast;
+
+	svg {
+		fill: $color-prime-main;
+		transition: fill $animation-fast;
+	}
+}
+
+.side-menu__cluster {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	@include typography-h5;
+	color: $color-text-prime;
+
+	height: 4rem;
+	width: 100%;
+	border-top: 1px solid $color-divider;
+	border-bottom: 1px solid $color-divider;
+
+	@include with-glow-ellipse;
+}
+
+.side-menu__profile-container {
+	padding: 0 $side-menu-padding-left;
+	margin-top: 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.side-menu__profile {
+	flex-grow: 1;
+	min-width: 0;
+}
+
+.side-menu__language {
+	flex-shrink: 0;
+	display: none;
+}
+
+.side-menu__tabs {
+	margin-top: 1.5rem;
+}
+
+.side-menu__exit {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+
+	display: none; // hidden on desktop
+
+	padding: 0.875rem $side-menu-padding-left;
+	margin-top: 1rem;
+	width: 100%;
+
+	@include typography-subtitle2;
+
+	color: $color-text-secondary !important;
+	transition:
+		color $animation-normal,
+		background $animation-normal;
+
+	&:hover {
+		color: $color-prime-main;
+		background: $color-action-hover;
+		transition:
+			color $animation-fast,
+			background $animation-fast;
+	}
+}
+
+@media screen and (max-width: $breakpoint-laptop-small) {
+	.side-menu {
+		visibility: hidden;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100%;
+		background: transparent;
+		z-index: $z-index-side-menu;
+		transition: visibility 0s $animation-normal;
+
+		&.open {
+			visibility: visible;
+			transition: visibility 0s;
+
+			.side-menu__body {
+				transform: translateX(0);
+			}
+
+			.side-menu__overlay {
+				opacity: 1;
+			}
+		}
+	}
+
+	.side-menu__body {
+		width: 280px;
+		height: 100%;
+		border-right: 1px solid $color-divider;
+		background: $color-background;
+		@include scrollbar;
+		overflow: auto;
+		transform: translateX(-100%);
+		transition: transform $animation-normal;
+	}
+
+	.side-menu__overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		opacity: 0;
+		background: $color-overlay;
+		-webkit-backdrop-filter: blur(2rem);
+		backdrop-filter: blur(2rem);
+		transition: opacity $animation-normal;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.side-menu__body {
+		width: 340px !important;
+	}
+
+	.side-menu__language {
+		display: initial;
+	}
+}
+
+@media screen and (max-width: $breakpoint-mobile-big) {
+	.side-menu {
+		top: $header-height-mobile;
+		min-height: calc(100% - #{$header-height-mobile});
+		height: calc(100% - #{$header-height-mobile});
+		@include scrollbar();
+	}
+
+	.side-menu__link {
+		height: $header-height-mobile;
+	}
+
+	.side-menu__body {
+		width: 100% !important;
+		transform: translateX(-100%);
+	}
+
+	.side-menu__overlay {
+		display: none;
+	}
+
+	.side-menu__exit {
+		display: flex;
+	}
+}
+
+// profile
+
+.profile {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	min-width: 0;
+}
+
+.profile__img {
+	margin-right: 1rem;
+}
+
+.profile__img img {
+	width: 3rem;
+	height: 3rem;
+	object-fit: fill;
+	border-radius: 50%;
+}
+
+.profile__descr {
+	min-width: 0;
+}
+
+.profile__name {
+	font-weight: 500;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	color: $color-text;
+	margin-bottom: 0.25rem;
+	word-wrap: break-word;
+}
+
+.profile__level {
+	font-size: 0.875rem;
+	line-height: 1rem;
+	letter-spacing: 0.4px;
+	color: $color-text-secondary;
+}
+
+// tabs
+
+.tab {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	padding: 0.875rem $side-menu-padding-left;
+	margin-bottom: 0.25rem;
+	width: 100%;
+
+	@include typography-subtitle2;
+
+	color: $color-text-secondary;
+	transition:
+		color $animation-normal,
+		background $animation-normal;
+
+	svg {
+		width: 1.5rem;
+		height: 1.5rem;
+		margin-right: 1rem;
+		fill: $color-text-more-secondary;
+		transition: fill $animation-normal;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	&:hover {
+		color: $color-prime-main;
+		background: $color-action-hover;
+		transition:
+			color $animation-fast,
+			background $animation-fast;
+
+		svg {
+			fill: $color-prime-main;
+			transition: fill $animation-fast;
+		}
+	}
+
+	&.hidden {
+		display: none;
+	}
+
+	&.new::after {
+		content: "";
+		width: 0.5rem;
+		height: 0.5rem;
+		background: $color-prime-main;
+		border-radius: 50%;
+		margin-left: 1rem;
+		box-shadow: 0 0 0.5rem $color-prime-main;
+	}
+}
+
+.tab_active {
+	color: $color-prime-main !important;
+	position: relative;
+
+	svg {
+		fill: $color-prime-main;
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		width: 0.125rem;
+		height: 100%;
+		background: $color-prime-main;
+	}
+}
+
+.tab__content {
+	display: block;
+}
+
+// tab-group
+
+.tab-group {
+	user-select: none;
+	padding: 1rem 0;
+
+	&.expanded {
+		.tab-group__expand {
+			transform: rotate(-90deg);
+		}
+
+		.tab-group__tabs {
+			display: block;
+		}
+	}
+}
+
+.tab-group__label {
+	display: flex;
+	padding: 0.875rem $side-menu-padding-left;
+	margin-bottom: 0.25rem;
+	width: 100%;
+
+	@include typography-subtitle2;
+
+	color: $color-text-secondary;
+	transition:
+		color $animation-normal,
+		background $animation-normal;
+	cursor: pointer;
+
+	& > .svg-icon {
+		width: 1.25rem;
+		height: 1.25rem;
+		margin-right: 1rem;
+		fill: $color-text-more-secondary;
+		transition: fill $animation-normal;
+	}
+
+	&:hover {
+		color: $color-prime-main;
+		background: $color-action-hover;
+		transition:
+			color $animation-fast,
+			background $animation-fast;
+
+		& > .svg-icon {
+			fill: $color-prime-main;
+			transition: fill $animation-fast;
+		}
+	}
+}
+
+.tab-group__name {
+	flex-grow: 1;
+}
+
+.tab-group__expand {
+	transition: transform $animation-fast;
+}
+
+.tab-group__tabs {
+	display: none;
+
+	& > .tab {
+		padding-left: $side-menu-padding-left;
+	}
+}

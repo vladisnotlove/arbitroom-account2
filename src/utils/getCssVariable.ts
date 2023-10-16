@@ -1,4 +1,4 @@
-type CssVariableName = "--animation-slow" | "--popper-viewport-padding";
+type CssVariableName = "--animation-normal" | "--animation-slow" | "--popper-viewport-padding";
 
 const getCssVariable = (name: CssVariableName) => {
 	return getComputedStyle(document.body).getPropertyValue(name);

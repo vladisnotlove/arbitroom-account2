@@ -8,13 +8,15 @@ import Header from "components/@common/Header/Header.astro";
 import Loader from "components/@common/Loader/Loader.astro";
 import LangaugeMenu from "components/@common/LanguageMenu/LangaugeMenu.astro";
 import Notifications from "components/@common/Notifications/Notifications.astro";
+import SideMenu from "components/@common/SideMenu/SideMenu.astro";
+import "./Layout.scss";
 
 export interface Props {
 	title: string;
-	noSider?: boolean;
+	variant?: "default" | "langing";
 }
 
-const { title, noSider } = Astro.props;
+const { title, variant = "default" } = Astro.props;
 ---
 
 <!doctype html>
@@ -37,9 +39,18 @@ const { title, noSider } = Astro.props;
 		<Notifications />
 
 		<!-- MAIN -->
-		<Header noBurger={noSider} title={noSider ? { type: "logo" } : { type: "title", text: "title" }} />
-		<main class="content">
-			<slot />
-		</main>
+		{
+			variant === "default" && (
+				<div class="container">
+					<SideMenu />
+					<div class="main">
+						<Header title={{ type: "title", text: title }} />
+						<div class="content">
+							<slot />
+						</div>
+					</div>
+				</div>
+			)
+		}
 	</body>
 </html>

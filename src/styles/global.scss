@@ -1,6 +1,7 @@
 @import "./variables.scss";
 
 html {
+	--animation-normal: #{$animation-normal};
 	--animation-slow: #{$animation-slow};
 	--popper-viewport-padding: #{$popper-viewport-padding};
 	--color-background: #{$color-background};

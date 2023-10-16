@@ -1,0 +1,191 @@
+---
+import classNames from "classnames";
+import Icon, { Props as IconProps } from "components/@uikit/Icon/Icon.astro";
+import LanguageButton from "../LanguageButton/LanguageButton.astro";
+import "./SideMenu.scss";
+
+type MenuItem = {
+	type: "item";
+	key:
+		| "dashboard"
+		| "income"
+		| "actives"
+		| "outcome"
+		| "personal-partners"
+		| "statuses"
+		| "operations"
+		| "settings"
+		| "contacts";
+	icon?: IconProps["iconName"];
+	label?: string;
+	href: string;
+};
+
+type MenuGroup = {
+	type: "group";
+	icon: IconProps["iconName"];
+	label: string;
+	items: MenuItem[];
+};
+
+export interface Props {
+	selected?: MenuItem["key"];
+}
+
+const menuItems: (MenuItem | MenuGroup)[] = [
+	{
+		type: "item",
+		key: "dashboard",
+		href: "/",
+		icon: "pie-chart",
+		label: "Dashboard",
+	},
+	{
+		type: "item",
+		key: "income",
+		href: "/income",
+		icon: "wallet",
+		label: "Пополнение",
+	},
+	{
+		type: "item",
+		key: "actives",
+		href: "/actives",
+		icon: "tag",
+		label: "Блок активов",
+	},
+	{
+		type: "item",
+		key: "outcome",
+		href: "/outcome",
+		icon: "withdraw",
+		label: "Вывод средств",
+	},
+	{
+		type: "group",
+		icon: "globe-persone",
+		label: "Партнёрам",
+		items: [
+			{
+				type: "item",
+				key: "personal-partners",
+				href: "/personal-partners",
+				icon: "people",
+				label: "Личные партнёры",
+			},
+			{
+				type: "item",
+				key: "statuses",
+				href: "/statuses",
+				icon: "radio-button",
+				label: "Статусы",
+			},
+		],
+	},
+	{
+		type: "item",
+		key: "operations",
+		href: "/operations",
+		icon: "clock",
+		label: "История операций",
+	},
+	{
+		type: "item",
+		key: "settings",
+		href: "/settings",
+		icon: "settings",
+		label: "Настройки",
+	},
+	{
+		type: "item",
+		key: "contacts",
+		href: "/info",
+		icon: "chat",
+		label: "Контакты",
+	},
+];
+
+const { selected } = Astro.props;
+---
+
+<div class="side-menu" id="sideMenu">
+	<div class="side-menu__overlay"></div>
+	<div class="side-menu__body">
+		<a class="side-menu__link" href="#">
+			<Icon iconName={"arrow-left"} />
+			 Вернуться на сайт
+		</a>
+		<div class="side-menu__cluster">Cluster №245</div>
+		<div class="side-menu__profile-container">
+			<div class="side-menu__profile profile">
+				<div class="profile__img">
+					<img src={"/_layout-assets/img/profile.png"} alt="" />
+				</div>
+				<div class="profile__descr">
+					<div class="profile__name">kris_anfasdfasdfasdfasdalova</div>
+					<div class="profile__level">4 уровень</div>
+				</div>
+			</div>
+			<LanguageButton className="side-menu__language" id="sideMenuLanguageBtn" />
+		</div>
+		<div class="side-menu__tabs">
+			{
+				menuItems.map((data, index) => {
+					if (data.type === "item") {
+						return (
+							<a
+								class={classNames("tab", {
+									["tab_active"]: selected === data.key,
+									["tab_to_main"]: index === 0,
+								})}
+								data-key={data.key}
+								href={data.href}
+							>
+								{data.icon && <Icon iconName={data.icon} />}
+								<div class="tab__name">{data.label}</div>
+							</a>
+						);
+					}
+					if (data.type === "group") {
+						const hasSelected = !!data.items.find((item) => item.key === selected);
+						return (
+							<div
+								class={classNames("tab-group", {
+									expanded: hasSelected,
+								})}
+							>
+								<div class="tab-group__label">
+									{data.icon && <Icon iconName={data.icon} />}
+									<div class="tab-group__name">{data.label}</div>
+									<div class="tab-group__expand">
+										<Icon iconName={"chevron-left"} />
+									</div>
+								</div>
+								<div class="tab-group__tabs">
+									{data.items.map((data) => (
+										<a
+											class={classNames("tab", {
+												["tab_active"]: selected === data.key,
+												["tab_to_main"]: index === 0,
+											})}
+											data-key={data.key}
+											href={data.href}
+										>
+											{data.icon && <Icon iconName={data.icon} />}
+											<div class="tab__name">{data.label}</div>
+										</a>
+									))}
+								</div>
+							</div>
+						);
+					}
+				})
+			}
+		</div>
+		<a class="side-menu__exit">Выйти</a>
+	</div>
+</div>
+
+<script>
+	import "./SideMenu";
+</script>

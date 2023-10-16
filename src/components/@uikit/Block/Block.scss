@@ -1,0 +1,74 @@
+@import "../../../styles/mixins.scss";
+
+.block {
+	display: flex;
+	flex-direction: column;
+	max-width: 100%;
+	@include paper;
+
+	&.large {
+		.block__title {
+			padding: 3rem;
+			@include typography-h4;
+		}
+
+		.block__content {
+			padding: 0 3rem;
+
+			&:first-child {
+				padding-top: 3rem;
+			}
+
+			&:last-child {
+				padding-bottom: 3rem;
+			}
+		}
+
+		.block__actions {
+			padding: 2rem 3rem 3rem 3rem;
+		}
+	}
+
+	&.full-width {
+		width: 100%;
+	}
+
+	&.max-width-lg {
+		max-width: 1280px;
+	}
+
+	&.max-width-sm {
+		max-width: 540px;
+	}
+
+	&.max-width-440 {
+		max-width: 440px;
+	}
+
+	&.max-width-xs {
+		max-width: 368px;
+	}
+}
+
+.block__title {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 1rem;
+	padding: 1.5rem;
+
+	@include typography-h6;
+}
+
+.block__content {
+	flex-grow: 1;
+	padding: 0 1.5rem;
+
+	&:first-child {
+		padding-top: 1.5rem;
+	}
+
+	&:last-child {
+		padding-bottom: 1.5rem;
+	}
+}

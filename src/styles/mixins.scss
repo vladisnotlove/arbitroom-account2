@@ -1,5 +1,7 @@
 @import "./variables.scss";
 
+// todo: remove unused mixins
+
 @mixin cut-text {
 	text-overflow: ellipsis;
 	overflow: hidden;
@@ -171,4 +173,11 @@
 		z-index: 1;
 		cursor: pointer;
 	}
+}
+
+@mixin with-glow-ellipse() {
+	text-shadow: 0 0 24px #2ab2fb;
+	background: url("/_layout-assets/img/shapes/glow-ellipse-half.svg"),
+		linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+	background-position: center bottom;
 }

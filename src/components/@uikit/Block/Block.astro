@@ -1,0 +1,29 @@
+---
+import classNames from "classnames";
+
+export interface Props extends Record<string, any> {
+	className?: string;
+	as?: (...args: any) => any | keyof HTMLElementTagNameMap;
+	maxWidth?: "lg" | "sm" | "xs" | "440";
+	fullWidth?: boolean;
+}
+
+const { className, as: As = "div", maxWidth, fullWidth, ...props } = Astro.props;
+
+const finalClassName = classNames(className, "block", {
+	[`max-width-${maxWidth}`]: maxWidth !== undefined,
+	"full-width": fullWidth,
+});
+---
+
+<As
+	{...typeof As === "string" && {
+		class: finalClassName,
+	}}
+	{...typeof As === "function" && {
+		className: finalClassName,
+	}}
+	{...props}
+>
+	<slot />
+</As>

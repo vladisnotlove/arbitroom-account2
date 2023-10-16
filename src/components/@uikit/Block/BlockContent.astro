@@ -1,0 +1,13 @@
+---
+import classNames from "classnames";
+
+export interface Props extends Record<string, any> {
+	className?: string;
+}
+
+const { className, ...props } = Astro.props;
+---
+
+<div class={classNames(className, "block__content")} {...props}>
+	<slot />
+</div>
