@@ -43,7 +43,7 @@
 
 @mixin paper {
 	background: $color-paper;
-	color: $color-text;
+	color: $color-text-prime;
 	border-radius: 1rem;
 	border: 1px solid $color-divider;
 }
@@ -56,7 +56,7 @@
 
 @mixin disable-paper {
 	background: transparent;
-	color: $color-text;
+	color: $color-text-prime;
 	border-radius: 0;
 }
 
@@ -180,4 +180,12 @@
 	background: url("/_layout-assets/img/shapes/glow-ellipse-half.svg"),
 		linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
 	background-position: center bottom;
+	background-repeat: no-repeat;
+}
+
+@mixin with-glow-ellipse2() {
+	background: url("/_layout-assets/img/shapes/glow-ellipse-half2.svg"),
+		linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+	background-position: center bottom;
+	background-repeat: no-repeat;
 }

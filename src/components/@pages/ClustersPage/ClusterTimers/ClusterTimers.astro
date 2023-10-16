@@ -1,0 +1,117 @@
+---
+import classNames from "classnames";
+import Timer from "components/@uikit/Timer/Timer.astro";
+import "./ClusterTimers.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+
+const tabs: Array<{
+	active: boolean;
+	label: string;
+	contentData: Array<{
+		label: string;
+		color: "green" | "blue" | "purple";
+		finishDate: Date;
+		percents: number;
+	}>;
+}> = [
+	{
+		active: true,
+		label: "Время активов",
+		contentData: [
+			{
+				label: "500 USDT",
+				color: "green",
+				finishDate: new Date(new Date().setDate(new Date().getDate() + 230)),
+				percents: 25,
+			},
+			{
+				label: "100 000 USDT",
+				color: "green",
+				finishDate: new Date(new Date().setDate(new Date().getDate() + 190)),
+				percents: 25,
+			},
+			{
+				label: "500 USDT",
+				color: "blue",
+				finishDate: new Date(new Date().setDate(new Date().getDate() + 230)),
+				percents: 25,
+			},
+			{
+				label: "500 USDT",
+				color: "purple",
+				finishDate: new Date(new Date().setDate(new Date().getDate() + 230)),
+				percents: 25,
+			},
+		],
+	},
+	{
+		active: false,
+		label: "Время кассет",
+		contentData: [
+			{
+				label: "700 USDT",
+				color: "green",
+				finishDate: new Date(new Date().setDate(new Date().getDate() + 230)),
+				percents: 25,
+			},
+			{
+				label: "2 000 USDT",
+				color: "blue",
+				finishDate: new Date(new Date().setDate(new Date().getDate() + 210)),
+				percents: 25,
+			},
+			{
+				label: "500 USDT",
+				color: "blue",
+				finishDate: new Date(new Date().setDate(new Date().getDate() + 230)),
+				percents: 25,
+			},
+			{
+				label: "500 USDT",
+				color: "purple",
+				finishDate: new Date(new Date().setDate(new Date().getDate() + 230)),
+				percents: 25,
+			},
+		],
+	},
+];
+---
+
+<div class={classNames(className, "cluster-timers")} id="clusterTimers">
+	<div class="cluster-timers__tabs">
+		{tabs.map(({ active, label }) => <button class={classNames("cluster-timers__tab", { active })}>{label}</button>)}
+	</div>
+	<div class="cluster-timers__tab-contents">
+		{
+			tabs.map(({ contentData, active }) => (
+				<div class={classNames("cluster-timers__tab-content", { active })}>
+					{contentData.map(({ color, finishDate, label, percents }) => (
+						<div class="cluster-timers__timer">
+							<div class="cluster-timers__timer-label">{label}</div>
+							<div class="cluster-timers__timer-progress">
+								<div class="cluster-timers__timer-progress-label">
+									<Timer customFormat={"ddд : hhч : mmм : ssс"} finishDate={finishDate} />
+								</div>
+								<div class="cluster-timers__timer-progress-line">
+									<div
+										class={classNames("cluster-timers__timer-progress-line-value", color)}
+										style={`width: ${percents}%`}
+									/>
+								</div>
+							</div>
+						</div>
+					))}
+				</div>
+			))
+		}
+	</div>
+</div>
+
+<script>
+	import "./ClusterTimers";
+</script>

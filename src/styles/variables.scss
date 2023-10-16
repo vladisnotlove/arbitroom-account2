@@ -1,22 +1,19 @@
+// colors
+
 $color-background: #0e213e;
 
-$color-text: rgba(255, 255, 255, 0.92);
 $color-text-prime: rgba(255, 255, 255, 0.92);
 $color-text-secondary: rgba(255, 255, 255, 0.64);
 $color-text-more-secondary: rgba(255, 255, 255, 0.32);
 
 $color-prime-main: #2ebeff;
-$color-prime-light: #ffd1b21f;
-$color-prime-overlay: rgba(255, 101, 0, 0.08);
+$color-prime-light: #79d5ff;
 $color-prime-contrast-text: #fff;
 $color-prime-contrast-secondary-text: rgba(255, 255, 255, 0.64);
 $color-prime-contrast-more-secondary-text: rgba(255, 255, 255, 0.32);
 
-$color-tertiary-main: #ff20ff;
-
 $color-success-main: #2e906d;
 $color-success-light: #42d4a0;
-$color-success-overlay: rgba(46, 144, 109, 0.24);
 $color-success-contrast-text: #fff;
 
 $color-error-main: #fc4141;
@@ -34,21 +31,18 @@ $color-overlay: rgba(0, 0, 0, 0.5);
 $color-paper: rgba(0, 0, 0, 0.16);
 $color-text-field: rgba(0, 0, 0, 0.24);
 
-$gradient-border: linear-gradient(127.08deg, rgba(255, 255, 255, 0.16) 0%, rgba(0, 0, 0, 0.08) 99.96%);
-$gradient-border-primary: linear-gradient(
-	127.08deg,
-	rgba(255, 127, 81, 0.6) 0%,
-	rgba(255, 127, 81, 0.08) 99.96%,
-	rgba(255, 127, 81, 0.16) 99.96%
-);
-$gradient-border-secondary: linear-gradient(127.08deg, rgba(125, 251, 248, 0.8) 0%, rgba(125, 251, 248, 0.2) 99.96%);
-$gradient-border-tertiary: linear-gradient(127.08deg, rgba(255, 103, 255, 0.8) 0%, rgba(255, 103, 255, 0.2) 99.96%);
-$gradient-border-bright: linear-gradient(143.45deg, #20fffa -30.19%, #ff20ff 46.69%, #ff741a 77.04%);
+$color-green: #25ff01;
+$color-blue: #01e0ff;
+$color-purple: #ab29fa;
+
+// sizes
 
 $scrollbar-width: 0.5rem;
 $popper-viewport-padding: 16px; // it is used in js, so px is more safe
 $header-height: 4.5rem;
 $header-height-mobile: 3.5rem;
+
+// typographies
 
 $typography-font-family: "Golos";
 $typography-h1-adaptive-font-weight: 500;
@@ -193,13 +187,19 @@ $typography-caption-line-height: 1rem;
 	line-height: $typography-caption-line-height;
 }
 
+// shadows
+
 $shadow-1: 0 0.5rem 0.75rem rgba(51, 20, 0, 0.08);
 $shadow-2: 0 0.5rem 0.75rem rgba(0, 0, 0, 0.2);
+
+// animations
 
 $animation-fast: 0.2s;
 $animation-normal: 0.35s;
 $animation-slow: 0.5s;
 $animation-very-slow: 1s;
+
+// z-indexes
 
 $z-index-header: 200;
 $z-index-side-menu: 300;
@@ -209,6 +209,8 @@ $z-index-video: 600;
 $z-index-media: 700;
 $z-index-popper: 800;
 $z-index-tooltip: 900;
+
+// breakpoints
 
 $breakpoint-mobile: 360px;
 $breakpoint-mobile-big: 480px;

@@ -108,7 +108,7 @@
 		const onHiddingEnd = () => {
 			loader.classList.remove("hidding");
 			loader.classList.add("hidden");
-			loader.removeEventListener(onHiddingEnd);
+			loader.removeEventListener("transitionend", onHiddingEnd);
 		};
 
 		loader.addEventListener("transitionend", onHiddingEnd);

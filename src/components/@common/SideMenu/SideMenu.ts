@@ -1,5 +1,8 @@
 window.addEventListener("load", () => {
 	const sideMenu = document.getElementById("sideMenu");
+
+	if (!sideMenu) return;
+
 	const sideMenuBody = sideMenu.querySelector(".side-menu__body");
 	const overlay = sideMenu.querySelector(".side-menu__overlay");
 	const burger = document.querySelector("#header .header__burger-btn");
