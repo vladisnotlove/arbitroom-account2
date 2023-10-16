@@ -1,0 +1,53 @@
+---
+import classNames from "classnames";
+import Icon, { Props as IconProps } from "components/@uikit/Icon/Icon.astro";
+import "./ClusterStats.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+
+const data: Array<{
+	iconName: IconProps["iconName"];
+	label: string;
+	value: string;
+}> = [
+	{
+		iconName: "align",
+		label: "Блоки активов",
+		value: "2500 USDT",
+	},
+	{
+		iconName: "send",
+		label: "Получил активы",
+		value: "200 USDT",
+	},
+	{
+		iconName: "send-clock",
+		label: "Осталось получить",
+		value: "4000 USDT",
+	},
+	{
+		iconName: "settings",
+		label: "Обслуживание кластера",
+		value: "200 USDT",
+	},
+];
+---
+
+<div class={classNames(className, "cluster-stats")}>
+	{
+		data.map(({ iconName, label, value }) => (
+			<div class="cluster-stat">
+				<div class="cluster-stat__icon-wrapper">
+					<Icon iconName={iconName} />
+				</div>
+				<div class="cluster-stat__label">{label}</div>
+				<div class="cluster-stat__value">{value}</div>
+				<Icon iconName="info" className="cluster-stat__info" />
+			</div>
+		))
+	}
+</div>

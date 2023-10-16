@@ -1,0 +1,75 @@
+@import "../../../../styles/mixins.scss";
+
+.cluster-stats {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.cluster-stat {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 0.75rem 1.25rem 0.75rem 0.75rem;
+	@include paper;
+}
+
+.cluster-stat__icon-wrapper {
+	flex-shrink: 0;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	background: $color-text-field;
+	overflow: hidden;
+
+	& > svg {
+		width: 1.5rem;
+		height: 1.5rem;
+
+		color: $color-prime-main;
+
+		-webkit-filter: drop-shadow(0 0 8px #2e5cff);
+		filter: drop-shadow(0 0 8px #2e5cff);
+	}
+}
+
+.cluster-stat__label {
+	flex-grow: 1;
+	@include typography-body1;
+	word-break: break-word;
+	color: $color-text-secondary;
+}
+
+.cluster-stat__value {
+	flex-shrink: 0;
+	@include typography-body1;
+}
+
+.cluster-stat__info {
+	flex-shrink: 0;
+	width: 1.5rem;
+	height: 1.5rem;
+	color: $color-text-more-secondary;
+}
+
+@media (max-width: $breakpoint-mobile-big) {
+	.cluster-stats {
+		gap: 0.5rem;
+	}
+
+	.cluster-stat {
+		flex-wrap: wrap;
+		row-gap: 0.5rem;
+	}
+
+	.cluster-stat__label {
+		min-width: 0;
+		max-width: calc(100% - (1.5rem + 2.5rem + 0.75rem + 1.25rem)); // ( icon + info + padding-left + padding-right )
+		@include typography-body2;
+	}
+
+	.cluster-stat__value {
+		// move to the end & on the new line
+		order: 1;
+		width: 100%;
+	}
+}
