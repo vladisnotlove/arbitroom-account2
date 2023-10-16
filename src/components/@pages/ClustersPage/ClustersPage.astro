@@ -1,9 +1,12 @@
 ---
 import Layout from "layouts/Layout/Layout.astro";
+import ClusterSummary from "./ClusterSummary/ClusterSummary.astro";
 ---
 
-<Layout title="Кластеры" noSider>
-	<div class="test-text" style="font-family: Golos; font-size: 48px">
-		Whereas recognition of the inherent dignity
+<Layout title="Кластеры" variant="langing">
+	<div class="clusters">
+		<div class="clusters__menu">
+			<ClusterSummary className="clusters__cluster-summary" />
+		</div>
 	</div>
 </Layout>

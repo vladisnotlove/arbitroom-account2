@@ -17,3 +17,9 @@
 .content {
 	padding: 1.5rem 2.5rem;
 }
+
+@media (max-width: $breakpoint-mobile-big) {
+	.content {
+		padding: 1rem 1rem 2rem 1rem;
+	}
+}

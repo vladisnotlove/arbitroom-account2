@@ -1,0 +1,77 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import BlockContent from "components/@uikit/Block/BlockContent.astro";
+import Timer from "components/@uikit/Timer/Timer.astro";
+import Icon from "components/@uikit/Icon/Icon.astro";
+import "./ClusterSummary.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+
+const achievementSrcs = [
+	"/_layout-assets/img/achievement-badges/01.png",
+	"/_layout-assets/img/achievement-badges/02.png",
+	"/_layout-assets/img/achievement-badges/03.png",
+	"/_layout-assets/img/achievement-badges/04.png",
+	"/_layout-assets/img/achievement-badges/05.png",
+	"/_layout-assets/img/achievement-badges/06.png",
+	"/_layout-assets/img/achievement-badges/07.png",
+];
+---
+
+<Block className={classNames(className, "cluster-summary")}>
+	<BlockTitle className="cluster-summary__title">
+		<div class="cluster-summary__title-top">
+			<span>Кластер №245</span>
+			<Timer
+				className="cluster-summary__timer"
+				customFormat="ddд : hhч : mmм : ssс"
+				finishDate={new Date(new Date().setDate(new Date().getDate() + 20))}
+			/>
+		</div>
+		<div class="cluster-summary__subtitle">5 уровень</div>
+	</BlockTitle>
+	<BlockContent className="cluster-summary__content">
+		<div class="cluster-summary__profile">
+			<img class="cluster-summary__profile-avatar" src="/_layout-assets/img/profile.png" alt="" />
+			<div class="cluster-summary__profile-main">
+				<div class="cluster-summary__profile-name">Михаил Балгов</div>
+				<div class="cluster-summary__profile-subtitle">Активов: 2500 USDT</div>
+			</div>
+		</div>
+		<div class="cluster-summary__progress">
+			<div class="cluster-summary__progress-labels">
+				<span>5 уровень</span>
+				<span>6 уровень</span>
+			</div>
+			<div class="cluster-summary__progress-line">
+				<div class="cluster-summary__progress-line-value" style="width: 37%"></div>
+			</div>
+		</div>
+		<div class="cluster-summary__achs-section">
+			<div class="cluster-summary__achs-title">Достижения:</div>
+			<div class="cluster-summary__achs">
+				{achievementSrcs.map((src) => <img class="cluster-summary__ach" src={src} alt="" />)}
+			</div>
+		</div>
+		<div class="cluster-summary__checklist">
+			<div class="cluster-summary__checklist-item checked">
+				<Icon iconName="checkmark-circle" />
+				 Партнер статуса А1
+			</div>
+			<div class="cluster-summary__checklist-item checked">
+				<Icon iconName="checkmark-circle" />
+				 Работа кластера 10 дней
+			</div>
+			<div class="cluster-summary__checklist-item">
+				<Icon iconName="radio-button" />
+				 Партнер статуса А1
+			</div>
+		</div>
+	</BlockContent>
+</Block>

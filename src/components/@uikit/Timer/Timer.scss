@@ -1,0 +1,26 @@
+@import "../../../styles/variables.scss";
+
+.timer {
+	display: flex;
+	align-items: self-start;
+}
+
+.timer__unit {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 3.5rem;
+}
+
+.timer__divider {
+	@include typography-h5;
+}
+
+.timer__unit-value {
+	@include typography-h5;
+}
+
+.timer__unit-label {
+	@include typography-caption;
+	color: $color-text-secondary;
+}

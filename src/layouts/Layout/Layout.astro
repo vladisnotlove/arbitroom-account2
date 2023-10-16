@@ -52,5 +52,17 @@ const { title, variant = "default" } = Astro.props;
 				</div>
 			)
 		}
+		{
+			variant === "langing" && (
+				<div class="container">
+					<div class="main">
+						<Header title={{ type: "logo" }} noBurger />
+						<div class="content">
+							<slot />
+						</div>
+					</div>
+				</div>
+			)
+		}
 	</body>
 </html>

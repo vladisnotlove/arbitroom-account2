@@ -1,0 +1,57 @@
+---
+import classNames from "classnames";
+import "./Timer.scss";
+
+export interface Props extends Record<string, any> {
+	className?: string;
+	finishDate: Date;
+	customFormat?: string; // available literals: dd, hh, hhhh, mm, ss
+}
+
+const { className, finishDate, customFormat, ...props } = Astro.props;
+---
+
+<div
+	class={classNames(className, "timer")}
+	data-timer-finish-date={finishDate?.toString()}
+	data-timer-format={customFormat}
+	{...props}
+>
+	{
+		!customFormat && (
+			<Fragment>
+				<div class="timer__unit">
+					<div class="timer__unit-value" data-timer-days>
+						00
+					</div>
+					<div class="timer__unit-label">дня</div>
+				</div>
+				<div class="timer__divider">:</div>
+				<div class="timer__unit">
+					<div class="timer__unit-value" data-timer-hours>
+						00
+					</div>
+					<div class="timer__unit-label">часов</div>
+				</div>
+				<div class="timer__divider">:</div>
+				<div class="timer__unit">
+					<div class="timer__unit-value" data-timer-minutes>
+						00
+					</div>
+					<div class="timer__unit-label">минут</div>
+				</div>
+				<div class="timer__divider">:</div>
+				<div class="timer__unit">
+					<div class="timer__unit-value" data-timer-seconds>
+						00
+					</div>
+					<div class="timer__unit-label">секунд</div>
+				</div>
+			</Fragment>
+		)
+	}
+</div>
+
+<script>
+	import "./Timer";
+</script>
