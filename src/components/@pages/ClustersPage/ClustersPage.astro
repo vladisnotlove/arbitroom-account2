@@ -3,6 +3,7 @@ import Layout from "layouts/Layout/Layout.astro";
 import ClusterSummary from "./ClusterSummary/ClusterSummary.astro";
 import ClusterStats from "./ClusterStats/ClusterStats.astro";
 import ClusterTimers from "./ClusterTimers/ClusterTimers.astro";
+import DailyRewards from "./DailyRewards/DailyRewards.astro";
 import "./ClustersPage.scss";
 ---
 
@@ -13,6 +14,7 @@ import "./ClustersPage.scss";
 			<a class="clusters__dashboard-btn" href="/dashboard">Dashboard</a>
 			<ClusterStats className="clusters__cluster-stats" />
 			<ClusterTimers className="clusters__cluster-timers" />
+			<DailyRewards className="clusters__daily-rewards" />
 		</div>
 	</div>
 </Layout>

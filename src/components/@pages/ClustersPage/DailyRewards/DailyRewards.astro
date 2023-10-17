@@ -1,0 +1,92 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockContent from "components/@uikit/Block/BlockContent.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import "./DailyRewards.scss";
+import WithDragScroll from "components/@uikit/WithDragScroll/WithDragScroll.astro";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+
+const rewards = [
+	{
+		day: "День 1",
+		gain: "+10",
+	},
+	{
+		day: "День 2",
+		gain: "+10",
+	},
+	{
+		day: "День 3",
+		gain: "+10",
+	},
+	{
+		day: "День 4",
+		gain: "+20",
+	},
+	{
+		day: "День 5",
+		gain: "+20",
+	},
+	{
+		day: "День 6",
+		gain: "+20",
+	},
+	{
+		day: "День 7",
+		gain: "+50",
+	},
+];
+const rewardsLastIndex = rewards.length - 1;
+---
+
+<Block className={classNames(className, "daily-rewards")}>
+	<BlockTitle className="daily-rewards__title">
+		<span>150</span>
+		<span>рARBC</span>
+	</BlockTitle>
+	<BlockContent className="daily-rewards__content">
+		<WithDragScroll>
+			<div class="daily-rewards__rewards">
+				{
+					rewards.map(({ day, gain }, index) => (
+						<>
+							<div class="daily-rewards__reward">
+								<div class="daily-rewards__reward-day">{day}</div>
+								<img
+									class="daily-rewards__reward-icon"
+									src="/_layout-assets/img/complex-icons/coin.svg"
+									alt=""
+								/>
+								<div class="daily-rewards__reward-gain">{gain}</div>
+							</div>
+							{index < rewardsLastIndex && <div class="daily-rewards__divider" />}
+						</>
+					))
+				}
+			</div>
+		</WithDragScroll>
+		<div class="daily-rewards__progress">
+			<div class="daily-rewards__progress-title">Коэффициент бонуса токена</div>
+			<div class="daily-rewards__progress-line">
+				<div class="daily-rewards__progress-line-value" style="width: 15%"></div>
+			</div>
+			<div class="daily-rewards__progress-labels">
+				<div class="daily-rewards__progress-label">1</div>
+				<div class="daily-rewards__progress-label">1,25</div>
+				<div class="daily-rewards__progress-label">1,5</div>
+				<div class="daily-rewards__progress-label">1,75</div>
+				<div class="daily-rewards__progress-label">2</div>
+				<div class="daily-rewards__progress-label">2,25</div>
+				<div class="daily-rewards__progress-label">2,5</div>
+				<div class="daily-rewards__progress-label">2,75</div>
+				<div class="daily-rewards__progress-label">3</div>
+			</div>
+		</div>
+	</BlockContent>
+</Block>

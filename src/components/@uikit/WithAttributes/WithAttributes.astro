@@ -1,0 +1,36 @@
+---
+import { parse, HTMLElement } from "node-html-parser";
+
+export interface Props {
+	attributes: Record<string, string | ((prev: string | undefined) => string | undefined)>;
+}
+
+const { attributes } = Astro.props;
+const html = await Astro.slots.render("default");
+const dom = parse(html);
+
+dom.childNodes.forEach((node) => {
+	if (node instanceof HTMLElement) {
+		Object.entries(attributes).forEach(([name, valueOrUpdater]) => {
+			const prev = node.getAttribute(name);
+
+			// if value is string
+			if (typeof valueOrUpdater === "string") {
+				if (prev) {
+					console.warn(`WithAttribute override attribute "${name}" with value "${valueOrUpdater}"`);
+				}
+				node.setAttribute(name, valueOrUpdater);
+			}
+			// if value is function
+			else {
+				const value = valueOrUpdater(prev);
+				if (value !== undefined) {
+					node.setAttribute(name, value);
+				}
+			}
+		});
+	}
+});
+---
+
+<Fragment set:html={dom.toString()} />

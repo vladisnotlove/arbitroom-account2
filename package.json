@@ -14,7 +14,8 @@
 	"dependencies": {
 		"@popperjs/core": "^2.11.8",
 		"astro": "^3.2.2",
-		"classnames": "^2.3.2"
+		"classnames": "^2.3.2",
+		"node-html-parser": "^6.1.10"
 	},
 	"devDependencies": {
 		"@types/node": "^20.8.3",

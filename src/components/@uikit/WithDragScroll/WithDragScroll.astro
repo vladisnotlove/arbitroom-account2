@@ -1,0 +1,15 @@
+---
+import WithAttributes from "components/@uikit/WithAttributes/WithAttributes.astro";
+---
+
+<WithAttributes
+	attributes={{
+		["data-drag-scroll"]: "",
+	}}
+>
+	<slot />
+</WithAttributes>
+
+<script>
+	import "./WIthDragScroll";
+</script>
