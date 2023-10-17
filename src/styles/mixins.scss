@@ -58,6 +58,7 @@
 	background: transparent;
 	color: $color-text-prime;
 	border-radius: 0;
+	border: none;
 }
 
 @mixin overlay($z-index) {

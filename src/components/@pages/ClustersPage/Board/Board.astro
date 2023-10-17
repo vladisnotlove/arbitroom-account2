@@ -1,0 +1,141 @@
+---
+import classNames from "classnames";
+import "./Board.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<div class={classNames(className, "board")}>
+	<div class="board__top">
+		<div class="board__cooler-left"></div>
+		<div class="board__processor"></div>
+		<div class="board__cooler-right"></div>
+		<div class="board__wire-top-left"></div>
+		<div class="board__wire-top-right"></div>
+	</div>
+	<div class="board__body">
+		<div class="board__center-glow"></div>
+		<div class="board__wire-right"></div>
+		<div class="board__frame"></div>
+
+		<div class="board__row">
+			<div class="board__chip green">100<br />USDT</div>
+			<div class="board__chip blue">100<br />USDT</div>
+			<div class="board__chip purple">100<br />USDT</div>
+			<div class="board__slot-pair">
+				<div class="board__slot purple">Бонус к начислениям 1%</div>
+				<div class="board__slot blue">Бонус к начислениям 1%</div>
+			</div>
+		</div>
+
+		<div class="board__row">
+			<div class="board__chip green">500<br />USDT</div>
+			<div class="board__chip blue">500<br />USDT</div>
+			<div class="board__chip purple">500<br />USDT</div>
+			<div class="board__slot-pair">
+				<div class="board__slot green">Бонус к начислениям 1%</div>
+				<div class="board__slot empty"></div>
+			</div>
+		</div>
+
+		<div class="board__row">
+			<div class="board__chip green">1000<br />USDT</div>
+			<div class="board__chip closed">1000<br />USDT</div>
+			<div class="board__chip closed">1000<br />USDT</div>
+			<div class="board__slot-pair">
+				<div class="board__slot empty"></div>
+				<div class="board__slot empty"></div>
+			</div>
+		</div>
+
+		<div class="board__row">
+			<div class="board__chip closed">2500<br />USDT</div>
+			<div class="board__chip closed">2500<br />USDT</div>
+			<div class="board__chip closed">2500<br />USDT</div>
+			<div class="board__slot-pair">
+				<div class="board__slot empty"></div>
+				<div class="board__slot empty"></div>
+			</div>
+		</div>
+
+		<div class="board__row">
+			<div class="board__chip closed">
+				<img src="/_layout-assets/img/_parts/board/lock.svg" alt="" />
+				 2 lvl
+			</div>
+			<div class="board__chip closed">
+				<img src="/_layout-assets/img/_parts/board/lock.svg" alt="" />
+				 2 lvl
+			</div>
+			<div class="board__chip closed">
+				<img src="/_layout-assets/img/_parts/board/lock.svg" alt="" />
+				 2 lvl
+			</div>
+			<div class="board__slot-pair">
+				<div class="board__slot empty"></div>
+				<div class="board__slot empty"></div>
+			</div>
+		</div>
+
+		<div class="board__row">
+			<div class="board__chip closed">
+				<img src="/_layout-assets/img/_parts/board/lock.svg" alt="" />
+				 2 lvl
+			</div>
+			<div class="board__chip closed">
+				<img src="/_layout-assets/img/_parts/board/lock.svg" alt="" />
+				 2 lvl
+			</div>
+			<div class="board__chip closed">
+				<img src="/_layout-assets/img/_parts/board/lock.svg" alt="" />
+				 2 lvl
+			</div>
+			<div class="board__slot-pair">
+				<div class="board__slot empty"></div>
+				<div class="board__slot empty"></div>
+			</div>
+		</div>
+
+		<div class="board__row">
+			<div class="board__chip closed">
+				<img src="/_layout-assets/img/_parts/board/lock.svg" alt="" />
+				 2 lvl
+			</div>
+			<div class="board__chip closed">
+				<img src="/_layout-assets/img/_parts/board/lock.svg" alt="" />
+				 2 lvl
+			</div>
+			<div class="board__chip closed">
+				<img src="/_layout-assets/img/_parts/board/lock.svg" alt="" />
+				 2 lvl
+			</div>
+			<div class="board__slot-pair">
+				<div class="board__slot empty"></div>
+				<div class="board__slot empty"></div>
+			</div>
+		</div>
+
+		<div class="board__row">
+			<div class="board__chip closed">
+				<img src="/_layout-assets/img/_parts/board/lock.svg" alt="" />
+				 3 lvl
+			</div>
+			<div class="board__chip closed">
+				<img src="/_layout-assets/img/_parts/board/lock.svg" alt="" />
+				 3 lvl
+			</div>
+			<div class="board__chip closed">
+				<img src="/_layout-assets/img/_parts/board/lock.svg" alt="" />
+				 3 lvl
+			</div>
+			<div class="board__slot-pair">
+				<div class="board__slot empty"></div>
+				<div class="board__slot empty"></div>
+			</div>
+		</div>
+	</div>
+</div>

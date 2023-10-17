@@ -1,0 +1,423 @@
+@import "../../../../styles/mixins.scss";
+
+.board {
+	@include paper;
+	overflow: hidden;
+}
+
+// top
+
+.board__top {
+	position: relative;
+	height: 369px;
+}
+
+.board__cooler-left {
+	position: absolute;
+	top: 25px;
+	left: 24.5px;
+
+	height: 279px;
+	aspect-ratio: 403 / 279;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		transform: translateX(-4.716981132%) translateY(-6.081081081%);
+
+		height: 106.093189964%;
+		aspect-ratio: 424 / 296;
+
+		background-image: url("/_layout-assets/img/_parts/board/cooler-left.png");
+		background-size: 100% 100%;
+	}
+}
+
+.board__cooler-right {
+	position: absolute;
+	top: 25px;
+	right: 24.5px;
+
+	height: 279px;
+	aspect-ratio: 403 / 279;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		transform: translateX(4.716981132%) translateY(-6.081081081%);
+
+		height: 106.093189964%;
+		aspect-ratio: 424 / 296;
+
+		background-image: url("/_layout-assets/img/_parts/board/cooler-right.png");
+		background-size: 100% 100%;
+	}
+}
+
+.board__processor {
+	position: absolute;
+	top: 12px;
+	left: 50%;
+	transform: translateX(-50%);
+
+	height: 283px;
+	aspect-ratio: 268 / 283;
+
+	z-index: 10;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		width: 135.739856802%;
+		height: 128.716013683%;
+		transform: translate(-50%, -50%);
+
+		background-image: url("/_layout-assets/img/_parts/board/processor.png");
+		background-size: 100% 100%;
+	}
+}
+
+.board__wire-top-left {
+	position: absolute;
+	bottom: 0;
+	left: 38.5px;
+	transform: translateY(13.815789473%);
+
+	width: 406px;
+	aspect-ratio: 406 / 152;
+
+	background-image: url("/_layout-assets/img/_parts/board/wire-top-left.png");
+	background-size: 100% 100%;
+}
+
+.board__wire-top-right {
+	position: absolute;
+	bottom: 0;
+	right: 38.5px;
+	transform: translateY(13.815789473%);
+
+	width: 406px;
+	aspect-ratio: 406 / 152;
+
+	background-image: url("/_layout-assets/img/_parts/board/wire-top-right.png");
+	background-size: 100% 100%;
+}
+
+// body
+
+.board__body {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding: 12px 94px 24px 22px;
+}
+
+.board__center-glow {
+	position: absolute;
+	top: -46px;
+	left: 50%;
+	transform: translateX(-50%);
+
+	width: 59px;
+	height: 805px;
+
+	z-index: -1;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		width: 200px;
+		height: 900px;
+		transform: translate(-50%, -50%);
+
+		background-image: url("/_layout-assets/img/_parts/board/center-glow.png");
+		background-size: 100% 100%;
+	}
+}
+
+.board__wire-right {
+	position: absolute;
+	top: -8px;
+	right: 38.5px;
+
+	width: 50px;
+	height: 743px;
+
+	background-image: url("/_layout-assets/img/_parts/board/wire-left.png");
+	background-size: 100% 100%;
+}
+
+.board__frame {
+	position: absolute;
+	top: -16px;
+	right: 94px;
+
+	width: 335px;
+	height: 100%;
+
+	background-image: url("/_layout-assets/img/_parts/board/frame.svg");
+	background-size: cover;
+}
+
+.board__row {
+	display: flex;
+	align-items: stretch;
+	gap: 2.5rem;
+}
+
+// chip
+
+.board__chip {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	gap: 0.25rem;
+
+	position: relative;
+	width: 112px;
+	aspect-ratio: 1;
+	z-index: 1;
+
+	font-family: Righteous;
+	font-size: 1rem;
+	line-height: normal;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		min-width: 120px;
+		width: 160 / 112 * 100%;
+		aspect-ratio: 1;
+		z-index: -1;
+	}
+
+	&.green {
+		color: $color-green;
+
+		&::before {
+			background-image: url("/_layout-assets/img/_parts/board/chips/green.svg");
+			background-size: 100% 100%;
+		}
+	}
+
+	&.blue {
+		color: $color-blue;
+
+		&::before {
+			background-image: url("/_layout-assets/img/_parts/board/chips/blue.svg");
+			background-size: 100% 100%;
+		}
+	}
+
+	&.purple {
+		color: $color-purple;
+
+		&::before {
+			background-image: url("/_layout-assets/img/_parts/board/chips/purple.svg");
+			background-size: 100% 100%;
+		}
+	}
+
+	&.closed {
+		color: #787878;
+
+		&::before {
+			background-image: url("/_layout-assets/img/_parts/board/chips/closed.svg");
+			background-size: 100% 100%;
+		}
+	}
+}
+
+// slot
+
+.board__slot-pair {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1.375rem;
+	position: relative;
+	margin-left: auto;
+
+	&::after {
+		content: "";
+		position: absolute;
+		bottom: -0.5rem;
+		left: 20px;
+		right: 20px;
+		height: 100%;
+		border-bottom: 1px solid rgba(2, 177, 255, 0.4);
+	}
+}
+
+.board__slot {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	position: relative;
+	width: 329px;
+	aspect-ratio: 329 / 28;
+
+	@include typography-caption;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 380 / 329 * 100%;
+		aspect-ratio: 380 / 68;
+		z-index: -1;
+	}
+
+	&.green {
+		&::before {
+			background-image: url("/_layout-assets/img/_parts/board/slots/green.png");
+			background-size: 100% 100%;
+		}
+	}
+
+	&.blue {
+		&::before {
+			background-image: url("/_layout-assets/img/_parts/board/slots/blue.png");
+			background-size: 100% 100%;
+		}
+	}
+
+	&.purple {
+		&::before {
+			background-image: url("/_layout-assets/img/_parts/board/slots/purple.png");
+			background-size: 100% 100%;
+		}
+	}
+
+	&.empty {
+		&::before {
+			background-image: url("/_layout-assets/img/_parts/board/slots/empty.png");
+			background-size: 100% 100%;
+		}
+	}
+}
+
+// ADAPTIVE
+
+@media (max-width: $breakpoint-tablet-small) {
+	.board {
+		@include disable-paper;
+		overflow: hidden;
+		margin: 0 -2.5rem;
+		padding-top: 0.25rem;
+	}
+
+	// top
+
+	.board__top {
+		position: relative;
+		left: 50%;
+		width: 801.66px;
+		height: 265.57px;
+		transform: translateX(-50%);
+	}
+
+	.board__wire-top-left,
+	.board__wire-top-right {
+		display: none;
+	}
+
+	.board__cooler-left {
+		top: 0;
+		left: 0;
+		height: 261.29px;
+	}
+
+	.board__cooler-right {
+		top: 0;
+		right: 0;
+		height: 261.29px;
+	}
+
+	.board__processor {
+		top: 0;
+		height: 265.57px;
+	}
+
+	// body
+
+	.board__body {
+		gap: 0;
+		padding: 0 0.5rem;
+	}
+
+	.board__wire-right {
+		display: none;
+	}
+
+	.board__frame {
+		display: none;
+	}
+
+	.board__row {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		column-gap: 1rem;
+		row-gap: 0;
+		width: 100%;
+		padding-top: 1.75rem;
+		border-bottom: 1px solid rgba(2, 177, 255, 0.4);
+	}
+
+	// chip
+
+	.board__chip {
+		min-width: 100px;
+		max-width: 140px;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1;
+		margin: 0 auto;
+	}
+
+	// slot
+
+	.board__slot-pair {
+		grid-column: 1 / -1;
+
+		align-items: center;
+		gap: 1.5rem;
+
+		width: 100%;
+		padding: 1.75rem 0;
+
+		&::after {
+			display: none;
+		}
+	}
+
+	.board__slot {
+		width: 100%;
+		max-width: 400px;
+	}
+}
+
+@media (max-width: $breakpoint-mobile-big) {
+	.board {
+		margin: 0 -1rem;
+	}
+}
