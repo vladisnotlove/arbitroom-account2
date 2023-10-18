@@ -1,3 +1,11 @@
+@import "../../../styles/variables.scss";
+
+.content-active-blocks {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
 .content-active-blocks__stats {
 	display: flex;
 	gap: 1rem;
@@ -9,6 +17,47 @@
 }
 
 .content-active-blocks__section {
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas: "p b b";
 	gap: 1rem;
+}
+
+.content-active-blocks__poster {
+	grid-area: p;
+}
+
+.content-active-blocks__blocks {
+	grid-area: b;
+}
+
+// ADAPTIVE
+
+@media (max-width: $breakpoint-tablet-small) {
+	.content-active-blocks__stats {
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.content-active-blocks__section {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.content-active-blocks__poster {
+		padding-top: 80px;
+	}
+}
+
+@media (max-width: $breakpoint-mobile-big) {
+	.content-active-blocks {
+		gap: 1.5rem;
+	}
+
+	.content-active-blocks__section {
+		gap: 0;
+		padding-bottom: 1.5rem;
+		border-bottom: 1px solid $color-prime-main;
+	}
 }

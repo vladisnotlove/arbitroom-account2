@@ -81,7 +81,7 @@
 			box-shadow: 0 0 1rem $color-prime-main;
 		}
 
-		&:focus {
+		&.selected {
 			outline: $color-prime-main solid 2px;
 		}
 
