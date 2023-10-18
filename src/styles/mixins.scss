@@ -184,9 +184,9 @@
 	background-repeat: no-repeat;
 }
 
-@mixin with-glow-ellipse2() {
+@mixin with-glow-ellipse2($color-background: rgba(0, 0, 0, 0.4)) {
 	background: url("/_layout-assets/img/_parts/glow-ellipse-half2.svg"),
-		linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+		linear-gradient($color-background, $color-background);
 	background-position: center bottom;
 	background-repeat: no-repeat;
 }

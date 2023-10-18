@@ -5,8 +5,6 @@ window.addEventListener("load", () => {
 	const POPPER_VIEWPORT_PADDING = getCssVariable("--popper-viewport-padding");
 	const ANIMATION_SLOW_MS = parseFloat(getCssVariable("--animation-slow")) * 1000;
 
-	console.log(getCssVariable("--animation-slow"));
-
 	document.querySelectorAll(".popper").forEach((popperElement) => {
 		if (!(popperElement instanceof HTMLElement)) return;
 

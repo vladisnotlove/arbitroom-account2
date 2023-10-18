@@ -1,0 +1,14 @@
+---
+import classNames from "classnames";
+import "./GlowBtn.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<button class={classNames(className, "glow-btn")}>
+	<slot />
+</button>

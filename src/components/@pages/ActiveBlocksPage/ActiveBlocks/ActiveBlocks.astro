@@ -1,0 +1,102 @@
+---
+import classNames from "classnames";
+import Timer from "components/@uikit/Timer/Timer.astro";
+import Button from "components/@uikit/Button/Button.astro";
+import GlowBtn from "components/@uikit/GlowBtn/GlowBtn.astro";
+import "./ActiveBlocks.scss";
+
+type TVariant = "green" | "blue" | "purple";
+type TBlockStatus = "active" | "inactive" | "unavailable";
+
+export interface Props {
+	className?: string;
+	variant: TVariant;
+}
+
+const { className, variant } = Astro.props;
+
+const variantToId: Record<TVariant, string> = {
+	green: "greenBlocksForm",
+	blue: "blueBlocksForm",
+	purple: "purpleBlocksForm",
+};
+const variantToInputName: Record<TVariant, string> = {
+	green: "selectedGreenBlock",
+	blue: "selectedBlueBlock",
+	purple: "selectedPurpleBlock",
+};
+const variantToFooter: Record<TVariant, string> = {
+	green: "Зеленые блоки настроены на работу с активами, которые включают в себя 50% внутрибиржевого, 30% межбиржевого и 20% мультбиржевого арбитража криптовалют",
+	blue: "Синие блоки настроены на работу с активами, которые включают в себя 50% межбиржевого, 25% внутрибиржевого и 25% мультбиржевого арбитража криптовалют",
+	purple:
+		"Фиолетовые блоки настроены на работу с активами, которые включают в себя 50% мультибиржевого, 35% межбиржевого и 15% внутрибиржевого арбитража криптовалют",
+};
+
+const blocks: Array<{
+	status: TBlockStatus;
+	value: string;
+}> = [
+	{ status: "active", value: "100" },
+	{ status: "active", value: "500" },
+	{ status: "active", value: "1000" },
+	{ status: "inactive", value: "2 500" },
+	{ status: "unavailable", value: "5 000" },
+	{ status: "unavailable", value: "10 000" },
+	{ status: "unavailable", value: "20 000" },
+	{ status: "unavailable", value: "30 000" },
+];
+
+const statusToText: Record<TBlockStatus, string> = {
+	active: "Активен",
+	inactive: "Не активен",
+	unavailable: "Не доступен",
+};
+---
+
+<div class={classNames(className, "active-blocks", variant)}>
+	<GlowBtn className="active-blocks__show-btn">Показать блоки активов</GlowBtn>
+	<div class="active-blocks__main">
+		<form class="active-blocks__form" id={variantToId[variant]}>
+			<input name={variantToInputName[variant]} hidden />
+			<div class="active-blocks__blocks">
+				{
+					blocks.map(({ status, value }) => (
+						<div
+							class={classNames("active-blocks__block", status)}
+							tabindex={status === "inactive" ? "0" : ""}
+							data-value={value}
+						>
+							<div class="active-blocks__block-status">{statusToText[status]}</div>
+							<div class="active-blocks__block-chip">
+								<span>{value}</span>
+								<span>USDT</span>
+							</div>
+							<Timer
+								className="active-blocks__block-timer"
+								finishDate={
+									status === "active" ? new Date(new Date().setDate(new Date().getDate() + 200)) : undefined
+								}
+								format="ddд : hhч : mmм : ssс"
+								placeholder="00д : 00ч : 00м : 00с"
+							/>
+						</div>
+					))
+				}
+			</div>
+			<Button className="active-blocks__active-btn disabled" variant="contained" type="submit">
+				<div class="active-blocks__active-btn-label">Активировать</div>
+				<div class="active-blocks__active-btn-description">
+					Необходимо выбрать и нажать на желаемый блок актива и активировать его
+				</div>
+			</Button>
+		</form>
+		<div class="active-blocks__footer">
+			{variantToFooter[variant]}
+		</div>
+	</div>
+	<GlowBtn className="active-blocks__hide-btn">Скрыть</GlowBtn>
+</div>
+
+<script>
+	import "./ActiveBlocks";
+</script>
