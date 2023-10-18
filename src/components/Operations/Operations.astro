@@ -7,11 +7,11 @@ import TableHeader from "components/@uikit/Table/TableHeader.astro";
 import TableBody from "components/@uikit/Table/TableBody.astro";
 import TableRow from "components/@uikit/Table/TableRow.astro";
 import TableCell from "components/@uikit/Table/TableCell.astro";
-import ToggleButtonGroup from "components/@uikit/ToggleButtonGroup/ToggleButtonGroup.astro";
 import Chip from "components/@uikit/Chip/Chip.astro";
 import Pages from "components/@uikit/Pages/Pages.astro";
+import Button from "components/@uikit/Button/Button.astro";
 import { data, columns } from "./data";
-import "./AllOperations.scss";
+import "./Operations.scss";
 
 export interface Props {
 	className?: string;
@@ -20,21 +20,12 @@ export interface Props {
 const { className } = Astro.props;
 ---
 
-<Block className={classNames(className, "all-operations")}>
-	<BlockTitle className="all-operations__title">История операций</BlockTitle>
-	<div class="all-operations__categories">
-		<ToggleButtonGroup
-			items={[
-				{ text: "Все", value: "" },
-				{ text: "Пополнения", value: "1" },
-				{ text: "Начисления", value: "2" },
-				{ text: "Партнёрские", value: "3" },
-				{ text: "Вывод", value: "4" },
-			]}
-			value=""
-		/>
-	</div>
-	<div class="all-operations__table-container">
+<Block className={classNames(className, "operations")}>
+	<BlockTitle className="operations__title">
+		История операций
+		<Button as="a" className="operations__all-operations-btn" variant="text" href="/operations">Все операции</Button>
+	</BlockTitle>
+	<div class="operations__table-container">
 		<Table>
 			<TableHeader>
 				<TableRow>
@@ -61,8 +52,7 @@ const { className } = Astro.props;
 		</Table>
 	</div>
 	<Pages
-		className="all-operations__pages"
+		className="operations__pages"
 		items={[{ number: 1, active: true }, { number: 2 }, { number: 3 }, { number: 4 }, { number: 5 }]}
 	/>
-	<div></div>
 </Block>

@@ -1,0 +1,52 @@
+@import "../../styles/mixins.scss";
+
+.operations__title {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.operations__all-operations-btn {
+	margin: -0.875rem -1.5rem;
+}
+
+.operations__table-container {
+	border-bottom: 1px solid $color-divider;
+
+	overflow: auto;
+	@include scrollbar;
+
+	.chip {
+		white-space: nowrap;
+	}
+}
+
+.operations__pages {
+	padding: 1rem;
+}
+
+// ADAPTIVE
+
+@media (max-width: $breakpoint-mobile-big) {
+	.operations {
+		@include disable-paper;
+	}
+
+	.operations__title {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.5rem;
+		padding: 0;
+		margin-bottom: 1rem;
+	}
+
+	.operations__table-container {
+		@include paper;
+	}
+
+	.operations__pages {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}

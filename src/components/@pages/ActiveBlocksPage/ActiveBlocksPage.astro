@@ -2,8 +2,9 @@
 import StatsCard from "components/StatsCard/StatsCard.astro";
 import Layout from "layouts/Layout/Layout.astro";
 import ActiveBlockPoster from "./ActiveBlockPoster/ActiveBlockPoster.astro";
-import "./ActiveBlocksPage.scss";
 import ActiveBlocks from "./ActiveBlocks/ActiveBlocks.astro";
+import Operations from "components/Operations/Operations.astro";
+import "./ActiveBlocksPage.scss";
 ---
 
 <Layout title="Блоки активов" selectedMenuItem="actives">
@@ -80,5 +81,6 @@ import ActiveBlocks from "./ActiveBlocks/ActiveBlocks.astro";
 			<ActiveBlockPoster variant="purple" />
 			<ActiveBlocks variant="purple" />
 		</div>
+		<Operations className="content-active-blocks__operations" />
 	</div>
 </Layout>
