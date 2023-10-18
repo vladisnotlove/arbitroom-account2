@@ -1,0 +1,68 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import Table from "components/@uikit/Table/Table.astro";
+import TableHeader from "components/@uikit/Table/TableHeader.astro";
+import TableBody from "components/@uikit/Table/TableBody.astro";
+import TableRow from "components/@uikit/Table/TableRow.astro";
+import TableCell from "components/@uikit/Table/TableCell.astro";
+import ToggleButtonGroup from "components/@uikit/ToggleButtonGroup/ToggleButtonGroup.astro";
+import { data, columns } from "./data";
+import Chip from "components/@uikit/Chip/Chip.astro";
+import "./AllOperations.scss";
+import Pages from "components/@uikit/Pages/Pages.astro";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<Block className={classNames(className, "all-operations")}>
+	<BlockTitle className="all-operations__title">История операций</BlockTitle>
+	<div class="all-operations__categories">
+		<ToggleButtonGroup
+			items={[
+				{ text: "Все", value: "" },
+				{ text: "Пополнения", value: "1" },
+				{ text: "Начисления", value: "2" },
+				{ text: "Партнёрские", value: "3" },
+				{ text: "Вывод", value: "4" },
+			]}
+			value=""
+		/>
+	</div>
+	<div class="all-operations__table-container">
+		<Table>
+			<TableHeader>
+				<TableRow>
+					{columns.map((column) => <TableCell>{column}</TableCell>)}
+				</TableRow>
+			</TableHeader>
+			<TableBody>
+				{
+					data.map(({ operation, status, sum, date, comment }) => (
+						<TableRow>
+							<TableCell label={columns[0]}>{operation}</TableCell>
+							<TableCell label={columns[1]}>
+								{status === "inProgress" && <Chip>В процессе</Chip>}
+								{status === "success" && <Chip color="success">Оплачено</Chip>}
+								{status === "error" && <Chip color="error">Отклонено</Chip>}
+							</TableCell>
+							<TableCell label={columns[2]}>{sum}</TableCell>
+							<TableCell label={columns[3]}>{date}</TableCell>
+							<TableCell label={columns[4]}>{comment}</TableCell>
+						</TableRow>
+					))
+				}
+			</TableBody>
+		</Table>
+	</div>
+	<Pages
+		className="all-operations__pages"
+		items={[{ number: 1, active: true }, { number: 2 }, { number: 3 }, { number: 4 }, { number: 5 }]}
+	/>
+	<div></div>
+</Block>

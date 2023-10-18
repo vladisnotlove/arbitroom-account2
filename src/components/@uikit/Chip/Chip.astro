@@ -1,0 +1,17 @@
+---
+import classNames from "classnames";
+import "./Chip.scss";
+
+export interface Props extends Record<string, any> {
+	className?: string;
+	variant?: "contained" | "filled";
+	color?: "gray" | "success" | "error" | "default" | "success-bright" | "error";
+	size?: "medium" | "small";
+}
+
+const { className, variant, color, size, ...props } = Astro.props;
+---
+
+<div class={classNames(className, "chip", variant, color, size)} {...props}>
+	<slot />
+</div>

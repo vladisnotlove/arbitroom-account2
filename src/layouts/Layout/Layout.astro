@@ -8,15 +8,16 @@ import Header from "components/@common/Header/Header.astro";
 import Loader from "components/@common/Loader/Loader.astro";
 import LangaugeMenu from "components/@common/LanguageMenu/LangaugeMenu.astro";
 import Notifications from "components/@common/Notifications/Notifications.astro";
-import SideMenu from "components/@common/SideMenu/SideMenu.astro";
+import SideMenu, { Props as SideMenuProps } from "components/@common/SideMenu/SideMenu.astro";
 import "./Layout.scss";
 
 export interface Props {
-	title: string;
 	variant?: "default" | "langing";
+	title: string;
+	selectedMenuItem?: SideMenuProps["selected"];
 }
 
-const { title, variant = "default" } = Astro.props;
+const { variant = "default", title, selectedMenuItem } = Astro.props;
 ---
 
 <!doctype html>
@@ -42,7 +43,7 @@ const { title, variant = "default" } = Astro.props;
 		{
 			variant === "default" && (
 				<div class="container">
-					<SideMenu />
+					<SideMenu selected={selectedMenuItem} />
 					<div class="main">
 						<Header title={{ type: "title", text: title }} />
 						<div class="content">

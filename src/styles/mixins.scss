@@ -17,7 +17,7 @@
 	}
 }
 
-@mixin scrollbar {
+@mixin scrollbar($track-color: rgba(33, 33, 33, 0.08), $track-border-radius: 0.25rem) {
 	scrollbar-color: $color-text-secondary rgba(33, 33, 33, 0.08);
 	scrollbar-width: thin;
 
@@ -27,12 +27,12 @@
 	}
 
 	&::-webkit-scrollbar-track {
-		background-color: rgba(33, 33, 33, 0.08);
-		border-radius: 0.25rem;
+		background-color: $track-color;
+		border-radius: $track-border-radius;
 	}
 
 	&::-webkit-scrollbar-thumb {
-		background-color: $color-text-secondary;
+		background-color: $color-text-more-secondary;
 		border-radius: 0.25rem;
 	}
 

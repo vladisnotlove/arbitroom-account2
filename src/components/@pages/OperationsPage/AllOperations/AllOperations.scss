@@ -1,0 +1,47 @@
+@import "../../../../styles/mixins.scss";
+
+.all-operations__title {
+	display: none;
+}
+
+.all-operations__categories {
+	padding: 1.5rem 1.5rem 0.75rem 1.5rem;
+}
+
+.all-operations__table-container {
+	border-bottom: 1px solid $color-divider;
+
+	overflow: auto;
+	@include scrollbar;
+
+	.chip {
+		white-space: nowrap;
+	}
+}
+
+.all-operations__pages {
+	padding: 1rem;
+}
+
+// ADAPTIVE
+
+@media (max-width: $breakpoint-mobile-big) {
+	.all-operations {
+		@include disable-paper;
+	}
+
+	.all-operations__title {
+		display: block;
+		padding: 0;
+		margin-bottom: 0.75rem;
+	}
+
+	.all-operations__categories {
+		padding: 0;
+		margin-bottom: 0.75rem;
+	}
+
+	.all-operations__table-container {
+		@include paper;
+	}
+}

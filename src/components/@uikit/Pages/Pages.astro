@@ -1,0 +1,23 @@
+---
+import classNames from "classnames";
+import "./Pages.scss";
+
+export interface Props {
+	className?: string;
+	items: Array<{ number: number; active?: boolean } | "skip">;
+}
+
+const { className, items } = Astro.props;
+---
+
+<div class={classNames(className, "pages")}>
+	{
+		items?.map((item) => {
+			if (item === "skip") {
+				return <div class="pages__skip">...</div>;
+			} else {
+				return <div class={classNames("page", { active: item.active })}>{item.number}</div>;
+			}
+		})
+	}
+</div>

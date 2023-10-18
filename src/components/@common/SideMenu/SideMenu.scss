@@ -1,5 +1,10 @@
 @import "../../../styles/mixins.scss";
 
+html.side-menu-open {
+	overflow: hidden;
+	padding-right: 0.5rem;
+}
+
 $side-menu-padding-left: 1.5rem;
 
 .side-menu {
@@ -14,7 +19,7 @@ $side-menu-padding-left: 1.5rem;
 
 .side-menu__body {
 	height: 100%;
-	padding-bottom: 6rem;
+	padding-bottom: 4rem;
 }
 
 .side-menu__link {
@@ -141,7 +146,7 @@ $side-menu-padding-left: 1.5rem;
 		height: 100%;
 		border-right: 1px solid $color-divider;
 		background: $color-background;
-		@include scrollbar;
+		@include invisible-scrollbar;
 		overflow: auto;
 		transform: translateX(-100%);
 		transition: transform $animation-normal;

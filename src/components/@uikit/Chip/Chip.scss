@@ -1,0 +1,78 @@
+@import "../../../styles/variables";
+
+// chip
+
+.chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.375rem;
+	border-radius: 1.5rem;
+	padding: 0.25rem 0.5rem;
+
+	@include typography-subtitle2;
+	color: $color-prime-main;
+	background: change-color($color-prime-main, $alpha: 0.08);
+
+	& > .svg-icon {
+		font-size: 1.25rem;
+		color: inherit;
+	}
+
+	&.success {
+		color: $color-success-main;
+		background: change-color($color-success-main, $alpha: 0.08);
+	}
+
+	&.success-bright {
+		color: $color-success-light;
+		background: change-color($color-success-light, $alpha: 0.16);
+		text-shadow: 0px 0px 8px $color-success-main;
+	}
+
+	&.error {
+		color: $color-error-main;
+		background: change-color($color-error-main, $alpha: 0.08);
+	}
+
+	&.gray {
+		color: $color-text-secondary;
+		background: rgba(152, 152, 152, 0.16);
+	}
+
+	&.small {
+		padding: 0.125rem 0.25rem;
+
+		font-size: 0.75rem;
+		line-height: 1rem;
+	}
+
+	// varian fill
+
+	&.filled {
+		background: $color-prime-light;
+		color: $color-text-secondary;
+		@include typography-body2-text;
+
+		& > .svg-icon {
+			color: $color-text-more-secondary;
+		}
+
+		&.success {
+			color: $color-success-contrast-text;
+			background: $color-success-main;
+
+			& > .svg-icon {
+				color: inherit;
+			}
+		}
+
+		&.error {
+			color: $color-error-contrast-text;
+			background: $color-error-main;
+
+			& > .svg-icon {
+				color: inherit;
+			}
+		}
+	}
+}

@@ -1,0 +1,14 @@
+---
+import classNames from "classnames";
+import "./Table.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<div class={classNames(className, "table__row")}>
+	<slot />
+</div>

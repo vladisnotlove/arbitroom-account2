@@ -1,0 +1,42 @@
+@import "../../../styles/mixins.scss";
+
+// pages
+
+.pages {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+}
+
+.page {
+	box-sizing: content-box;
+	height: 1.25rem;
+	min-width: 1.25rem;
+	padding: 0.25rem;
+	border-radius: 1.25rem;
+	cursor: pointer;
+
+	@include typography-body2-text;
+	text-align: center;
+	color: $color-text-secondary;
+
+	&:hover {
+		background: $color-background;
+	}
+
+	&.active {
+		background: $color-prime-main;
+		color: $color-prime-contrast-text;
+	}
+}
+
+.pages__skip {
+	box-sizing: content-box;
+	height: 1.25rem;
+	min-width: 1.25rem;
+	padding: 0.25rem;
+
+	@include typography-body2-text;
+	text-align: center;
+	color: $color-text-secondary;
+}

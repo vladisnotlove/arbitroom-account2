@@ -14,12 +14,14 @@ window.addEventListener("load", () => {
 			sideMenuBody.scrollTop = 0;
 			sideMenu.classList.add("open");
 			burger.classList.add("open");
+			document.documentElement.classList.add("side-menu-open");
 		}
 	};
 	const closeMenu = () => {
 		if (sideMenu && burger) {
 			sideMenu.classList.remove("open");
 			burger.classList.remove("open");
+			document.documentElement.classList.remove("side-menu-open");
 		}
 	};
 	const toggleMenu = () => {

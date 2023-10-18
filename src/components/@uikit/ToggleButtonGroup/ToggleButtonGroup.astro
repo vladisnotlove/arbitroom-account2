@@ -1,0 +1,46 @@
+---
+import classNames from "classnames";
+import InputUrlSync from "../InputUrlSync/InputUrlSync.astro";
+import "./ToggleButtonGroup.scss";
+
+export interface Props extends Record<string, any> {
+	className?: string;
+	name?: string;
+	items: Array<{
+		value: string;
+		text: string;
+	}>;
+	value: string;
+	urlSync?: boolean;
+	equalColumns?: boolean;
+	disableJs?: boolean;
+}
+
+const { className, name, items, value, urlSync, equalColumns, disableJs, ...props } = Astro.props;
+---
+
+<div
+	class={classNames(className, "toggle-button-group", {
+		"equal-columns": equalColumns,
+	})}
+	data-disable-js={disableJs}
+	{...props}
+>
+	<InputUrlSync name={name} value={value} hidden disabled={!urlSync} />
+	{
+		items.map((item) => (
+			<div
+				class={classNames("toggle-button", {
+					active: value === item.value,
+				})}
+				data-value={item.value}
+			>
+				{item.text}
+			</div>
+		))
+	}
+</div>
+
+<script>
+	import "./ToggleButtonGroup";
+</script>
