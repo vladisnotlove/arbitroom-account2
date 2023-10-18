@@ -1,0 +1,9 @@
+.content-active-blocks__stats {
+	display: flex;
+	gap: 1rem;
+
+	& > * {
+		flex-grow: 1;
+		flex-basis: 0;
+	}
+}

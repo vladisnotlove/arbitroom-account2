@@ -1,0 +1,38 @@
+---
+import classNames from "classnames";
+import Icon, { Props as IconProps } from "components/@uikit/Icon/Icon.astro";
+import "./StatsCard.scss";
+
+export interface Props {
+	className?: string;
+	title: string;
+	icon: IconProps["iconName"];
+	stats?: Array<{
+		name?: string;
+		value: string;
+		unit?: string;
+	}>;
+}
+
+const { className, title, icon, stats } = Astro.props;
+---
+
+<div class={classNames(className, "stats-card")}>
+	<div class="stats-card__title">
+		<Icon iconName={icon} />
+		{title}
+	</div>
+	<div class="stats-card__body">
+		{
+			stats.map(({ name, value, unit }) => (
+				<div class="stats-card__stat">
+					<div class="stats-card__stat-value">
+						<span class="stats-card__stat-value-number">{value}</span>
+						{unit && <span class="stats-card__stat-unit">{unit}</span>}
+					</div>
+					<div class="stats-card__stat-name">{name}</div>
+				</div>
+			))
+		}
+	</div>
+</div>

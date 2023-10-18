@@ -1,0 +1,70 @@
+---
+import StatsCard from "components/StatsCard/StatsCard.astro";
+import Layout from "layouts/Layout/Layout.astro";
+import "./ActiveBlocksPage.scss";
+---
+
+<Layout title="Блоки активов" selectedMenuItem="actives">
+	<div class="content-active-blocks">
+		<div class="content-active-blocks__stats">
+			<StatsCard
+				title="Блоки активов"
+				icon="info"
+				stats={[
+					{
+						name: "Текущие активы",
+						value: "2500",
+						unit: "USDT",
+					},
+					{
+						name: "Зачисленные активы",
+						value: "52",
+						unit: "USDT",
+					},
+				]}
+			/>
+			<StatsCard
+				title="Средний доход в день"
+				icon="money"
+				stats={[
+					{
+						name: "Зеленый",
+						value: "0.92",
+						unit: "%",
+					},
+					{
+						name: "Синий",
+						value: "1.12",
+						unit: "%",
+					},
+					{
+						name: "Розовый",
+						value: "1.25",
+						unit: "%",
+					},
+				]}
+			/>
+			<StatsCard
+				title="Доход от активов"
+				icon="channel-share"
+				stats={[
+					{
+						name: "Зеленый",
+						value: "5",
+						unit: "USDT",
+					},
+					{
+						name: "Синий",
+						value: "25",
+						unit: "USDT",
+					},
+					{
+						name: "Розовый",
+						value: "22",
+						unit: "USDT",
+					},
+				]}
+			/>
+		</div>
+	</div>
+</Layout>

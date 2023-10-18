@@ -1,0 +1,58 @@
+@import "../../styles/mixins.scss";
+
+.stats-card {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	padding: 1.5rem;
+	@include paper;
+}
+
+.stats-card__title {
+	display: flex;
+	gap: 0.5rem;
+
+	margin-bottom: 1rem;
+
+	@include typography-body2;
+	font-weight: 500;
+
+	& > svg {
+		flex-shrink: 0;
+		width: 1.5rem;
+		height: 1.5rem;
+		color: $color-prime-main;
+	}
+}
+
+.stats-card__body {
+	flex-grow: 1;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	align-content: flex-end;
+	row-gap: 0.5rem;
+	column-gap: 0.5rem;
+}
+
+.stats-card__stat {
+	flex-grow: 1;
+	flex-basis: 72px;
+}
+
+.stats-card__stat-value-number {
+	@include typography-h5;
+}
+
+.stats-card__stat-unit {
+	@include typography-subtitle2;
+
+	&::before {
+		content: " ";
+	}
+}
+
+.stats-card__stat-name {
+	@include typography-caption;
+	color: $color-text-secondary;
+}
