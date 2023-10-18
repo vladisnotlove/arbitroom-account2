@@ -1,5 +1,37 @@
 @import "../../../styles/mixins.scss";
 
+// layout
+
+.clusters {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas:
+		"m d d"
+		"m b b"
+		". b b";
+	gap: 1rem;
+}
+
+.clusters__menu {
+	grid-area: m;
+}
+
+.clusters__daily-rewards {
+	grid-area: d;
+}
+
+.clusters__board {
+	grid-area: b;
+}
+
+// menu
+
+.clusters__menu {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
 .clusters__dashboard-btn {
 	display: flex;
 	align-items: center;
@@ -9,4 +41,48 @@
 	@include typography-h5;
 	@include paper;
 	@include with-glow-ellipse;
+}
+
+// ADAPTIVE
+
+@media (max-width: $breakpoint-laptop-small) {
+	.clusters {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.clusters__menu {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas:
+			"s st"
+			"s t"
+			"d t";
+		gap: 1rem;
+	}
+
+	.clusters__cluster-summary {
+		grid-area: s;
+	}
+
+	.clusters__dashboard-btn {
+		grid-area: d;
+	}
+
+	.clusters__cluster-stats {
+		grid-area: st;
+	}
+
+	.clusters__cluster-timers {
+		grid-area: t;
+	}
+}
+
+@media (max-width: $breakpoint-tablet-small) {
+	.clusters__menu {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
 }

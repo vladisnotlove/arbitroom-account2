@@ -99,3 +99,11 @@
 		background: linear-gradient(270deg, $color-purple 0%, rgba(1, 224, 255, 0) 98.96%);
 	}
 }
+
+// ADAPTIVE
+
+@media (max-width: $breakpoint-mobile-big) {
+	.cluster-timers__tab {
+		@include typography-body2;
+	}
+}
