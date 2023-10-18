@@ -1,0 +1,102 @@
+@import "../../../../styles/mixins.scss";
+
+.active-block-poster {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	@include paper;
+	overflow: hidden;
+	padding-top: 124px;
+
+	&.green {
+		background-image: url("/_layout-assets/img/_parts/active-blocks/poster-backgrounds/green-bottom.svg"),
+			url("/_layout-assets/img/_parts/active-blocks/poster-backgrounds/green-top.png");
+	}
+
+	&.blue {
+		background-image: url("/_layout-assets/img/_parts/active-blocks/poster-backgrounds/blue-bottom.svg"),
+			url("/_layout-assets/img/_parts/active-blocks/poster-backgrounds/blue-top.png");
+	}
+
+	&.purple {
+		background-image: url("/_layout-assets/img/_parts/active-blocks/poster-backgrounds/purple-bottom.svg"),
+			url("/_layout-assets/img/_parts/active-blocks/poster-backgrounds/purple-top.png");
+	}
+
+	background-size:
+		1000px auto,
+		348px auto;
+	background-position:
+		left bottom,
+		right top;
+	background-repeat: no-repeat;
+}
+
+.active-block-poster__title {
+	padding: 0 1rem;
+	@include typography-h4;
+}
+
+.active-block-poster__body {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+	padding: 1rem;
+}
+
+// advantage
+
+.active-block-poster__advantage-name {
+	margin-bottom: 0.25rem;
+	@include typography-caption;
+	color: $color-text-secondary;
+}
+
+.active-block-poster__advantage-value {
+	@include typography-body2;
+}
+
+// footer
+
+.active-block-poster__footer {
+	padding: 1rem;
+
+	// dashed border top + background
+	$dash-length: 0.5rem;
+	background-color: $color-paper;
+	background-image: repeating-linear-gradient(
+		to right,
+		rgba(255, 255, 255, 0.24),
+		rgba(255, 255, 255, 0.24) $dash-length,
+		transparent $dash-length,
+		transparent $dash-length * 2,
+		rgba(255, 255, 255, 0.24) $dash-length * 2
+	);
+	background-size: 100% 1px;
+	background-position: top;
+	background-repeat: no-repeat;
+
+	@include typography-caption;
+	color: $color-text-secondary;
+}
+
+// ADAPTIVE
+
+@media (max-width: $breakpoint-mobile-big) {
+	.active-block-poster {
+		&.green {
+			background-image: url("/_layout-assets/img/_parts/active-blocks/poster-backgrounds/green-bottom.svg"),
+				url("/_layout-assets/img/_parts/active-blocks/poster-backgrounds/green-top-mobile.png");
+		}
+
+		&.blue {
+			background-image: url("/_layout-assets/img/_parts/active-blocks/poster-backgrounds/blue-bottom.svg"),
+				url("/_layout-assets/img/_parts/active-blocks/poster-backgrounds/blue-top-mobile.png");
+		}
+
+		&.purple {
+			background-image: url("/_layout-assets/img/_parts/active-blocks/poster-backgrounds/purple-bottom.svg"),
+				url("/_layout-assets/img/_parts/active-blocks/poster-backgrounds/purple-top-mobile.png");
+		}
+	}
+}

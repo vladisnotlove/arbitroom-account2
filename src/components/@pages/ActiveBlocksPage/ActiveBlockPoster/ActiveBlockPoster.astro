@@ -1,0 +1,110 @@
+---
+import classNames from "classnames";
+import "./ActiveBlockPoster.scss";
+
+export interface Props {
+	className?: string;
+	variant: "green" | "blue" | "purple";
+}
+
+const { className, variant } = Astro.props;
+---
+
+{
+	variant === "green" && (
+		<div class={classNames(className, "active-block-poster green")}>
+			<div class="active-block-poster__title">
+				Зеленый блок
+				<br />
+				актива
+			</div>
+			<div class="active-block-poster__body">
+				<div class="active-block-poster__advantage">
+					<div class="active-block-poster__advantage-name">Срок работы болока актива</div>
+					<div class="active-block-poster__advantage-value">250 дней</div>
+				</div>
+				<div class="active-block-poster__advantage">
+					<div class="active-block-poster__advantage-name">Ежедневные начисления</div>
+					<div class="active-block-poster__advantage-value">от 0.8% до 1.1%</div>
+				</div>
+				<div class="active-block-poster__advantage">
+					<div class="active-block-poster__advantage-name">Вывод без комиссий</div>
+					<div class="active-block-poster__advantage-value">Раз в неделю</div>
+				</div>
+				<div class="active-block-poster__advantage">
+					<div class="active-block-poster__advantage-name">Ежедневный вывод</div>
+					<div class="active-block-poster__advantage-value">комиссия 2%</div>
+				</div>
+			</div>
+			<div class="active-block-poster__footer">
+				По истечению работы блока актива, его можно пополнить с 10% скидкой
+			</div>
+		</div>
+	)
+}
+
+{
+	variant === "blue" && (
+		<div class={classNames(className, "active-block-poster blue")}>
+			<div class="active-block-poster__title">
+				Синий блок
+				<br />
+				актива
+			</div>
+			<div class="active-block-poster__body">
+				<div class="active-block-poster__advantage">
+					<div class="active-block-poster__advantage-name">Срок работы болока актива</div>
+					<div class="active-block-poster__advantage-value">250 дней</div>
+				</div>
+				<div class="active-block-poster__advantage">
+					<div class="active-block-poster__advantage-name">Ежедневные начисления</div>
+					<div class="active-block-poster__advantage-value">от 0.9% до 1.2%</div>
+				</div>
+				<div class="active-block-poster__advantage">
+					<div class="active-block-poster__advantage-name">Вывод без комиссий</div>
+					<div class="active-block-poster__advantage-value">Раз в две недели</div>
+				</div>
+				<div class="active-block-poster__advantage">
+					<div class="active-block-poster__advantage-name">Ежедневный вывод</div>
+					<div class="active-block-poster__advantage-value">Не предусмотрен</div>
+				</div>
+			</div>
+			<div class="active-block-poster__footer">
+				По истечению работы блока актива, его можно пополнить с 15% скидкой
+			</div>
+		</div>
+	)
+}
+
+{
+	variant === "purple" && (
+		<div class={classNames(className, "active-block-poster purple")}>
+			<div class="active-block-poster__title">
+				Фиолетовый блок
+				<br />
+				актива
+			</div>
+			<div class="active-block-poster__body">
+				<div class="active-block-poster__advantage">
+					<div class="active-block-poster__advantage-name">Срок работы болока актива</div>
+					<div class="active-block-poster__advantage-value">250 дней</div>
+				</div>
+				<div class="active-block-poster__advantage">
+					<div class="active-block-poster__advantage-name">Ежедневные начисления</div>
+					<div class="active-block-poster__advantage-value">от 1.0% до 1.3%</div>
+				</div>
+				<div class="active-block-poster__advantage">
+					<div class="active-block-poster__advantage-name">Вывод без комиссий</div>
+					<div class="active-block-poster__advantage-value">Раз в месяц</div>
+				</div>
+				<div class="active-block-poster__advantage">
+					<div class="active-block-poster__advantage-name">Ежедневный вывод</div>
+					<div class="active-block-poster__advantage-value">Не предусмотрен</div>
+				</div>
+			</div>
+			<div class="active-block-poster__footer">
+				По истечению работы блока актива, его можно пополнить с 20% скидкой
+			</div>
+		</div>
+	)
+}
