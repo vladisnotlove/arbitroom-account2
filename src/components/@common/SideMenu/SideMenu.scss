@@ -10,11 +10,11 @@ $side-menu-padding-left: 1.5rem;
 .side-menu {
 	position: relative;
 	min-height: 100vh;
-	height: 100%;
 	min-width: 280px;
 	width: 280px;
 	z-index: 20;
 	background: rgba(0, 0, 0, 0.32);
+	border-right: 1px solid $color-divider;
 }
 
 .side-menu__body {
@@ -61,6 +61,7 @@ $side-menu-padding-left: 1.5rem;
 	width: 100%;
 	border-top: 1px solid $color-divider;
 	border-bottom: 1px solid $color-divider;
+	margin-top: -1px;
 
 	@include with-glow-ellipse;
 }

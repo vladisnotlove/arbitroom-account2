@@ -1,11 +1,13 @@
 @import "../../styles/variables.scss";
 
 .container {
+	display: flex;
+	align-items: stretch;
+	position: relative;
+	min-height: 100vh;
 	max-width: 1920px;
 	margin: 0 auto;
-	position: relative;
 	overflow: hidden;
-	display: flex;
 }
 
 .main {
