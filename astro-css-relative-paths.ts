@@ -33,13 +33,12 @@ function astroCssRelativePaths(): AstroIntegration {
 						windowsPathsNoEscape: true,
 					});
 
-					console.log(
-						"CSS files, in which absolute paths was replaced with relative:"
-					);
+					console.log("CSS files, in which absolute paths was replaced with relative:");
 
 					cssPaths.forEach((cssPath) => {
+						console.log("test");
 						const cssContent = fs.readFileSync(cssPath, "utf8");
-						const cssUrls = cssContent.match(CssUrl.pattern);
+						const cssUrls = cssContent.match(CssUrl.pattern) || [];
 
 						const operations: Array<{
 							cssUrl: string;
@@ -51,10 +50,7 @@ function astroCssRelativePaths(): AstroIntegration {
 
 							if (cssUrlPath.startsWith("/")) {
 								const assetPath = pathLib.join(dir, cssUrlPath);
-								const pathFromCssToAsset = pathLib.relative(
-									pathLib.dirname(cssPath),
-									assetPath
-								);
+								const pathFromCssToAsset = pathLib.relative(pathLib.dirname(cssPath), assetPath);
 								const newCssUrl = CssUrl.stringify(pathFromCssToAsset);
 
 								operations.push({
@@ -71,11 +67,7 @@ function astroCssRelativePaths(): AstroIntegration {
 							});
 
 							fs.writeFileSync(cssPath, newContent);
-							console.log(
-								chalk.green(cssPath) +
-									" " +
-									chalk.gray(`(${operations.length} urls)`)
-							);
+							console.log(chalk.green(cssPath) + " " + chalk.gray(`(${operations.length} urls)`));
 						}
 					});
 
