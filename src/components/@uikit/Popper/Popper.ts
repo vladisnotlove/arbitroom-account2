@@ -10,10 +10,10 @@ window.addEventListener("load", () => {
 
 		const onHover = !!popperElement.getAttribute("data-popper-on-hover");
 		const anchorElementQuery = popperElement.getAttribute("data-popper-anchor-element");
-		const anchorElement = document.querySelector(anchorElementQuery);
+		const anchorElements = document.querySelectorAll(anchorElementQuery);
 		const closeElements = popperElement.querySelectorAll("[data-popper-close-element]");
 
-		if (!anchorElement) console.warn(popperElement, "has no 'data-popper-anchor-element'");
+		if (!anchorElements) console.warn(popperElement, "has no 'data-popper-anchor-element'");
 
 		let overlay: HTMLElement | undefined;
 		let popper: Instance | undefined;
@@ -35,7 +35,7 @@ window.addEventListener("load", () => {
 						},
 					],
 				});
-			if (!options.disableOverlay) {
+			if (!disableOverlay) {
 				overlay = document.createElement("div");
 				overlay.classList.add("popper-overlay");
 				overlay.addEventListener("click", closePopper);
@@ -56,35 +56,37 @@ window.addEventListener("load", () => {
 			}, ANIMATION_SLOW_MS);
 		};
 
-		if (onHover) {
-			anchorElement.addEventListener("mouseenter", (e) => {
-				const isOpen = popperElement.classList.contains("open");
-				if (!isOpen) {
-					openPopper(e.currentTarget as HTMLElement, { disableOverlay: true });
-				}
-			});
-			anchorElement.addEventListener("mouseenter", (e) => {});
-			anchorElement.addEventListener("mouseleave", () => {
-				const isOpen = popperElement.classList.contains("open");
-				if (isOpen) {
+		anchorElements.forEach((anchorElement) => {
+			if (onHover) {
+				anchorElement.addEventListener("mouseenter", (e) => {
+					const isOpen = popperElement.classList.contains("open");
+					if (!isOpen) {
+						openPopper(e.currentTarget as HTMLElement, { disableOverlay: true });
+					}
+				});
+				anchorElement.addEventListener("mouseenter", (e) => {});
+				anchorElement.addEventListener("mouseleave", () => {
+					const isOpen = popperElement.classList.contains("open");
+					if (isOpen) {
+						closePopper();
+					}
+				});
+			} else {
+				closeElements.forEach((closeElement) => {
+					closeElement.addEventListener("click", closePopper);
+				});
+				anchorElement.addEventListener("click", (e) => {
+					const isOpen = popperElement.classList.contains("open");
+					if (!isOpen) {
+						openPopper(e.currentTarget as HTMLElement);
+					} else {
+						closePopper();
+					}
+				});
+				window.addEventListener("blur", () => {
 					closePopper();
-				}
-			});
-		} else {
-			closeElements.forEach((closeElement) => {
-				closeElement.addEventListener("click", closePopper);
-			});
-			anchorElement.addEventListener("click", (e) => {
-				const isOpen = popperElement.classList.contains("open");
-				if (!isOpen) {
-					openPopper(e.currentTarget as HTMLElement);
-				} else {
-					closePopper();
-				}
-			});
-			window.addEventListener("blur", () => {
-				closePopper();
-			});
-		}
+				});
+			}
+		});
 	});
 });

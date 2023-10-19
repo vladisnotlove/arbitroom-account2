@@ -1,0 +1,31 @@
+@import "../../../styles/mixins.scss";
+
+.copy-text {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+
+	background: $color-text-field;
+	color: $color-prime-main;
+	fill: $color-prime-main;
+
+	&.gray {
+		color: $color-text-more-secondary;
+	}
+}
+
+.copy-text__value {
+	min-width: 0;
+	flex-grow: 1;
+	@include cut-text;
+}
+
+.copy-text__success-tooltip {
+	&:not(.show) {
+		display: none;
+		opacity: 0;
+	}
+}

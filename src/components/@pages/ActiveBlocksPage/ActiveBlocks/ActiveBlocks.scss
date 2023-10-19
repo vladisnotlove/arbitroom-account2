@@ -1,3 +1,4 @@
+@use "sass:math";
 @import "../../../../styles/mixins.scss";
 
 .active-blocks {
@@ -144,7 +145,7 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 		min-width: 120px;
-		width: 160 / 112 * 100%;
+		width: math.div(160, 112) * 100%;
 		aspect-ratio: 1;
 		z-index: -1;
 	}

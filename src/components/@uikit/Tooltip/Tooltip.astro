@@ -1,0 +1,26 @@
+---
+import classNames from "classnames";
+import "./Tooltip.scss";
+
+export interface Props {
+	className?: string;
+	classes?: {
+		content?: string;
+	};
+	placement?: "top" | "left" | "bottom" | "right";
+	surface?: "dark";
+	disableArrow?: boolean;
+}
+
+const { className, classes = {}, surface, placement, disableArrow } = Astro.props;
+---
+
+<div
+	class={classNames(className, "tooltip", placement, surface, {
+		["disabled-arrow"]: disableArrow,
+	})}
+>
+	<div class={classNames("tooltip__content", classes.content)}>
+		<slot />
+	</div>
+</div>

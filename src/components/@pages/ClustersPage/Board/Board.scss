@@ -1,3 +1,4 @@
+@use "sass:math";
 @import "../../../../styles/mixins.scss";
 
 .board {
@@ -202,7 +203,7 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 		min-width: 120px;
-		width: 160 / 112 * 100%;
+		width: math.div(160, 112) * 100%;
 		aspect-ratio: 1;
 		z-index: -1;
 	}
@@ -282,7 +283,7 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		width: 380 / 329 * 100%;
+		width: math.div(380, 329) * 100%;
 		aspect-ratio: 380 / 68;
 		z-index: -1;
 	}

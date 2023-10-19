@@ -1,0 +1,28 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import BlockContent from "components/@uikit/Block/BlockContent.astro";
+import "./WalletAddress.scss";
+import CopyText from "components/@uikit/CopyText/CopyText.astro";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<Block className={classNames(className, "wallet-address")}>
+	<BlockTitle>USDT (TRC20)</BlockTitle>
+	<BlockContent className="wallet-address__content">
+		<img class="wallet-address__qrcode" src="/_layout-assets/img/qrcode.png" alt="" />
+		<div class="wallet-address__instruction">
+			To top up your balance, transfer the desired amount to this address:
+		</div>
+		<CopyText className="wallet-address__copy-text" value="0x29D7d1dd5B6f9C864d9d23d42f4e32d45" />
+		<div class="wallet-address__remark">
+			Within 5-15 min after network confirmation (TRC20) the funds will automatically appear in your account!
+		</div>
+	</BlockContent>
+</Block>

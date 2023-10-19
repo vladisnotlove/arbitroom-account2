@@ -1,0 +1,27 @@
+---
+import classNames from "classnames";
+import Icon from "../Icon/Icon.astro";
+import Tooltip from "../Tooltip/Tooltip.astro";
+import "./CopyText.scss";
+
+export interface Props {
+	className?: string;
+	value: string;
+}
+
+const { className, value } = Astro.props;
+---
+
+<div class={classNames(className, "copy-text")}>
+	<div class="copy-text__value">
+		{value}
+	</div>
+	<div class="copy-text__icon-wrapper">
+		<Icon iconName="copy" />
+	</div>
+	<Tooltip className="copy-text__success-tooltip" placement="top">Скопировано ✓</Tooltip>
+</div>
+
+<script>
+	import "./CopyText";
+</script>

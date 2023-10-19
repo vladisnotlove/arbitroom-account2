@@ -1,0 +1,28 @@
+@import "../../../../styles/variables.scss";
+
+.wallet-address__content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.wallet-address__qrcode {
+	width: 158px;
+	margin: 0.5rem;
+}
+
+.wallet-address__instruction {
+	@include typography-body2;
+	text-align: center;
+}
+
+.wallet-address__copy-text {
+	max-width: 100%;
+}
+
+.wallet-address__remark {
+	@include typography-caption;
+	color: $color-text-secondary;
+	text-align: center;
+}
