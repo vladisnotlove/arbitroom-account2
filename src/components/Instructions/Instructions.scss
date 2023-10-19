@@ -1,0 +1,15 @@
+@import "../../styles/mixins.scss";
+
+.instructions__tip {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	@include typography-body2-text;
+	margin-top: 1rem;
+}
+
+.instructions__tip-text {
+	padding: 0.25rem 0;
+	flex-basis: 200px;
+	flex-grow: 1;
+}

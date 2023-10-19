@@ -1,0 +1,34 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockContent from "components/@uikit/Block/BlockContent.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import Button from "components/@uikit/Button/Button.astro";
+import Icon from "components/@uikit/Icon/Icon.astro";
+import Steps from "components/@uikit/Steps/Steps.astro";
+import "./Instructions.scss";
+
+export interface Props {
+	className?: string;
+	title: string;
+	steps: string[];
+	tip: string;
+}
+
+const { className, title, steps, tip } = Astro.props;
+---
+
+<Block className={classNames(className, "instructions")}>
+	<BlockTitle>
+		{title}
+	</BlockTitle>
+	<BlockContent>
+		<Steps items={steps} />
+		<div class="instructions__tip">
+			<div class="instructions__tip-text">
+				{tip}
+			</div>
+			<Button variant="text">Видеоинструкция <Icon iconName="play" /></Button>
+		</div>
+	</BlockContent>
+</Block>

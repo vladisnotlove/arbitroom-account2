@@ -1,0 +1,19 @@
+---
+import WithAttributes from "../WithAttributes/WithAttributes.astro";
+
+export interface Props {
+	classes: string[];
+	target: string;
+	source: string;
+}
+
+const { classes, target, source } = Astro.props;
+---
+
+<WithAttributes attributes={{ "data-switch-classes": classes.join(" "), "data-target": target, "data-source": source }}>
+	<slot />
+</WithAttributes>
+
+<script>
+	import "./WithSwitchClasses";
+</script>
