@@ -1,4 +1,4 @@
-@import "../../styles/mixins.scss";
+@import "../../../styles/mixins.scss";
 
 .operations__title {
 	display: flex;
@@ -6,7 +6,7 @@
 	justify-content: space-between;
 }
 
-.operations__all-operations-btn {
+.operations__btn {
 	margin: -0.875rem -1.5rem;
 }
 

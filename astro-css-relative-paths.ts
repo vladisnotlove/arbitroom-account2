@@ -36,7 +36,6 @@ function astroCssRelativePaths(): AstroIntegration {
 					console.log("CSS files, in which absolute paths was replaced with relative:");
 
 					cssPaths.forEach((cssPath) => {
-						console.log("test");
 						const cssContent = fs.readFileSync(cssPath, "utf8");
 						const cssUrls = cssContent.match(CssUrl.pattern) || [];
 
