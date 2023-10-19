@@ -17,6 +17,11 @@
 	}
 }
 
+.copy-text__icon-wrapper svg {
+	fill: transparent;
+	stroke: $color-prime-main;
+}
+
 .copy-text__value {
 	min-width: 0;
 	flex-grow: 1;
