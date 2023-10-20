@@ -1,0 +1,18 @@
+---
+import classNames from "classnames";
+import "./TextBlock.scss";
+
+export interface Props {
+	className?: string;
+	label: string;
+	align?: "center";
+	size?: "small";
+}
+
+const { className, label, align, size } = Astro.props;
+---
+
+<div class={classNames(className, "text-block", { ["align-center"]: align }, size)}>
+	<div class="text-block__label">{label}</div>
+	<div class="text-block__value"><slot /></div>
+</div>

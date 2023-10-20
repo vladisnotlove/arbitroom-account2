@@ -1,0 +1,36 @@
+@import "../../../styles/mixins";
+
+.text-block {
+	& > .text-block__label {
+		text-align: inherit;
+	}
+
+	& > .text-block__value {
+		text-align: inherit;
+	}
+
+	&.align-center {
+		text-align: center;
+	}
+
+	&.small {
+		.text-block__value {
+			@include typography-body2;
+		}
+	}
+}
+
+.text-block__label {
+	@include typography-body2-text;
+	color: $color-text-more-secondary;
+}
+
+.text-block__value {
+	@include typography-body1;
+}
+
+@media (max-width: ($breakpoint-mobile-big)) {
+	.text-block__value {
+		@include typography-body2;
+	}
+}

@@ -8,7 +8,7 @@
 	min-width: 0;
 	width: 100%;
 	height: $header-height;
-	padding: 0 max(calc((100% - #{$max-content-width} + 5rem) * 0.5), 2.5rem);
+	padding: 0 max(calc((100% - #{$max-content-width} + #{$content-padding * 2}) * 0.5), $content-padding);
 
 	font-size: 0;
 	box-sizing: border-box;

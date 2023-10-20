@@ -1,6 +1,7 @@
 ---
 import Layout from "layouts/Layout/Layout.astro";
 import StatsCard from "components/@common/StatsCard/StatsCard.astro";
+import StatusBlock from "./StatusBlock/StatusBlock.astro";
 import "./StatusesPage.scss";
 ---
 
@@ -54,6 +55,27 @@ import "./StatusesPage.scss";
 					},
 				]}
 			/>
+		</div>
+		<StatusBlock className="content-statuses__current-status" status={"A1"} main complete />
+		<div class="content-statuses__all-statuses">
+			<StatusBlock status={"A1"} complete />
+			<StatusBlock status={"A2"} />
+			<StatusBlock status={"A3"} />
+			<StatusBlock status={"B1"} />
+			<StatusBlock status={"B1-F"} />
+			<StatusBlock status={"B2"} />
+			<StatusBlock status={"B2-F"} />
+			<StatusBlock status={"B3"} />
+			<StatusBlock status={"B3-F"} />
+			<StatusBlock status={"C1"} />
+			<StatusBlock status={"C1-F"} />
+			<StatusBlock status={"C2"} />
+			<StatusBlock status={"C2-F"} />
+			<StatusBlock status={"C3"} />
+			<StatusBlock status={"C3-F"} />
+			<StatusBlock status={"D1"} />
+			<StatusBlock status={"D2"} />
+			<StatusBlock status={"D3"} />
 		</div>
 	</div>
 </Layout>

@@ -1,0 +1,119 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockContent from "components/@uikit/Block/BlockContent.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import Chip from "components/@uikit/Chip/Chip.astro";
+import TextBlock from "components/@uikit/TextBlock/TextBlock.astro";
+import "./StatusBlock.scss";
+
+export interface Props {
+	className?: string;
+	status:
+		| "A1"
+		| "A2"
+		| "A3"
+		| "B1"
+		| "B1-F"
+		| "B2"
+		| "B2-F"
+		| "B3"
+		| "B3-F"
+		| "C1"
+		| "C1-F"
+		| "C2"
+		| "C2-F"
+		| "C3"
+		| "C3-F"
+		| "D1"
+		| "D2"
+		| "D3";
+	main?: boolean;
+	complete?: boolean;
+}
+
+const { className, status, main, complete } = Astro.props;
+---
+
+<Block className={classNames(className, "status-block", { main })}>
+	{
+		main ? (
+			<BlockTitle className="status-block__title">
+				Текущий статус
+				{complete ? (
+					<Chip variant={"filled"} color={"success"}>
+						Выполнен
+					</Chip>
+				) : (
+					<Chip variant={"filled"} color={"error"}>
+						Не выполнен
+					</Chip>
+				)}
+			</BlockTitle>
+		) : (
+			<BlockTitle className="status-block__title">
+				{status}
+				{complete ? (
+					<Chip variant={"filled"} color={"success"}>
+						Выполнен
+					</Chip>
+				) : (
+					<Chip variant={"filled"} color={"error"}>
+						Не выполнен
+					</Chip>
+				)}
+			</BlockTitle>
+		)
+	}
+
+	{
+		main && (
+			<div class="status-block__poster">
+				<img
+					class="status-block__poster-background"
+					src={`/_layout-assets/img/statuses/${status}-background.png`}
+					alt=""
+				/>
+				<div class="status-block__poster-main">
+					<img src={`/_layout-assets/img/statuses/${status}.png`} alt="" />
+					<span>{status}</span>
+				</div>
+			</div>
+		)
+	}
+
+	<BlockContent className="status-block__content">
+		<TextBlock label="Личный актив:">
+			<span>
+				5 000 USDT
+				<Chip color={"success"} size={"small"}>Готово</Chip>
+			</span>
+		</TextBlock>
+		<TextBlock label="Премия за статус:">
+			<span>
+				500 USDT
+				<Chip color={"success"} size={"small"}>Готово</Chip>
+			</span>
+		</TextBlock>
+		<TextBlock label="Личные партнеры:">
+			<span>
+				A2
+				<Chip color={"success"} size={"small"}>Готово</Chip>
+			</span>
+			<span>
+				A3
+				<Chip color={"success"} size={"small"}>Готово</Chip>
+			</span>
+		</TextBlock>
+		<div class="status-block__progress">
+			<div class="status-block__progress-label">Квалификационный оборот</div>
+			<div class="status-block__progress-line">
+				<div class="status-block__progress-line-value" style="width: 40%"></div>
+			</div>
+			<div class="status-block__progress-min-max">
+				<span>15 000 USDT</span>
+				<span>80 000 USDT</span>
+			</div>
+		</div>
+	</BlockContent>
+</Block>
