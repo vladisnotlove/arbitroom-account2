@@ -3,6 +3,7 @@ import Layout from "layouts/Layout/Layout.astro";
 import StatsCard from "components/@common/StatsCard/StatsCard.astro";
 import StatusBlock from "./StatusBlock/StatusBlock.astro";
 import "./StatusesPage.scss";
+import Programs from "./Programs/Programs.astro";
 ---
 
 <Layout title="Статусы" selectedMenuItem="statuses">
@@ -77,5 +78,6 @@ import "./StatusesPage.scss";
 			<StatusBlock status={"D2"} />
 			<StatusBlock status={"D3"} />
 		</div>
+		<Programs className="content-statuses__programs" />
 	</div>
 </Layout>

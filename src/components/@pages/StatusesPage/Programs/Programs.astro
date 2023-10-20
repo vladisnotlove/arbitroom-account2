@@ -1,0 +1,1061 @@
+---
+import classNames from "classnames";
+import Icon from "components/@uikit/Icon/Icon.astro";
+import WithTooltip from "components/@uikit/WithTooltip/WithTooltip.astro";
+import Tooltip from "components/@uikit/Tooltip/Tooltip.astro";
+import "./Programs.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+
+// todo: translate html to astro
+---
+
+<div class={classNames(className, "programs")}>
+	<div class="programs__title">Партнерские условия</div>
+	<div class="programs__levels">
+		<div class="programs__level">
+			<div class="programs__level-cell">
+				<span>Все активы партнёров</span>
+				<span>Уровень 1</span>
+			</div>
+			<div class="programs__level-cell">
+				<span>Процент зачета оборота</span>
+				<span>100%</span>
+			</div>
+		</div>
+		<div class="programs__level">
+			<div class="programs__level-cell">
+				<span>Все активы партнёров</span>
+				<span>Уровень 2</span>
+			</div>
+			<div class="programs__level-cell">
+				<span>Процент зачета оборота</span>
+				<span>50%</span>
+			</div>
+		</div>
+		<div class="programs__level">
+			<div class="programs__level-cell">
+				<span>Все активы партнёров</span>
+				<span>Уровень 3</span>
+			</div>
+			<div class="programs__level-cell">
+				<span>Процент зачета оборота</span>
+				<span>30%</span>
+			</div>
+		</div>
+	</div>
+	<table class="programs__table">
+		<tbody class="programs__table-body">
+			<tr class="program selected">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">Base</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">100$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">0$</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">3,00%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">0</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">0 $</div>
+				</td>
+				<td class="program__cell program__cell-conditions"> </td>
+			</tr>
+			<tr class="program">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">A1</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">от 500$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">1 000 $</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<WithTooltip text="Первая линия">
+							<div class="program__percent">3,50%</div>
+						</WithTooltip>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">1,00%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">3,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">1,00%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">10 $</div>
+				</td>
+				<td class="program__cell program__cell-conditions">
+					<div data-tooltip data-placement="left">
+						<Icon iconName={"info"} color="prime" />
+						<Tooltip>
+							Доп условия по линиям<br />
+							 Первая линяя: 1
+						</Tooltip>
+					</div>
+				</td>
+			</tr>
+			<tr class="program">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">A2</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">от 1 000$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">5 000 $</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">4,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">1,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">4,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">1,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">50 $</div>
+				</td>
+				<td class="program__cell program__cell-conditions">
+					<div data-tooltip data-placement="left">
+						<Icon iconName={"info"} color="prime" />
+						<div class="tooltip">
+							<div class="tooltip__content">
+								Доп условия по линиям<br />
+								 Первая линяя: 3 партнера от 500$
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr class="program">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">A3</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">от 2 500$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">15 000 $</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">4,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">2,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">0,50%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">4,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">2,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">0,50%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">150 $</div>
+				</td>
+				<td class="program__cell program__cell-conditions">
+					<div data-tooltip data-placement="left">
+						<Icon iconName={"info"} color="prime" />
+						<div class="tooltip">
+							<div class="tooltip__content">
+								Доп условия по линиям<br />
+								 Первая линяя: 3 партнера от 1 000$
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+
+		<tbody>
+			<tr>
+				<td colspan="8">
+					<span class="programs__description">
+						Считается весь оборот отдельно по каждой ветке от партнера, но не более 35% от необходимого оборота
+						для закрытия квалификации
+					</span>
+				</td>
+			</tr>
+		</tbody>
+
+		<tbody class="programs__table-body">
+			<tr class="program">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">B1</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">от 5 000$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">80 000 $</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">4,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">2,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">0,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">4,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">2,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">0,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">500$</div>
+				</td>
+				<td class="program__cell program__cell-conditions">
+					<div data-tooltip data-placement="left">
+						<Icon iconName={"info"} color="prime" />
+						<div class="tooltip">
+							<div class="tooltip__content">
+								Доп условия по линиям<br />
+								 Первая линяя: 1 партнёр А3 + 1 партнер А2
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr class="program">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">B1-F</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">от 5 000$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">150 000 $</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">4,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">2,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">0,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">4,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">2,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">0,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">750$</div>
+				</td>
+				<td class="program__cell program__cell-conditions">
+					<div data-tooltip data-placement="left">
+						<Icon iconName={"info"} color="prime" />
+						<div class="tooltip">
+							<div class="tooltip__content">
+								Доп условия по линиям<br />
+								 Первая линяя: 1 партнёр А3 + 2 партнер А2
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr class="program">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">B2</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">от 10 000$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">200 000 $</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">5,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">2,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">1,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">0,50%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">5,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">2,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">1,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">0,50%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">1000$</div>
+				</td>
+				<td class="program__cell program__cell-conditions">
+					<div data-tooltip data-placement="left">
+						<Icon iconName={"info"} color="prime" />
+						<div class="tooltip">
+							<div class="tooltip__content">
+								Доп условия по линиям<br />
+								 Первая линяя: 2 партнёр А3 + 1 партнер А2
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr class="program">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">B2-F</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">от 10 000$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">380 000 $</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">5,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">2,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">1,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">0,50%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">5,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">2,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">1,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">0,50%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">1700$</div>
+				</td>
+				<td class="program__cell program__cell-conditions">
+					<div data-tooltip data-placement="left">
+						<Icon iconName={"info"} color="prime" />
+						<div class="tooltip">
+							<div class="tooltip__content">
+								Доп условия по линиям<br />
+								 Первая линяя: 3 партнёр А3
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr class="program">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">B3</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">от 20 000$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">550 000 $</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">5,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">2,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">1,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">0,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">5,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">2,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">1,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">0,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">3000$</div>
+				</td>
+				<td class="program__cell program__cell-conditions">
+					<div data-tooltip data-placement="left">
+						<Icon iconName={"info"} color="prime" />
+						<div class="tooltip">
+							<div class="tooltip__content">
+								Доп условия по линиям<br />
+								 Первая линяя: 1 партнёр B1 + 2 партнёр А3
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr class="program">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">B3-F</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">от 20 000$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">950 000 $</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">5,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">2,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">1,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">0,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">5,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">2,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">1,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">0,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">5000$</div>
+				</td>
+				<td class="program__cell program__cell-conditions">
+					<div data-tooltip data-placement="left">
+						<Icon iconName={"info"} color="prime" />
+						<div class="tooltip">
+							<div class="tooltip__content">
+								Доп условия по линиям<br />
+								 Первая линяя: 1 партнёр B1-F + 1 партнёр B1 + 1 партнёр А3
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr class="program">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">B3-F</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">от 20 000$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">950 000 $</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">5,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">2,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">1,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">0,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">5,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">2,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">1,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">0,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">5000 $</div>
+				</td>
+				<td class="program__cell program__cell-conditions">
+					<div data-tooltip data-placement="left">
+						<Icon iconName={"info"} color="prime" />
+						<div class="tooltip">
+							<div class="tooltip__content">
+								Доп условия по линиям<br />
+								 Первая линяя: 1 партнёр B1-F + 1 партнёр B1 + 1 партнёр А3
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr class="program">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">C1</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">от 30 000$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">1 500 000 $</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">6,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">3,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">1,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">1,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">0,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Шестая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">6,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">3,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">1,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">1,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">0,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Шестая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">8000 $</div>
+				</td>
+				<td class="program__cell program__cell-conditions">
+					<div data-tooltip data-placement="left">
+						<Icon iconName={"info"} color="prime" />
+						<div class="tooltip">
+							<div class="tooltip__content">
+								Доп условия по линиям<br />
+								 Первая линяя: 1 партнёр B2 + 1 партнёр B1 + 1 партнёр А3
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr class="program">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">C1-F</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">от 30 000$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">1 800 000 $</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">6,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">3,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">1,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">1,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">0,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Шестая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">6,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">3,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">1,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">1,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">0,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Шестая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">10 000 $</div>
+				</td>
+				<td class="program__cell program__cell-conditions">
+					<div data-tooltip data-placement="left">
+						<Icon iconName={"info"} color="prime" />
+						<div class="tooltip">
+							<div class="tooltip__content">
+								Доп условия по линиям<br />
+								 Первая линяя: 1 партнёр B2 + 1 партнёр B1F + 1 партнёр B1
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr class="program">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">C2</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">от 50 000$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">2 600 000 $</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">6,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">3,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">1,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">1,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">0,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Шестая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Седьмая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">6,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">3,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">1,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">1,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">0,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Шестая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Седьмая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">13 000 $</div>
+				</td>
+				<td class="program__cell program__cell-conditions">
+					<div data-tooltip data-placement="left">
+						<Icon iconName={"info"} color="prime" />
+						<div class="tooltip">
+							<div class="tooltip__content">
+								Доп условия по линиям<br />
+								 Первая линяя: 1 партнёр B3 + 1 партнёр B2-F + 1 партнёр B1-F
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr class="program">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">C2-F</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">от 50 000$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">3 200 000 $</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">6,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">3,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">1,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">1,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">0,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Шестая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Седьмая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">6,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">3,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">1,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">1,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">0,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Шестая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Седьмая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">17 000 $</div>
+				</td>
+				<td class="program__cell program__cell-conditions">
+					<div data-tooltip data-placement="left">
+						<Icon iconName={"info"} color="prime" />
+						<div class="tooltip">
+							<div class="tooltip__content">
+								Доп условия по линиям<br />
+								 Первая линяя: 1 партнёр B3F + 1 партнёр B2F + 1 партнёр B2
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr class="program">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">C3</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">от 100&nbsp;000$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">6 000 000 $</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">7,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">3,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">2,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">1,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">1,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Шестая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Седьмая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Восьмая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">7,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">3,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">2,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">1,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">1,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Шестая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Седьмая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Восьмая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">25 000 $</div>
+				</td>
+				<td class="program__cell program__cell-conditions">
+					<div data-tooltip data-placement="left">
+						<Icon iconName={"info"} color="prime" />
+						<div class="tooltip">
+							<div class="tooltip__content">
+								Доп условия по линиям<br />
+								 Первая линяя: 1 партнёр C1 + 1 партнёр B3 + 1 партнёр B2-F
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr class="program">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">C3-F</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">от 100&nbsp;000$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">9 000 000 $</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">7,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">3,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">2,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">1,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">1,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Шестая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Седьмая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Восьмая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">7,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">3,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">2,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">1,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">1,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Шестая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Седьмая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Восьмая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">30 000 $</div>
+				</td>
+				<td class="program__cell program__cell-conditions">
+					<div data-tooltip data-placement="left">
+						<Icon iconName={"info"} color="prime" />
+						<div class="tooltip">
+							<div class="tooltip__content">
+								Доп условия по линиям<br />
+								 Первая линяя: 1 партнёр C1F + 1 партнёр B3-F + 1 партнёр B3
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr class="program">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">D1</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">от 100&nbsp;000$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">15 000 000 $</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">7,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">3,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">2,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">1,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">1,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Шестая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Седьмая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Восьмая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Девятая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">7,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">3,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">2,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">1,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">1,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Шестая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Седьмая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Восьмая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Девятая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">Авто</div>
+				</td>
+				<td class="program__cell program__cell-conditions">
+					<div data-tooltip data-placement="left">
+						<Icon iconName={"info"} color="prime" />
+						<div class="tooltip">
+							<div class="tooltip__content">
+								Доп условия по линиям<br />
+								 Первая линяя: 1 партнёр С2 + 1 партнёр С1 + 2 партнёра В3
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr class="program">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">D2</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">от 100&nbsp;000$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">25 000 000 $</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">7,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">3,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">2,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">1,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">1,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Шестая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Седьмая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Восьмая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Девятая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Десятая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">7,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">3,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">2,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">1,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">1,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Шестая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Седьмая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Восьмая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Девятая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Десятая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">Апартаменты</div>
+				</td>
+				<td class="program__cell program__cell-conditions">
+					<div data-tooltip data-placement="left">
+						<Icon iconName={"info"} color="prime" />
+						<div class="tooltip">
+							<div class="tooltip__content">
+								Доп условия по линиям<br />
+								 Первая линяя: 1 партнёр С2F + 1 партнёр С1F + 2 партнёра С1
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr class="program">
+				<td class="program__cell program__cell-status">
+					<div class="program__label">Статус</div>
+					<div class="program__value">D3</div>
+				</td>
+				<td class="program__cell program__cell-personal-invest">
+					<div class="program__label">Личн.&nbsp;актив</div>
+					<div class="program__value">от 100&nbsp;000$</div>
+				</td>
+				<td class="program__cell program__cell-structure">
+					<div class="program__label">Об-т структуры</div>
+					<div class="program__value">50 000 000 $</div>
+				</td>
+				<td class="program__cell program__cell-invest">
+					<div class="program__label">Реф. от актива</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">7,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">3,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">2,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">1,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">1,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Шестая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Седьмая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Восьмая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Девятая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Десятая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-income">
+					<div class="program__label">Реф, от дохода</div>
+					<div class="program__value">
+						<div class="program__percent" data-tooltip data-tooltip-text="Первая линия">7,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Вторая линия">3,50%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Третья линия">2,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Четвертая линия">1,75%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Пятая линия">1,00%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Шестая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Седьмая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Восьмая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Девятая линия">0,25%</div>
+						<div class="program__percent" data-tooltip data-tooltip-text="Десятая линия">0,25%</div>
+					</div>
+				</td>
+				<td class="program__cell program__cell-premium">
+					<div class="program__label">Премия</div>
+					<div class="program__value">Вилла + 1% от прибыли компании</div>
+				</td>
+				<td class="program__cell program__cell-conditions">
+					<div data-tooltip data-placement="left">
+						<Icon iconName={"info"} color="prime" />
+						<div class="tooltip">
+							<div class="tooltip__content">
+								Доп условия по линиям<br />
+								 Первая линяя: 1 партнёр С3 + 1 партнёр С2F + 2 партнёра С2
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

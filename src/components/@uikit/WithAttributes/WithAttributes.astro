@@ -22,7 +22,7 @@ dom.childNodes.forEach((node) => {
 				node.setAttribute(name, valueOrUpdater);
 			}
 			// if value is function
-			else {
+			else if (typeof valueOrUpdater === "function") {
 				const value = valueOrUpdater(prev);
 				if (value !== undefined) {
 					node.setAttribute(name, value);

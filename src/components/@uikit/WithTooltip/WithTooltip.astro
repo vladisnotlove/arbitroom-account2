@@ -1,0 +1,24 @@
+---
+import WithAttributes from "../WithAttributes/WithAttributes.astro";
+
+export interface Props {
+	text?: string; // or custom tooltip inside children
+	placement?: "top" | "left" | "right" | "bottom";
+}
+
+const { text, placement } = Astro.props;
+---
+
+<WithAttributes
+	attributes={{
+		"data-tooltip": "",
+		"data-tooltip-text": text,
+		"data-placement": placement,
+	}}
+>
+	<slot />
+</WithAttributes>
+
+<script>
+	import "./WithTooltip";
+</script>
