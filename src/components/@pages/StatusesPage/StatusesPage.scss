@@ -1,0 +1,20 @@
+@import "../../../styles/mixins.scss";
+
+.content-statuses__stats {
+	display: flex;
+	gap: 1rem;
+
+	& > * {
+		flex-grow: 1;
+		flex-basis: 0;
+	}
+}
+
+// ADAPTIVE
+
+@media (max-width: $breakpoint-tablet-small) {
+	.content-statuses__stats {
+		flex-direction: column;
+		gap: 1rem;
+	}
+}

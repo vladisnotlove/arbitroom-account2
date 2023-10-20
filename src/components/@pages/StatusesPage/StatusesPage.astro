@@ -1,5 +1,59 @@
 ---
 import Layout from "layouts/Layout/Layout.astro";
+import StatsCard from "components/@common/StatsCard/StatsCard.astro";
+import "./StatusesPage.scss";
 ---
 
-<Layout title="Статусы" selectedMenuItem="statuses">statuses</Layout>
+<Layout title="Статусы" selectedMenuItem="statuses">
+	<div class="content-statuses">
+		<div class="content-statuses__stats">
+			<StatsCard
+				title="Статусная премия"
+				icon="info"
+				stats={[
+					{
+						value: "710",
+						unit: "USDT",
+						name: "Общая",
+					},
+					{
+						value: "500",
+						unit: "USDT",
+						name: "Текущая",
+					},
+				]}
+			/>
+			<StatsCard
+				title="Квалификации"
+				icon="money"
+				stats={[
+					{
+						value: "B1",
+						name: "Текущий статус",
+					},
+					{
+						value: "80 000",
+						unit: "USDT",
+						name: "Текущий оборот",
+					},
+				]}
+			/>
+			<StatsCard
+				title="Общая глубина структуры"
+				icon="channel-share"
+				stats={[
+					{
+						value: "127",
+						unit: "чел.",
+						name: "Кол-во партнеров",
+					},
+					{
+						value: "320 000",
+						unit: "USDT",
+						name: "Весь оборот структуры",
+					},
+				]}
+			/>
+		</div>
+	</div>
+</Layout>
