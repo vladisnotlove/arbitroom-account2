@@ -1,0 +1,12 @@
+---
+import Layout from "layouts/Layout/Layout.astro";
+import "./OutcomePage.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<Layout title="Вывод средств" selectedMenuItem="outcome">test</Layout>
