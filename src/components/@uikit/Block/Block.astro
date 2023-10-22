@@ -4,7 +4,7 @@ import "./Block.scss";
 
 export interface Props extends Record<string, any> {
 	className?: string;
-	as?: (...args: any) => any | keyof HTMLElementTagNameMap;
+	as?: ((...args: any) => any) | keyof HTMLElementTagNameMap;
 	maxWidth?: "lg" | "sm" | "xs" | "440";
 	fullWidth?: boolean;
 }

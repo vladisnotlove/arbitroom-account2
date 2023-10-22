@@ -1,0 +1,40 @@
+@import "../../../../styles/variables.scss";
+
+// title
+
+.outcome-form__title {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	gap: 1rem;
+}
+
+// content
+
+.outcome-form__content {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	gap: 2rem;
+}
+
+// result
+
+.outcome-form__result-label {
+	margin-bottom: 0.25rem;
+
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	color: $color-text-more-secondary;
+}
+
+.outcome-form__result-value {
+	margin-bottom: 1rem;
+
+	@include typography-body1;
+}
+
+.outcome-form__result-remark {
+	@include typography-caption;
+	color: $color-text-secondary;
+}

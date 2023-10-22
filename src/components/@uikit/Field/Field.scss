@@ -11,6 +11,10 @@
 	flex-direction: column;
 	gap: 0.25rem;
 
+	&.full-width {
+		width: 100%;
+	}
+
 	&.disabled {
 		pointer-events: none;
 
@@ -47,7 +51,7 @@
 	@include typography-caption;
 }
 
-.field__input {
+.field__input-wrapper {
 	& > .progress-bar {
 		margin-top: 0.75rem;
 	}

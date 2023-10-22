@@ -2,18 +2,23 @@
 import classNames from "classnames";
 import "./Field.scss";
 
-export interface Props extends Record<string, any> {
+export interface Props {
 	className?: string;
 	label?: string;
 	labelSize?: "large";
+	fullWidth?: boolean;
 }
 
-const { className, label, labelSize, ...props } = Astro.props;
+const { className, label, labelSize, fullWidth } = Astro.props;
 ---
 
-<div class={classNames(className, "field")} {...props}>
+<div
+	class={classNames(className, "field", {
+		"full-width": fullWidth,
+	})}
+>
 	{label && <div class={classNames("field__label", labelSize)}>{label}</div>}
-	<div class="field__input">
+	<div class="field__input-wrapper">
 		<slot />
 	</div>
 </div>

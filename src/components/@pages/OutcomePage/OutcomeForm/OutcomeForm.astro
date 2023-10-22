@@ -3,7 +3,11 @@ import classNames from "classnames";
 import Block from "components/@uikit/Block/Block.astro";
 import BlockContent from "components/@uikit/Block/BlockContent.astro";
 import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import Field from "components/@uikit/Field/Field.astro";
+import Input from "components/@uikit/Input/Input.astro";
 import ToggleButtonGroup from "components/@uikit/ToggleButtonGroup/ToggleButtonGroup.astro";
+import Button from "components/@uikit/Button/Button.astro";
+import "./OutcomeForm.scss";
 
 export interface Props {
 	className?: string;
@@ -23,9 +27,35 @@ const items = [
 {
 	variant === "wallet" && (
 		<Block className={classNames(className, "outcome-form")}>
-			<BlockTitle>Вывести средства</BlockTitle>
-			<BlockContent>
-				<ToggleButtonGroup items={items} value="wallet" />
+			<BlockTitle className="outcome-form__title">
+				Вывести средства
+				<ToggleButtonGroup items={items} value="wallet" disableJs />
+				<ToggleButtonGroup
+					items={[{ text: "USDT TRC 20", value: "USDT TRC 20" }]}
+					value="USDT TRC 20"
+					simple
+					disableJs
+				/>
+			</BlockTitle>
+			<BlockContent as="form" className="outcome-form__content">
+				<Field label="Сумма перевода" fullWidth>
+					<Input placeholder="Введите сумму перевода в USDT" />
+				</Field>
+				<Field label="Номер кошелька" fullWidth>
+					<Input placeholder="Номер вашего USDT кошелька" />
+				</Field>
+				<div class="outcome-form__result">
+					<div class="outcome-form__result-label">Итого к выводу</div>
+					<div class="outcome-form__result-value">1000 USDT</div>
+					<div class="outcome-form__result-remark">
+						Комиссия вывода с кошелька 5%
+						<br />
+						Регламент вывода с кошелька до 72 часов
+					</div>
+				</div>
+				<Button variant="contained" fullWidth>
+					Вывести средства
+				</Button>
 			</BlockContent>
 		</Block>
 	)
