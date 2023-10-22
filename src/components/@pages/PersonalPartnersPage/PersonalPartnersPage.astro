@@ -1,8 +1,61 @@
 ---
 import Layout from "layouts/Layout/Layout.astro";
+import StatsCard from "components/@common/StatsCard/StatsCard.astro";
 import "./PersonalPartnersPage.scss";
+import MyPartnerLink from "./MyPartnerLink/MyPartnerLink.astro";
 ---
 
 <Layout title="Личные партнёры" selectedMenuItem="personal-partners">
-	<div class="content-personal-partners">test</div>
+	<div class="content-personal-partners">
+		<div class="content-personal-partners__stats">
+			<StatsCard
+				icon={"info"}
+				title={"Личные партнеры"}
+				items={[
+					{
+						value: "14",
+						unit: "человек",
+						name: "Кол-во партнеров",
+					},
+					{
+						value: "234",
+						unit: "USDT",
+						name: "Парт. отчисление",
+					},
+				]}
+			/>
+			<StatsCard
+				icon={"money"}
+				title={"Квалификации"}
+				items={[
+					{
+						value: "B1",
+						name: "Текущий статус",
+					},
+					{
+						value: "80 000",
+						unit: "USDT",
+						name: "Текущий оборот",
+					},
+				]}
+			/>
+			<StatsCard
+				icon={"channel-share"}
+				title={"Общая глубина структуры"}
+				items={[
+					{
+						value: "127",
+						unit: "человек",
+						name: "Кол-во партнеров",
+					},
+					{
+						value: "320 000",
+						unit: "USDT",
+						name: "Весь оборот структуры",
+					},
+				]}
+			/>
+		</div>
+		<MyPartnerLink className="content-personal-partners__my-partner-link" />
+	</div>
 </Layout>

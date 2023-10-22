@@ -7,14 +7,14 @@ export interface Props {
 	className?: string;
 	title: string;
 	icon: IconProps["iconName"];
-	stats?: Array<{
+	items?: Array<{
 		name?: string;
 		value: string;
 		unit?: string;
 	}>;
 }
 
-const { className, title, icon, stats } = Astro.props;
+const { className, title, icon, items } = Astro.props;
 ---
 
 <div class={classNames(className, "stats-card")}>
@@ -24,7 +24,7 @@ const { className, title, icon, stats } = Astro.props;
 	</div>
 	<div class="stats-card__body">
 		{
-			stats.map(({ name, value, unit }) => (
+			items.map(({ name, value, unit }) => (
 				<div class="stats-card__stat">
 					<div class="stats-card__stat-value">
 						<span class="stats-card__stat-value-number">{value}</span>

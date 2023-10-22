@@ -1,1 +1,12 @@
 @import "../../../styles/mixins.scss";
+
+.content-personal-partners__stats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+
+	& > * {
+		flex-grow: 1;
+		flex-basis: 220px;
+	}
+}

@@ -1,0 +1,34 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockContent from "components/@uikit/Block/BlockContent.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import CopyText from "components/@uikit/CopyText/CopyText.astro";
+import "./MyPartnerLink.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<Block className={classNames(className, "my-partner-link")}>
+	<BlockTitle>Моя партнёрская ссылка</BlockTitle>
+	<BlockContent className={"my-partner-link__content"}>
+		<div class="my-partner-link__qr-container">
+			<img class="my-partner-link__qr" src={"/_layout-assets/img/qrcode.png"} alt="" />
+		</div>
+		<CopyText className={"my-partner-link__copy-text"} value="https://arbittroom.tech/ref/?id=21232f297a574a5" />
+		<div class="my-partner-link__stats">
+			<div class="my-partner-link__stat">
+				<span>105</span>
+				<span>Переходов</span>
+			</div>
+			<div class="my-partner-link__stat">
+				<span>32</span>
+				<span>Регистраций</span>
+			</div>
+		</div>
+	</BlockContent>
+</Block>
