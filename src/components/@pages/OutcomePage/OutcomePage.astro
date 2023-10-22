@@ -5,14 +5,17 @@ import OutcomeForm from "./OutcomeForm/OutcomeForm.astro";
 import OutcomeInstructions from "./OutcomeInstructions/OutcomeInstructions.astro";
 import "./OutcomePage.scss";
 
-const variants = ["wallet"] as const;
+const variants = ["wallet", "green", "blue", "purple", "partner-balance"] as const;
 ---
 
 <Layout title="Вывод средств" selectedMenuItem="outcome">
 	<div class="content-outcome__form-variants">
 		{
-			variants.map((variant, index) => (
-				<div class={classNames("content-outcome__form-variant", { active: index === 0 })} data-key={variant}>
+			variants.map((variant) => (
+				<div
+					class={classNames("content-outcome__form-variant", { active: variant === "wallet" })}
+					data-key={variant}
+				>
 					<OutcomeForm className="content-outcome__form" variant={variant} />
 					<OutcomeInstructions className="content-outcome__instructions" variant={variant} />
 				</div>

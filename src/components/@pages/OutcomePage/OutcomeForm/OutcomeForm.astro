@@ -8,6 +8,7 @@ import Input from "components/@uikit/Input/Input.astro";
 import ToggleButtonGroup from "components/@uikit/ToggleButtonGroup/ToggleButtonGroup.astro";
 import Button from "components/@uikit/Button/Button.astro";
 import "./OutcomeForm.scss";
+import Timer from "components/@uikit/Timer/Timer.astro";
 
 export interface Props {
 	className?: string;
@@ -53,8 +54,171 @@ const items = [
 						Регламент вывода с кошелька до 72 часов
 					</div>
 				</div>
-				<Button variant="contained" fullWidth>
+				<Button variant="contained" type="submit" fullWidth>
 					Вывести средства
+				</Button>
+			</BlockContent>
+		</Block>
+	)
+}
+
+{
+	variant === "green" && (
+		<Block className={classNames(className, "outcome-form")}>
+			<BlockTitle className="outcome-form__title">
+				Вывести средства
+				<ToggleButtonGroup items={items} value="green" disableJs />
+			</BlockTitle>
+			<BlockContent as="form" className="outcome-form__content">
+				<Field label="Сумма перевода" fullWidth>
+					<Input placeholder="Введите сумму перевода в USDT" />
+				</Field>
+				<div class="outcome-form__result">
+					<div class="outcome-form__result-label">Итого к выводу</div>
+					<div class="outcome-form__result-value">230 USDT</div>
+				</div>
+				<div class="outcome-form__submit-section">
+					<div class="outcome-form__submit-section-title">Перевести на кошелёк</div>
+					<div class="outcome-form__submit-section-cards">
+						<div class="outcome-form__submit-card">
+							<div class="outcome-form__submit-card-label">
+								<span>Каждый день, 2% за вывод</span>
+							</div>
+							<Button className="outcome-form__submit-card-btn" variant="contained" type="submit" fullWidth>
+								Перевести
+							</Button>
+						</div>
+						<div class="outcome-form__submit-card">
+							<div class="outcome-form__submit-card-label">
+								<span>Раз в неделю, без процентов</span>
+								<Timer
+									className="outcome-form__submit-card-timer"
+									finishDate={new Date(new Date().setDate(new Date().getDate() + 6))}
+									format="Осталось ddд : hhч : mmм : ssс"
+								/>
+							</div>
+							<Button
+								className="outcome-form__submit-card-btn"
+								variant="contained"
+								type="submit"
+								fullWidth
+								disabled
+							>
+								Перевести
+							</Button>
+						</div>
+					</div>
+				</div>
+			</BlockContent>
+		</Block>
+	)
+}
+
+{
+	variant === "blue" && (
+		<Block className={classNames(className, "outcome-form")}>
+			<BlockTitle className="outcome-form__title">
+				Вывести средства
+				<ToggleButtonGroup items={items} value="blue" disableJs />
+			</BlockTitle>
+			<BlockContent as="form" className="outcome-form__content">
+				<Field label="Сумма перевода" fullWidth>
+					<Input placeholder="Введите сумму перевода в USDT" />
+				</Field>
+				<div class="outcome-form__result">
+					<div class="outcome-form__result-label">Итого к выводу</div>
+					<div class="outcome-form__result-value">230 USDT</div>
+				</div>
+				<div class="outcome-form__submit-section">
+					<div class="outcome-form__submit-section-title">Перевести на кошелёк</div>
+					<div class="outcome-form__submit-section-cards">
+						<div class="outcome-form__submit-card">
+							<div class="outcome-form__submit-card-label">
+								<span>Раз в неделю, без процентов</span>
+								<Timer
+									className="outcome-form__submit-card-timer"
+									finishDate={new Date(new Date().setDate(new Date().getDate() + 12))}
+									format="Осталось ddд : hhч : mmм : ssс"
+								/>
+							</div>
+							<Button
+								className="outcome-form__submit-card-btn"
+								variant="contained"
+								type="submit"
+								fullWidth
+								disabled
+							>
+								Перевести
+							</Button>
+						</div>
+					</div>
+				</div>
+			</BlockContent>
+		</Block>
+	)
+}
+
+{
+	variant === "purple" && (
+		<Block className={classNames(className, "outcome-form")}>
+			<BlockTitle className="outcome-form__title">
+				Вывести средства
+				<ToggleButtonGroup items={items} value="purple" disableJs />
+			</BlockTitle>
+			<BlockContent as="form" className="outcome-form__content">
+				<Field label="Сумма перевода" fullWidth>
+					<Input placeholder="Введите сумму перевода в USDT" />
+				</Field>
+				<div class="outcome-form__result">
+					<div class="outcome-form__result-label">Итого к выводу</div>
+					<div class="outcome-form__result-value">230 USDT</div>
+				</div>
+				<div class="outcome-form__submit-section">
+					<div class="outcome-form__submit-section-title">Перевести на кошелёк</div>
+					<div class="outcome-form__submit-section-cards">
+						<div class="outcome-form__submit-card">
+							<div class="outcome-form__submit-card-label">
+								<span>Раз в неделю, без процентов</span>
+								<Timer
+									className="outcome-form__submit-card-timer"
+									finishDate={new Date(new Date().setDate(new Date().getDate() + 12))}
+									format="Осталось ddд : hhч : mmм : ssс"
+								/>
+							</div>
+							<Button
+								className="outcome-form__submit-card-btn"
+								variant="contained"
+								type="submit"
+								fullWidth
+								disabled
+							>
+								Перевести
+							</Button>
+						</div>
+					</div>
+				</div>
+			</BlockContent>
+		</Block>
+	)
+}
+
+{
+	variant === "partner-balance" && (
+		<Block className={classNames(className, "outcome-form")}>
+			<BlockTitle className="outcome-form__title">
+				Вывести средства
+				<ToggleButtonGroup items={items} value="partner-balance" disableJs />
+			</BlockTitle>
+			<BlockContent as="form" className="outcome-form__content">
+				<Field label="Сумма перевода" fullWidth>
+					<Input placeholder="Введите сумму перевода в USDT" />
+				</Field>
+				<div class="outcome-form__result">
+					<div class="outcome-form__result-label">Итого к выводу</div>
+					<div class="outcome-form__result-value">230 USDT</div>
+				</div>
+				<Button className="outcome-form__submit-card-btn" variant="contained" type="submit" fullWidth disabled>
+					Перевести на кошелёк
 				</Button>
 			</BlockContent>
 		</Block>

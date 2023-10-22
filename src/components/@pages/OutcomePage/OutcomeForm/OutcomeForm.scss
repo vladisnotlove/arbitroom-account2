@@ -26,15 +26,79 @@
 	font-size: 0.875rem;
 	line-height: 1.25rem;
 	color: $color-text-more-secondary;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 
 .outcome-form__result-value {
 	margin-bottom: 1rem;
 
 	@include typography-body1;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 
 .outcome-form__result-remark {
 	@include typography-caption;
 	color: $color-text-secondary;
+}
+
+// submit section
+
+.outcome-form__submit-section {
+	width: 100%;
+}
+
+.outcome-form__submit-section-title {
+	@include typography-body1;
+	margin-bottom: 1rem;
+}
+
+.outcome-form__submit-section-cards {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.outcome-form__submit-card {
+	flex-grow: 1;
+	flex-basis: 100px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+
+	padding: 1rem;
+	border-radius: 0.5rem;
+
+	background: $color-text-field;
+}
+
+.outcome-form__submit-card-label {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.125rem;
+	text-align: center;
+}
+
+.outcome-form__submit-card-timer {
+	@include typography-caption;
+	text-align: center;
+	color: $color-text-secondary;
+}
+
+// ADAPTIVE
+
+@media (max-width: $breakpoint-mobile-big) {
+	.outcome-form__submit-card-label {
+		@include typography-caption;
+	}
 }
