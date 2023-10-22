@@ -3,12 +3,13 @@ import classNames from "classnames";
 import "./Block.scss";
 
 export interface Props extends Record<string, any> {
+	as?: keyof HTMLElementTagNameMap;
 	className?: string;
 }
 
-const { className, ...props } = Astro.props;
+const { as: As = "div", className, ...props } = Astro.props;
 ---
 
-<div class={classNames(className, "block__content")} {...props}>
+<As class={classNames(className, "block__content")} {...props}>
 	<slot />
-</div>
+</As>

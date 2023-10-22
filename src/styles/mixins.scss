@@ -33,7 +33,37 @@
 
 	&::-webkit-scrollbar-thumb {
 		background-color: $color-text-more-secondary;
+		border-radius: $scrollbar-width * 0.5;
+	}
+
+	@media (hover: none) {
+		@include invisible-scrollbar;
+	}
+}
+
+@mixin vertical-container-scrollbar($track-color: rgba(33, 33, 33, 0.08)) {
+	$margin-x: 0.25rem;
+	$margin-y: 0.25rem;
+
+	scrollbar-color: $color-text-secondary rgba(33, 33, 33, 0.08);
+	scrollbar-width: thin;
+
+	&::-webkit-scrollbar {
+		width: $scrollbar-width + $margin-x * 2;
+		height: $scrollbar-width + $margin-x * 2;
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: $track-color;
 		border-radius: 0.25rem;
+		margin: $margin-y 0;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: $color-text-more-secondary;
+		border-radius: $scrollbar-width * 0.5 + $margin-x;
+		border: $margin-x solid transparent;
+		background-clip: padding-box;
 	}
 
 	@media (hover: none) {

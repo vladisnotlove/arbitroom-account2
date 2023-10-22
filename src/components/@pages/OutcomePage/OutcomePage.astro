@@ -3,23 +3,49 @@ import classNames from "classnames";
 import Layout from "layouts/Layout/Layout.astro";
 import OutcomeForm from "./OutcomeForm/OutcomeForm.astro";
 import OutcomeInstructions from "./OutcomeInstructions/OutcomeInstructions.astro";
+import Operations from "components/@common/Operations/Operations.astro";
+import ToggleButtonGroup from "components/@uikit/ToggleButtonGroup/ToggleButtonGroup.astro";
+import WithSwitchClasses from "components/@uikit/WithSwitchClasses/WithSwitchClasses.astro";
 import "./OutcomePage.scss";
 
 const variants = ["wallet", "green", "blue", "purple", "partner-balance"] as const;
 ---
 
 <Layout title="Вывод средств" selectedMenuItem="outcome">
-	<div class="content-outcome__form-variants">
-		{
-			variants.map((variant) => (
-				<div
-					class={classNames("content-outcome__form-variant", { active: variant === "wallet" })}
-					data-key={variant}
-				>
-					<OutcomeForm className="content-outcome__form" variant={variant} />
-					<OutcomeInstructions className="content-outcome__instructions" variant={variant} />
-				</div>
-			))
-		}
+	<div class="content-outcome show-outcome">
+		<WithSwitchClasses
+			classes={["show-outcome", "show-instructions"]}
+			target=".content-outcome"
+			source=".toggle-button"
+		>
+			<ToggleButtonGroup
+				className="content-outcome__tabs"
+				items={[
+					{ text: "Пополнение", value: "outcome" },
+					{ text: "Инструкция", value: "instruction" },
+				]}
+				value="outcome"
+				equalColumns
+			/>
+		</WithSwitchClasses>
+		<div class="content-outcome__variants" id="outcomeVariants">
+			{
+				variants.map((variant) => (
+					<div
+						class={classNames("content-outcome__variant", { active: variant === "wallet" })}
+						data-outcome-variant={variant}
+					>
+						<OutcomeForm className="content-outcome__form" variant={variant} />
+						<OutcomeInstructions className="content-outcome__instructions" variant={variant} />
+					</div>
+				))
+			}
+		</div>
+
+		<Operations className="content-outcome__operations" />
 	</div>
 </Layout>
+
+<script>
+	import "./OutcomePage";
+</script>

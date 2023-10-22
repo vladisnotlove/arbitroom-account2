@@ -5,10 +5,12 @@ import BlockContent from "components/@uikit/Block/BlockContent.astro";
 import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
 import Field from "components/@uikit/Field/Field.astro";
 import Input from "components/@uikit/Input/Input.astro";
-import ToggleButtonGroup from "components/@uikit/ToggleButtonGroup/ToggleButtonGroup.astro";
+import ToggleButtonGroup, {
+	Props as ToggleButtonGroupProps,
+} from "components/@uikit/ToggleButtonGroup/ToggleButtonGroup.astro";
 import Button from "components/@uikit/Button/Button.astro";
-import "./OutcomeForm.scss";
 import Timer from "components/@uikit/Timer/Timer.astro";
+import "./OutcomeForm.scss";
 
 export interface Props {
 	className?: string;
@@ -16,12 +18,16 @@ export interface Props {
 }
 
 const { className, variant } = Astro.props;
-const items = [
-	{ text: "Кошелек", value: "wallet" },
-	{ text: "Зеленый блок", value: "green" },
-	{ text: "Синий блок", value: "blue" },
-	{ text: "Фиолетовый блок", value: "purple" },
-	{ text: "Партнерский баланс", value: "partner-balance" },
+const items: ToggleButtonGroupProps["items"] = [
+	{ text: "Кошелек", value: "wallet", attributes: { "data-to-outcome-variant": "wallet" } },
+	{ text: "Зеленый блок", value: "green", attributes: { "data-to-outcome-variant": "green" } },
+	{ text: "Синий блок", value: "blue", attributes: { "data-to-outcome-variant": "blue" } },
+	{ text: "Фиолетовый блок", value: "purple", attributes: { "data-to-outcome-variant": "purple" } },
+	{
+		text: "Партнерский баланс",
+		value: "partner-balance",
+		attributes: { "data-to-outcome-variant": "partner-balance" },
+	},
 ];
 ---
 
@@ -32,15 +38,15 @@ const items = [
 				Вывести средства
 				<ToggleButtonGroup items={items} value="wallet" disableJs />
 				<ToggleButtonGroup
-					items={[{ text: "USDT TRC 20", value: "USDT TRC 20" }]}
-					value="USDT TRC 20"
+					items={[{ text: "USDT TRC 20", value: "wallet", attributes: { "data-to-outcome-variant": "wallet" } }]}
+					value="wallet"
 					simple
 					disableJs
 				/>
 			</BlockTitle>
 			<BlockContent as="form" className="outcome-form__content">
 				<Field label="Сумма перевода" fullWidth>
-					<Input placeholder="Введите сумму перевода в USDT" />
+					<Input placeholder="Введите сумму перевода в USDT" type="number" />
 				</Field>
 				<Field label="Номер кошелька" fullWidth>
 					<Input placeholder="Номер вашего USDT кошелька" />
@@ -71,7 +77,7 @@ const items = [
 			</BlockTitle>
 			<BlockContent as="form" className="outcome-form__content">
 				<Field label="Сумма перевода" fullWidth>
-					<Input placeholder="Введите сумму перевода в USDT" />
+					<Input placeholder="Введите сумму перевода в USDT" type="number" />
 				</Field>
 				<div class="outcome-form__result">
 					<div class="outcome-form__result-label">Итого к выводу</div>
@@ -123,7 +129,7 @@ const items = [
 			</BlockTitle>
 			<BlockContent as="form" className="outcome-form__content">
 				<Field label="Сумма перевода" fullWidth>
-					<Input placeholder="Введите сумму перевода в USDT" />
+					<Input placeholder="Введите сумму перевода в USDT" type="number" />
 				</Field>
 				<div class="outcome-form__result">
 					<div class="outcome-form__result-label">Итого к выводу</div>
@@ -167,7 +173,7 @@ const items = [
 			</BlockTitle>
 			<BlockContent as="form" className="outcome-form__content">
 				<Field label="Сумма перевода" fullWidth>
-					<Input placeholder="Введите сумму перевода в USDT" />
+					<Input placeholder="Введите сумму перевода в USDT" type="number" />
 				</Field>
 				<div class="outcome-form__result">
 					<div class="outcome-form__result-label">Итого к выводу</div>
@@ -211,7 +217,7 @@ const items = [
 			</BlockTitle>
 			<BlockContent as="form" className="outcome-form__content">
 				<Field label="Сумма перевода" fullWidth>
-					<Input placeholder="Введите сумму перевода в USDT" />
+					<Input placeholder="Введите сумму перевода в USDT" type="number" />
 				</Field>
 				<div class="outcome-form__result">
 					<div class="outcome-form__result-label">Итого к выводу</div>

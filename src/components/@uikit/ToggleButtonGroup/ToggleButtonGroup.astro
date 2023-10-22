@@ -9,6 +9,7 @@ export interface Props extends Record<string, any> {
 	items: Array<{
 		value: string;
 		text: string;
+		attributes?: Record<string, string>;
 	}>;
 	value: string;
 	urlSync?: boolean;
@@ -25,7 +26,7 @@ const { className, name, items, value, urlSync, equalColumns, simple, disableJs,
 		"equal-columns": equalColumns,
 		simple: simple,
 	})}
-	data-disable-js={disableJs}
+	data-disable-toggle-button-group-js={disableJs}
 	{...props}
 >
 	<InputUrlSync name={name} value={value} hidden disabled={!urlSync} />
@@ -36,6 +37,7 @@ const { className, name, items, value, urlSync, equalColumns, simple, disableJs,
 					active: value === item.value,
 				})}
 				data-value={item.value}
+				{...item.attributes}
 			>
 				{item.text}
 			</div>
