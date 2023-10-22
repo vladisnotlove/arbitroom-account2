@@ -1,0 +1,21 @@
+---
+import WithAttributes from "../WithAttributes/WithAttributes.astro";
+
+export interface Props {
+	collapse?: string;
+}
+
+const { collapse } = Astro.props;
+---
+
+<WithAttributes
+	attributes={{
+		"data-toggle-collapse": collapse,
+	}}
+>
+	<slot />
+</WithAttributes>
+
+<script>
+	import "./Collapse";
+</script>

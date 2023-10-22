@@ -1,0 +1,22 @@
+---
+import classNames from "classnames";
+import "./Collapse.scss";
+
+export interface Props {
+	className?: string;
+	contentClassName?: string;
+	id?: string;
+}
+
+const { className, contentClassName, id } = Astro.props;
+---
+
+<div class={classNames(className, "collapse")} id={id}>
+	<div class={classNames(contentClassName, "collapse__content")}>
+		<slot />
+	</div>
+</div>
+
+<script>
+	import "./Collapse";
+</script>

@@ -1,5 +1,15 @@
 ---
 import Layout from "layouts/Layout/Layout.astro";
+import ContactsBlock from "./ContactsBlock/ContactsBlock.astro";
+import InfoDocs from "./InfoDocs/InfoDocs.astro";
+import FAQ from "./FAQ/FAQ.astro";
+import "./InfoPage.scss";
 ---
 
-<Layout title="Информация">test</Layout>
+<Layout title="Информация" selectedMenuItem="info" hasMediaViewer>
+	<div class="content-info">
+		<ContactsBlock className="content-info__conctacs" />
+		<InfoDocs className="content-info__docs" />
+		<FAQ className="content-info__faq" />
+	</div>
+</Layout>

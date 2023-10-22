@@ -1,0 +1,36 @@
+---
+import classNames from "classnames";
+import Icon from "components/@uikit/Icon/Icon.astro";
+import WithViewable from "components/@common/MediaViewer/WithViewable.astro";
+import "./InfoDocs.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<div class={classNames(className, "info-docs")}>
+	<div class="info-docs__title">Документы</div>
+	<div class="info-docs__content">
+		<div class="info-docs__previews">
+			<WithViewable downloadUrl="/_layout-assets/pdf/Business%20License_MFZ.pdf">
+				<img src="/_layout-assets/img/doc-previews/Business License_MFZ.png" alt="" />
+			</WithViewable>
+			<WithViewable downloadUrl="#">
+				<img src="/_layout-assets/img/doc-previews/Certification of formation.png" alt="" />
+			</WithViewable>
+		</div>
+		<div class="info-docs__links">
+			<a class="info-docs__link" href="/_layout-assets/pdf/Business%20License_MFZ.pdf" target="_blank">
+				Business license
+				<Icon iconName="link-out" />
+			</a>
+			<a class="info-docs__link" href="#" target="_blank">
+				Certificate of formation
+				<Icon iconName="link-out" />
+			</a>
+		</div>
+	</div>
+</div>

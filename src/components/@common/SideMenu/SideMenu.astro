@@ -15,7 +15,7 @@ type MenuItem = {
 		| "statuses"
 		| "operations"
 		| "settings"
-		| "contacts";
+		| "info";
 	icon?: IconProps["iconName"];
 	label?: string;
 	href: string;
@@ -98,7 +98,7 @@ const menuItems: (MenuItem | MenuGroup)[] = [
 	},
 	{
 		type: "item",
-		key: "contacts",
+		key: "info",
 		href: "/info",
 		icon: "chat",
 		label: "Контакты",

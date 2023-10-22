@@ -1,0 +1,22 @@
+---
+import WithAttributes from "components/@uikit/WithAttributes/WithAttributes.astro";
+
+export interface Props {
+	downloadUrl?: string;
+}
+
+const { downloadUrl } = Astro.props;
+---
+
+<WithAttributes
+	attributes={{
+		"data-viewable": "",
+		"data-download-url": downloadUrl,
+	}}
+>
+	<slot />
+</WithAttributes>
+
+<script>
+	import "./MediaViewer";
+</script>

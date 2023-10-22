@@ -1,0 +1,57 @@
+---
+import classNames from "classnames";
+import contacts from "constants/contacts";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockContent from "components/@uikit/Block/BlockContent.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import Icon from "components/@uikit/Icon/Icon.astro";
+import "./ContactsBlock.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+
+const contactRecords = [
+	{
+		iconName: "social-mail",
+		label: "support@arbitroom.io",
+		href: contacts.mail,
+	},
+	{
+		iconName: "social-telegram",
+		label: "Telegram Канал",
+		href: contacts.telegramChannel,
+	},
+	{
+		iconName: "social-telegram",
+		label: "Telegram Чат",
+		href: contacts.telegramChat,
+	},
+	{
+		iconName: "social-instagram",
+		label: "Наш Instagram",
+		href: contacts.instagram,
+	},
+	{
+		iconName: "social-youtube",
+		label: "Наш YouTube",
+		href: contacts.youtube,
+	},
+] as const;
+---
+
+<Block className={classNames(className, "contacts-block")}>
+	<BlockTitle>Контакты для связи</BlockTitle>
+	<BlockContent className="contacts-block__content">
+		{
+			contactRecords.map(({ label, iconName, href }) => (
+				<a class="contacts-block__contact" href={href}>
+					<Icon iconName={iconName} color="prime" />
+					{label}
+				</a>
+			))
+		}
+	</BlockContent>
+</Block>

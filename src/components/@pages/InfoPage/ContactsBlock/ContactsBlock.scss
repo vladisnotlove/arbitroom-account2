@@ -1,0 +1,20 @@
+@import "../../../../styles/mixins.scss";
+
+.contacts-block__content {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+	gap: 0.75rem;
+}
+
+.contacts-block__contact {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	@include typography-subtitle1;
+
+	& > svg {
+		width: 2rem;
+		height: 2rem;
+		flex-shrink: 0;
+	}
+}

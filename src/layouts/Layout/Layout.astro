@@ -9,15 +9,17 @@ import Loader from "components/@common/Loader/Loader.astro";
 import LangaugeMenu from "components/@common/LanguageMenu/LangaugeMenu.astro";
 import Notifications from "components/@common/Notifications/Notifications.astro";
 import SideMenu, { Props as SideMenuProps } from "components/@common/SideMenu/SideMenu.astro";
+import MediaViewer from "components/@common/MediaViewer/MediaViewer.astro";
 import "./Layout.scss";
 
 export interface Props {
 	variant?: "default" | "langing";
 	title: string;
 	selectedMenuItem?: SideMenuProps["selected"];
+	hasMediaViewer?: boolean;
 }
 
-const { variant = "default", title, selectedMenuItem } = Astro.props;
+const { variant = "default", title, selectedMenuItem, hasMediaViewer } = Astro.props;
 ---
 
 <!doctype html>
@@ -40,7 +42,16 @@ const { variant = "default", title, selectedMenuItem } = Astro.props;
 		<Notifications />
 
 		<!-- MODALS -->
-		<slot name="modals" />
+		{Astro.slots.has("modals") && <slot name="modals" />}
+
+		<!-- MEDIA VIEWER -->
+		{
+			hasMediaViewer && (
+				<>
+					<MediaViewer />
+				</>
+			)
+		}
 
 		<!-- MAIN -->
 		{

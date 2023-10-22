@@ -1,0 +1,28 @@
+---
+import classNames from "classnames";
+import Icon from "components/@uikit/Icon/Icon.astro";
+import "./MediaViewer.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<div class={classNames(className, "media-viewer")}>
+	<div class="media-viewer__body">
+		<div class="media-viewer__prev">
+			<Icon iconName={"chevron-left"} />
+		</div>
+		<div class="media-viewer__media-container">
+			<a class={"media-viewer__download-image"} href={"#"} download>
+				<Icon iconName={"arrow-download"} />
+			</a>
+			<img class="media-viewer__image" src="#" alt="" />
+		</div>
+		<div class="media-viewer__next">
+			<Icon iconName={"chevron-right"} />
+		</div>
+	</div>
+</div>

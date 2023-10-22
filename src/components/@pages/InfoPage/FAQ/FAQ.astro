@@ -1,0 +1,85 @@
+---
+import classNames from "classnames";
+import Collapse from "components/@uikit/Collapse/Collapse.astro";
+import data from "./data";
+import "./FAQ.scss";
+import WithToggleCollapse from "components/@uikit/Collapse/WithToggleCollapse.astro";
+import Button from "components/@uikit/Button/Button.astro";
+import Icon from "components/@uikit/Icon/Icon.astro";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+const maxIndex = 4;
+---
+
+<div class={classNames(className, "faq__sections")}>
+	{
+		data.map(({ section, questions }, sectionIndex) => (
+			<div class="faq__section">
+				<div class="faq__section-title">{section}</div>
+				<div class="faq__questions">
+					{questions.slice(0, maxIndex).map(({ text, answer }, questionIndex) => (
+						<div class="faq__question">
+							<WithToggleCollapse collapse={`#question-${sectionIndex}-${questionIndex}`}>
+								<div class="faq__question-title">
+									{text}
+									<div class="faq__question-expand-btn">
+										<div class="faq__question-expand-btn-inner">
+											<div class="dash" />
+											<div class="dash" />
+										</div>
+									</div>
+								</div>
+							</WithToggleCollapse>
+
+							<Collapse contentClassName="faq__question-answer" id={`question-${sectionIndex}-${questionIndex}`}>
+								{answer}
+							</Collapse>
+						</div>
+					))}
+
+					<Collapse className="faq__questions-collapse" id={`collapsedQuestionsInSection-${sectionIndex}`}>
+						{questions.slice(maxIndex).map(({ text, answer }, questionIndex) => (
+							<div class="faq__question">
+								<WithToggleCollapse collapse={`#question-${sectionIndex}-${maxIndex + questionIndex}`}>
+									<div class="faq__question-title">
+										{text}
+										<div class="faq__question-expand-btn">
+											<div class="faq__question-expand-btn-inner">
+												<div class="dash" />
+												<div class="dash" />
+											</div>
+										</div>
+									</div>
+								</WithToggleCollapse>
+
+								<Collapse
+									contentClassName="faq__question-answer"
+									id={`question-${sectionIndex}-${maxIndex + questionIndex}`}
+								>
+									{answer}
+								</Collapse>
+							</div>
+						))}
+					</Collapse>
+
+					<WithToggleCollapse collapse={`#collapsedQuestionsInSection-${sectionIndex}`}>
+						<div class="faq__more">
+							<Button variant="text" className="show" attach="horizontal">
+								Показать больше
+								<Icon iconName="chevron-bottom" />
+							</Button>
+							<Button variant="text" className="hide" attach="horizontal">
+								Скрыть
+								<Icon iconName="chevron-top" />
+							</Button>
+						</div>
+					</WithToggleCollapse>
+				</div>
+			</div>
+		))
+	}
+</div>
