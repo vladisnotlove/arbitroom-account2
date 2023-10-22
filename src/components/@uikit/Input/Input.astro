@@ -1,0 +1,21 @@
+---
+import classNames from "classnames";
+import InputUrlSync from "../InputUrlSync/InputUrlSync.astro";
+import "./Input.scss";
+
+export interface Props {
+	className?: string;
+	name?: string;
+	type?: string;
+	placeholder?: string;
+	urlSync?: boolean;
+}
+
+const { className, name, type = "text", placeholder, urlSync } = Astro.props;
+---
+
+<div class={classNames(className, "input")}>
+	<slot name="startAdornment" />
+	<InputUrlSync name={name} type={type} placeholder={placeholder} disabled={!urlSync} />
+	<slot name="endAdornment" />
+</div>
