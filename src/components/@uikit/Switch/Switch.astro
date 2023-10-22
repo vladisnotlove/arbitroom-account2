@@ -1,0 +1,38 @@
+---
+import classNames from "classnames";
+import "./Switch.scss";
+
+export interface Props {
+	className?: string;
+	color?: "success";
+	size?: "small";
+	labelOn?: string;
+	labelOff?: string;
+	checked?: boolean;
+	labelBefore?: boolean;
+}
+
+const { className, color, size, labelOn, labelOff, checked, labelBefore } = Astro.props;
+---
+
+<label class={classNames(className, "switch", color, size)} style="--swith-width: 40px">
+	{
+		labelBefore && (
+			<div class="switch__label">
+				<slot />
+			</div>
+		)
+	}
+	<input type="checkbox" checked={checked} />
+	<div class="switch__slider">
+		{labelOn && <div class="switch__on">{labelOn}</div>}
+		{labelOff && <div class="switch__off">{labelOff}</div>}
+	</div>
+	{
+		!labelBefore && (
+			<div class="switch__label">
+				<slot />
+			</div>
+		)
+	}
+</label>

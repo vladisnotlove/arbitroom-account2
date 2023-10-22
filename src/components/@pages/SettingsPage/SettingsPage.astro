@@ -1,7 +1,44 @@
 ---
+import Button from "components/@uikit/Button/Button.astro";
 import Layout from "layouts/Layout/Layout.astro";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockContent from "components/@uikit/Block/BlockContent.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import Userdata from "./Userdata/Userdata.astro";
+import Wallet from "./Wallet/Wallet.astro";
+import EditableSocials from "./EditableSocials/EditableSocials.astro";
+import TwoFactorAuth from "./TwoFactorAuth/TwoFactorAuth.astro";
+import BotNotificationSettings from "./BotNotificationSettings/BotNotificationSettings.astro";
+import ChangePasswordDialog from "./@dialogs/ChangePasswordDialog/ChangePasswordDialog.astro";
+import WithOpenModal from "components/@uikit/Modal/WithOpenModal.astro";
+import ChangeWalletDialog from "./@dialogs/ChangeWalletDialog/ChangeWalletDialog.astro";
+import ChangeUserdataDialog from "./@dialogs/ChangeUserdataDialog/ChangeUserdataDialog.astro";
+import "./SettingsPage.scss";
 ---
 
 <Layout title="Настройки" selectedMenuItem="settings">
-	<div class="content-settings">test</div>
+	<Fragment slot="modals">
+		<ChangeUserdataDialog />
+		<ChangePasswordDialog />
+		<ChangeWalletDialog />
+	</Fragment>
+
+	<div class="content-settings">
+		<Userdata className="content-settings__userdata" />
+		<Wallet className="content-settings__wallet" />
+		<EditableSocials className="content-settings__socials" />
+		<Block className="content-settings__password">
+			<BlockTitle>Пароль</BlockTitle>
+			<BlockContent>
+				<WithOpenModal modal="#changePasswordDialog">
+					<Button variant={"text"} attach="full">Сменить пароль</Button>
+				</WithOpenModal>
+			</BlockContent>
+		</Block>
+		<TwoFactorAuth className="content-settings__two-factor-auth" />
+		<BotNotificationSettings className="content-settings__bot-notification-settings" />
+		<div class="content-settings__logout">
+			<Button variant="outlined">Выйти из профиля</Button>
+		</div>
+	</div>
 </Layout>

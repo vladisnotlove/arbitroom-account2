@@ -1,0 +1,125 @@
+@import "../../../../styles/mixins.scss";
+
+.userdata {
+	display: grid;
+	grid-template-columns: min-content 1fr min-content;
+	grid-template-areas: "a i e";
+	grid-gap: 1.5rem;
+	padding: 1.5rem;
+	@include paper;
+}
+
+.userdata__avatar {
+	grid-area: a;
+	position: relative;
+	width: 5rem;
+	height: 5rem;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.userdata__info {
+	grid-area: i;
+}
+
+.userdata__edit-btn-container {
+	grid-area: e;
+}
+
+.userdata__avatar-img {
+	width: 100%;
+	height: 100%;
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: cover;
+}
+
+.userdata__avatar-edit-overlay {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	z-index: 10;
+	cursor: pointer;
+	background: rgba(0, 0, 0, 0.6);
+	transition: opacity $animation-slow;
+
+	svg {
+		fill: white;
+	}
+
+	&:hover {
+		opacity: 1;
+		transition: opacity $animation-normal;
+	}
+}
+
+.userdata__name {
+	margin-bottom: 0.25rem;
+	@include typography-h4;
+}
+
+.userdata__other {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 1.125rem;
+	@include typography-subtitle1;
+}
+
+// ADAPTIVE
+
+@media screen and (max-width: 1000px) {
+	.userdata {
+		grid-template-rows: auto auto;
+		grid-template-areas:
+			"a i"
+			". e";
+		grid-gap: 1.5rem;
+		grid-row-gap: 0.5rem;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.userdata {
+		grid-template-columns: min-content 1fr min-content;
+		grid-template-areas: "a i e";
+		grid-gap: 1.5rem;
+		grid-row-gap: 0.5rem;
+	}
+
+	.bot-notification-settings__switches {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 650px) {
+	.userdata {
+		grid-template-columns: auto 1fr;
+		grid-template-areas:
+			"a i"
+			". e";
+		grid-gap: 1.5rem;
+		grid-row-gap: 0.5rem;
+	}
+}
+
+@media (max-width: $breakpoint-mobile-big) {
+	.userdata__avatar {
+		width: 3.5rem;
+		height: 3.5rem;
+		margin-top: 0.5rem;
+	}
+
+	.userdata__name {
+		@include typography-h5;
+	}
+
+	.userdata__other {
+		@include typography-subtitle2;
+	}
+}

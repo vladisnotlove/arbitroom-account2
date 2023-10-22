@@ -39,6 +39,9 @@ const { variant = "default", title, selectedMenuItem } = Astro.props;
 		<LangaugeMenu />
 		<Notifications />
 
+		<!-- MODALS -->
+		<slot name="modals" />
+
 		<!-- MAIN -->
 		{
 			variant === "default" && (

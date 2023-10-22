@@ -1,0 +1,28 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockContent from "components/@uikit/Block/BlockContent.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import Button from "components/@uikit/Button/Button.astro";
+import CopyText from "components/@uikit/CopyText/CopyText.astro";
+import WithOpenModal from "components/@uikit/Modal/WithOpenModal.astro";
+import "./Wallet.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<Block className={classNames(className, "wallet")}>
+	<BlockTitle className="wallet__title">
+		Мой кошелёк
+		<WithOpenModal modal="#changeWalletDialog">
+			<Button variant="text" attach="full">Изменить</Button>
+		</WithOpenModal>
+	</BlockTitle>
+	<BlockContent>
+		<CopyText value="0x29D7d1dd5B6f9C864d9db560D72a247c64d9db560D772a247c64" />
+	</BlockContent>
+</Block>

@@ -1,0 +1,63 @@
+@import "../../../../styles/mixins.scss";
+
+.editable-socials__content {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 0.75rem;
+}
+
+.editable-social {
+	display: flex;
+	gap: 0.5rem;
+
+	.editable-social__add-btn {
+		display: none;
+	}
+
+	&.adding {
+		.editable-social__value {
+			display: none;
+		}
+
+		.editable-social__edit-btn {
+			display: none;
+		}
+
+		.editable-social__add-btn {
+			display: initial;
+		}
+	}
+}
+
+.editable-social__icon {
+	fill: $color-text-secondary;
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.editable-social__value {
+	@include typography-subtitle1;
+}
+
+.editable-social__edit-btn {
+	width: 1.5rem;
+	height: 1.5rem;
+	fill: $color-prime-main;
+	cursor: pointer;
+	@include with-outer-collider;
+}
+
+.editable-social__add-btn {
+	@include typography-subtitle1;
+	color: $color-prime-main;
+	cursor: pointer;
+	@include with-outer-collider;
+}
+
+// ADAPTIVE
+
+@media screen and (max-width: $breakpoint-mobile-big) {
+	.editable-socials__content {
+		gap: 1rem;
+	}
+}

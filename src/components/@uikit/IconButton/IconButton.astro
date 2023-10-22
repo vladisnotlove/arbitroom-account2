@@ -2,29 +2,23 @@
 import classNames from "classnames";
 import "./IconButton.scss";
 
-export interface Props {
+export interface Props extends Record<string, any> {
 	as?: keyof HTMLElementTagNameMap;
 	className?: string;
 	variant: "text" | "contained";
-	color?: "text-color" | "gray";
 	size?: "small" | "large";
-	props?: Record<string, string | undefined>;
+	color?: "text-color" | "gray";
+	attach?: "left" | "right" | "vertical" | "horizontal" | "full";
 }
 
-const {
-	as: As = "button",
-	className,
-	variant,
-	color,
-	size,
-	props = {},
-} = Astro.props;
-
-const colorClass = color ? "color-" + color : undefined;
+const { as: As = "button", className, variant, size, color, attach, ...props } = Astro.props;
 ---
 
 <As
-	class={classNames(className, "icon-button", variant, colorClass, size)}
+	class={classNames(className, "icon-button", variant, size, {
+		[`color-${color}`]: color !== undefined,
+		[`attach-${attach}`]: attach !== undefined,
+	})}
 	{...props}
 >
 	<slot />

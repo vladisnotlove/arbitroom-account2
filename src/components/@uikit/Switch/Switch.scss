@@ -1,0 +1,100 @@
+@import "../../../styles/mixins.scss";
+
+.switch {
+	position: relative;
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 1rem;
+	--switch-width: 71px;
+
+	input {
+		display: none;
+	}
+
+	&.success {
+		input:checked + .switch__slider {
+			background: $color-success-main;
+		}
+	}
+
+	&.small {
+		--switch-width: 51px;
+	}
+}
+
+.switch__slider {
+	flex-shrink: 0;
+	position: relative;
+	width: var(--switch-width);
+	height: 31px;
+	background-color: rgba(120, 120, 128, 0.16);
+	box-sizing: border-box;
+	border-radius: 1.6875rem;
+
+	cursor: pointer;
+	transition: background-color $animation-normal;
+
+	&::before {
+		content: "";
+		position: absolute;
+		left: 2px;
+		bottom: 2px;
+
+		height: 27px;
+		width: 27px;
+		border-radius: 50%;
+
+		border: 0.5px solid rgba(0, 0, 0, 0.04);
+		box-shadow:
+			0px 3px 8px rgba(0, 0, 0, 0.15),
+			0px 3px 1px rgba(0, 0, 0, 0.06);
+		background-color: #fff;
+
+		transition: transform $animation-normal;
+	}
+}
+
+.switch__off,
+.switch__on {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+
+	font-weight: 500;
+	font-size: 10px;
+	line-height: 14px;
+	letter-spacing: 0.4px;
+	user-select: none;
+
+	opacity: 0;
+	transition: opacity $animation-normal;
+}
+
+.switch__on {
+	left: 6px;
+}
+
+.switch__off {
+	right: 6px;
+}
+
+input:not(:checked) + .switch__slider > .switch__off {
+	opacity: 1;
+}
+
+input:checked + .switch__slider > .switch__on {
+	opacity: 1;
+}
+
+input:checked + .switch__slider {
+	background: $color-prime-main;
+}
+
+input:checked + .switch__slider:before {
+	transform: translateX(calc(var(--switch-width) - 31px));
+}
+
+.switch__label {
+	@include typography-body2;
+}

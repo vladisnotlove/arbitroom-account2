@@ -1,0 +1,37 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockContent from "components/@uikit/Block/BlockContent.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import Button from "components/@uikit/Button/Button.astro";
+import Chip from "components/@uikit/Chip/Chip.astro";
+import "./TwoFactorAuth.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<Block className={classNames(className, "two-factor-auth")}>
+	<BlockTitle>Двухфакторная аутентификация</BlockTitle>
+	<BlockContent className="two-factor-auth__content">
+		<div class="two-factor-auth__item turn-off">
+			<div class="two-factor-auth__label">Электронная почта</div>
+			<div class="two-factor-auth__control">
+				<Button className="two-factor-auth__turn-on-btn" variant="text" size="small">Подключить</Button>
+				<Chip className="two-factor-auth__turn-on-chip" color="success">Подключён</Chip>
+				<Button className="two-factor-auth__turn-off-btn" variant="text" size="small">Отключить</Button>
+			</div>
+		</div>
+		<div class="two-factor-auth__item turn-on">
+			<div class="two-factor-auth__label">Google authenticator</div>
+			<div class="two-factor-auth__control">
+				<Button className="two-factor-auth__turn-on-btn" variant="text" size="small">Подключить</Button>
+				<Chip className="two-factor-auth__turn-on-chip" color="success">Подключён</Chip>
+				<Button className="two-factor-auth__turn-off-btn" variant="text" size="small">Отключить</Button>
+			</div>
+		</div>
+	</BlockContent>
+</Block>

@@ -1,0 +1,24 @@
+---
+import Button from "components/@uikit/Button/Button.astro";
+import Dialog from "components/@uikit/Dialog/Dialog.astro";
+import DialogActions from "components/@uikit/Dialog/DialogActions.astro";
+import DialogContent from "components/@uikit/Dialog/DialogContent.astro";
+import DialogTitle from "components/@uikit/Dialog/DialogTitle.astro";
+import Field from "components/@uikit/Field/Field.astro";
+import Input from "components/@uikit/Input/Input.astro";
+---
+
+<Dialog as="form" id="changeWalletDialog" maxWidth="xs" fullWidth>
+	<DialogTitle>Изменить адрес кошелька</DialogTitle>
+	<DialogContent>
+		<Field marginBottom={1.5}>
+			<Input name="walletAddress" placeholder="Адрес кошелька" value="0x29D7d1dd5B6f9C864d9db560D72a28qwerqv" />
+		</Field>
+		<Field marginBottom={1.5}>
+			<Input name="code" placeholder="Код с Google Authenticator" />
+		</Field>
+	</DialogContent>
+	<DialogActions>
+		<Button variant="contained" type="submit" fullWidth>Сохранить</Button>
+	</DialogActions>
+</Dialog>

@@ -1,0 +1,50 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockContent from "components/@uikit/Block/BlockContent.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import Icon from "components/@uikit/Icon/Icon.astro";
+import "./EditableSocials.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<Block className={classNames(className, "editable-socials")}>
+	<BlockTitle>Социальные сети</BlockTitle>
+	<BlockContent className="editable-socials__content">
+		<div class="editable-social">
+			<Icon className="editable-social__icon" iconName="social-telegram" />
+			<div class="editable-social__add-btn">привязать</div>
+			<div class="editable-social__value">kris_anfalova</div>
+			<Icon className="editable-social__edit-btn" iconName="edit" />
+		</div>
+		<div class="editable-social">
+			<Icon className="editable-social__icon" iconName="social-instagram" />
+			<div class="editable-social__add-btn">привязать</div>
+			<div class="editable-social__value">kris_anfalova</div>
+			<Icon className="editable-social__edit-btn" iconName="edit" />
+		</div>
+		<div class="editable-social adding">
+			<Icon className="editable-social__icon" iconName="social-facebook" />
+			<div class="editable-social__add-btn">привязать</div>
+			<div class="editable-social__value">kris_anfalova</div>
+			<Icon className="editable-social__edit-btn" iconName="edit" />
+		</div>
+		<div class="editable-social">
+			<Icon className="editable-social__icon" iconName="social-youtube" />
+			<div class="editable-social__add-btn">привязать</div>
+			<div class="editable-social__value">kris_anfalova</div>
+			<Icon className="editable-social__edit-btn" iconName="edit" />
+		</div>
+		<div class="editable-social">
+			<Icon className="editable-social__icon" iconName="social-vk" />
+			<div class="editable-social__add-btn">привязать</div>
+			<div class="editable-social__value">kris_anfalova</div>
+			<Icon className="editable-social__edit-btn" iconName="edit" />
+		</div>
+	</BlockContent>
+</Block>

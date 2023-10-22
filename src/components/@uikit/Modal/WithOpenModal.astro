@@ -1,0 +1,17 @@
+---
+import WithAttributes from "../WithAttributes/WithAttributes.astro";
+
+export interface Props {
+	modal: string;
+}
+
+const { modal } = Astro.props;
+---
+
+<WithAttributes attributes={{ "data-open-modal": modal }}>
+	<slot />
+</WithAttributes>
+
+<script>
+	import "./WithOpenModal";
+</script>

@@ -1,0 +1,38 @@
+@import "../../../../styles/mixins.scss";
+
+.bot-notification-settings__title {
+	flex-wrap: wrap;
+	row-gap: 1rem;
+	justify-content: space-between;
+}
+
+.bot-notification-settings__content {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	align-items: flex-start;
+}
+
+.bot-notification-settings__switches {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+
+	& > .switch {
+		min-width: 0;
+		flex-wrap: nowrap;
+	}
+}
+
+.bot-notification-settings__save {
+	align-self: flex-end;
+}
+
+// ADAPTIVE
+
+@media screen and (max-width: 800px) {
+	.bot-notification-settings__switches {
+		grid-template-columns: 1fr;
+	}
+}

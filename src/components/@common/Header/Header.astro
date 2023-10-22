@@ -49,14 +49,7 @@ const { title, noBurger } = Astro.props;
 			{title.type === "logo" && <img class="header__logo" src="/_layout-assets/img/logo.svg" />}
 			{
 				title.type === "back" && (
-					<IconButton
-						as="a"
-						variant={"text"}
-						color={"text-color"}
-						props={{
-							href: title.href,
-						}}
-					>
+					<IconButton as="a" variant={"text"} color={"text-color"} href={title.href}>
 						<Icon iconName={"arrow-left"} />
 					</IconButton>
 				)

@@ -1,0 +1,62 @@
+@import "../../../styles/mixins.scss";
+
+// modal
+
+html.modal-open {
+	overflow: hidden;
+	scroll-behavior: auto;
+	padding-right: $scrollbar-width;
+
+	@media (hover: none) {
+		padding-right: 0;
+	}
+}
+
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	max-width: 100%;
+
+	z-index: $z-index-modal;
+	overflow-y: auto;
+
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity $animation-slow;
+
+	background: $color-overlay;
+	-webkit-backdrop-filter: blur(2rem);
+	backdrop-filter: blur(2rem);
+
+	&.open {
+		opacity: 1;
+		pointer-events: auto;
+		transition: opacity $animation-normal;
+	}
+}
+
+.modal__content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	padding: 2.5rem 1rem;
+
+	max-width: 100%;
+	min-height: 100%;
+	position: relative;
+	z-index: 20;
+}
+
+.modal-trigger {
+	position: relative;
+}
+
+@media screen and (max-width: $breakpoint-mobile-big) {
+	.modal__content {
+		padding: 1.5rem 1rem;
+	}
+}

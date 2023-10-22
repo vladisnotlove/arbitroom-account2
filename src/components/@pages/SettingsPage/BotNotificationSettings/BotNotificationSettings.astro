@@ -1,0 +1,40 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockContent from "components/@uikit/Block/BlockContent.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import Button from "components/@uikit/Button/Button.astro";
+import Icon from "components/@uikit/Icon/Icon.astro";
+import Switch from "components/@uikit/Switch/Switch.astro";
+import "./BotNotificationSettings.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<Block className={classNames(className, "bot-notification-settings")}>
+	<BlockTitle className="bot-notification-settings__title">
+		Уведомления в телеграм бот
+		<Button variant="text" attach="full">
+			<Icon iconName="social-telegram" /> Подключить бота
+		</Button>
+	</BlockTitle>
+	<BlockContent as="form" className="bot-notification-settings__content">
+		<div class="bot-notification-settings__switches">
+			<Switch color="success" labelOn="ВКЛ" labelOff="ВЫКЛ" checked>Подтверждение операции</Switch>
+			<Switch labelOn="ВКЛ" labelOff="ВЫКЛ">Регистрация нового партнера</Switch>
+			<Switch labelOn="ВКЛ" labelOff="ВЫКЛ" checked>Начисление с пула</Switch>
+			<Switch labelOn="ВКЛ" labelOff="ВЫКЛ" checked>Пополнение пула партнером</Switch>
+			<Switch labelOn="ВКЛ" labelOff="ВЫКЛ" checked>Доп. начисления с пула</Switch>
+			<Switch labelOn="ВКЛ" labelOff="ВЫКЛ" checked>Реферальные начисления от актива</Switch>
+			<Switch labelOn="ВКЛ" labelOff="ВЫКЛ">Премия/Бонус</Switch>
+			<Switch labelOn="ВКЛ" labelOff="ВЫКЛ" checked>Реферальные начисления от дохода</Switch>
+		</div>
+		<Button className="bot-notification-settings__save" variant={"outlined"} type="submit">
+			Сохранить изменения
+		</Button>
+	</BlockContent>
+</Block>

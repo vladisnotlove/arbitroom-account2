@@ -7,15 +7,19 @@ export interface Props {
 	label?: string;
 	labelSize?: "large";
 	fullWidth?: boolean;
+	marginBottom?: 1 | 1.5 | 2;
 }
 
-const { className, label, labelSize, fullWidth } = Astro.props;
+const { className, label, labelSize, fullWidth, marginBottom } = Astro.props;
 ---
 
 <div
 	class={classNames(className, "field", {
 		"full-width": fullWidth,
 	})}
+	style={{
+		marginBottom: marginBottom + "rem",
+	}}
 >
 	{label && <div class={classNames("field__label", labelSize)}>{label}</div>}
 	<div class="field__input-wrapper">

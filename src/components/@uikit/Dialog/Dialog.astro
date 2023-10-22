@@ -1,0 +1,26 @@
+---
+import classNames from "classnames";
+import Modal from "../Modal/Modal.astro";
+import "./Dialog.scss";
+
+export interface Props {
+	as?: keyof HTMLElementTagNameMap;
+	className?: string;
+	maxWidth?: "lg" | "sm" | "xs" | "440";
+	fullWidth?: boolean;
+	id: string;
+}
+
+const { className, as, id, maxWidth, fullWidth } = Astro.props;
+---
+
+<Modal as={as} id={id}>
+	<div
+		class={classNames(className, "dialog", {
+			[`max-width-${maxWidth}`]: maxWidth !== undefined,
+			"full-width": fullWidth,
+		})}
+	>
+		<slot />
+	</div>
+</Modal>

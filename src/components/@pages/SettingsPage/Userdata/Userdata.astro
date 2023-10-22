@@ -1,0 +1,37 @@
+---
+import classNames from "classnames";
+import Button from "components/@uikit/Button/Button.astro";
+import WithOpenModal from "components/@uikit/Modal/WithOpenModal.astro";
+import "./Useradata.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<div class={classNames(className, "userdata")}>
+	<div class="userdata__avatar">
+		<img class="userdata__avatar-img" src={"/_layout-assets/img/profile.png"} />
+		<div class="userdata__avatar-edit-overlay">
+			<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+				<path
+					d="M21.9247 10.5039C22.7225 10.5039 23.4607 10.9264 23.8647 11.6143L24.6793 13.0009H26.75C28.5449 13.0009 30 14.4559 30 16.2509V25.7509C30 27.5458 28.5449 29.0009 26.75 29.0009H13.25C11.4551 29.0009 10 27.5458 10 25.7509V16.2509C10 14.4559 11.4551 13.0009 13.25 13.0009H15.3304L16.205 11.5766C16.6143 10.9101 17.3403 10.5039 18.1224 10.5039H21.9247ZM20 16.0009C17.5147 16.0009 15.5 18.0156 15.5 20.5009C15.5 22.9861 17.5147 25.0009 20 25.0009C22.4853 25.0009 24.5 22.9861 24.5 20.5009C24.5 18.0156 22.4853 16.0009 20 16.0009ZM20 17.5009C21.6569 17.5009 23 18.844 23 20.5009C23 22.1577 21.6569 23.5009 20 23.5009C18.3431 23.5009 17 22.1577 17 20.5009C17 18.844 18.3431 17.5009 20 17.5009Z"
+				></path>
+			</svg>
+		</div>
+	</div>
+	<div class="userdata__info">
+		<div class="userdata__name">Кристина</div>
+		<div class="userdata__other">
+			<div class="userdata__login">kris_anfalova</div>
+			<div class="userdata__email">anfalovakristina@mail.ru</div>
+		</div>
+	</div>
+	<div class="userdata__edit-btn-container">
+		<WithOpenModal modal="#changeUserdataDialog">
+			<Button variant="text" attach="full">Изменить</Button>
+		</WithOpenModal>
+	</div>
+</div>

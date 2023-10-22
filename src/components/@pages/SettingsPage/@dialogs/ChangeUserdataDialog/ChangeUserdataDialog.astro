@@ -1,0 +1,27 @@
+---
+import Button from "components/@uikit/Button/Button.astro";
+import Dialog from "components/@uikit/Dialog/Dialog.astro";
+import DialogActions from "components/@uikit/Dialog/DialogActions.astro";
+import DialogContent from "components/@uikit/Dialog/DialogContent.astro";
+import DialogTitle from "components/@uikit/Dialog/DialogTitle.astro";
+import Field from "components/@uikit/Field/Field.astro";
+import Input from "components/@uikit/Input/Input.astro";
+---
+
+<Dialog as="form" id="changeUserdataDialog" maxWidth="xs" fullWidth>
+	<DialogTitle>Изменить личные данные</DialogTitle>
+	<DialogContent>
+		<Field label="Логин" marginBottom={1.5}>
+			<Input name="login" placeholder="kris_anfalova" value="kris_anfalova" />
+		</Field>
+		<Field label="Ваше имя" marginBottom={1.5}>
+			<Input name="name" placeholder="Кристина" value="Кристина" />
+		</Field>
+		<Field label="Электронная почта">
+			<Input name="email" placeholder="anfalovakristina@mail.ru" value="anfalovakristina@mail.ru" />
+		</Field>
+	</DialogContent>
+	<DialogActions>
+		<Button variant="contained" type="submit" fullWidth>Сохранить</Button>
+	</DialogActions>
+</Dialog>
