@@ -1,0 +1,54 @@
+@import "../../../styles/variables.scss";
+
+.fields {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+
+	&.disabled {
+		pointer-events: none;
+
+		.field__label {
+			color: $color-text-more-secondary;
+		}
+
+		// input
+
+		.input {
+			border-color: $color-text-more-secondary;
+
+			input {
+				color: $color-text-more-secondary;
+				pointer-events: none;
+			}
+		}
+
+		.field__helperText {
+			color: $color-text-more-secondary;
+		}
+	}
+}
+
+.field__label {
+	@include typography-caption;
+
+	&.large {
+		@include typography-subtitle1;
+	}
+}
+
+.field__helperText {
+	@include typography-caption;
+}
+
+.field__input {
+	& > .progress-bar {
+		margin-top: 0.75rem;
+	}
+}
