@@ -1,0 +1,32 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockContent from "components/@uikit/Block/BlockContent.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import ToggleButtonGroup from "components/@uikit/ToggleButtonGroup/ToggleButtonGroup.astro";
+
+export interface Props {
+	className?: string;
+	variant: "wallet" | "green" | "blue" | "purple" | "partner-balance";
+}
+
+const { className, variant } = Astro.props;
+const items = [
+	{ text: "Кошелек", value: "wallet" },
+	{ text: "Зеленый блок", value: "green" },
+	{ text: "Синий блок", value: "blue" },
+	{ text: "Фиолетовый блок", value: "purple" },
+	{ text: "Партнерский баланс", value: "partner-balance" },
+];
+---
+
+{
+	variant === "wallet" && (
+		<Block className={classNames(className, "outcome-form")}>
+			<BlockTitle>Вывести средства</BlockTitle>
+			<BlockContent>
+				<ToggleButtonGroup items={items} value="wallet" />
+			</BlockContent>
+		</Block>
+	)
+}

@@ -13,15 +13,17 @@ export interface Props extends Record<string, any> {
 	value: string;
 	urlSync?: boolean;
 	equalColumns?: boolean;
+	simple?: boolean;
 	disableJs?: boolean;
 }
 
-const { className, name, items, value, urlSync, equalColumns, disableJs, ...props } = Astro.props;
+const { className, name, items, value, urlSync, equalColumns, simple, disableJs, ...props } = Astro.props;
 ---
 
 <div
 	class={classNames(className, "toggle-button-group", {
 		"equal-columns": equalColumns,
+		simple: simple,
 	})}
 	data-disable-js={disableJs}
 	{...props}

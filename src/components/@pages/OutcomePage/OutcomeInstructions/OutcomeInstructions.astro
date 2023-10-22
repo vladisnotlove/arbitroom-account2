@@ -1,0 +1,23 @@
+---
+import Instructions from "components/@common/Instructions/Instructions.astro";
+
+export interface Props {
+	className?: string;
+	variant: "wallet" | "green" | "blue" | "purple" | "partner-balance";
+}
+
+const { className } = Astro.props;
+
+const title = "Как вывести средства c платформы Arbitroom?";
+const steps = [
+	"Прежде чем начать вывод средств с платформы Arbitroom, необходимо перейти в раздел «Настройки» и в блоке «Мой кошелек» сохранить номер своего USDT TRC20 кошелька",
+	"Перейдите в раздел «Вывод средств» и выберите «USDT TRC 20»",
+	"Укажите сумму вывода и адрес кошелька USDT TRC 20",
+	"Нажмите кнопку «Вывести средства»",
+];
+const tip = "Обращаем внимание, что минимальная сумма для вывода составляет 10 USDT, а регламент вывода 72 часа.";
+
+// todo: add other variants
+---
+
+<Instructions className={className} title={title} steps={steps} tip={tip} />

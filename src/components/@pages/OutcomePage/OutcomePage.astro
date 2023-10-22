@@ -1,12 +1,22 @@
 ---
+import classNames from "classnames";
 import Layout from "layouts/Layout/Layout.astro";
+import OutcomeForm from "./OutcomeForm/OutcomeForm.astro";
+import OutcomeInstructions from "./OutcomeInstructions/OutcomeInstructions.astro";
 import "./OutcomePage.scss";
 
-export interface Props {
-	className?: string;
-}
-
-const { className } = Astro.props;
+const variants = ["wallet"] as const;
 ---
 
-<Layout title="Вывод средств" selectedMenuItem="outcome">test</Layout>
+<Layout title="Вывод средств" selectedMenuItem="outcome">
+	<div class="content-outcome__form-variants">
+		{
+			variants.map((variant, index) => (
+				<div class={classNames("content-outcome__form-variant", { active: index === 0 })} data-key={variant}>
+					<OutcomeForm className="content-outcome__form" variant={variant} />
+					<OutcomeInstructions className="content-outcome__instructions" variant={variant} />
+				</div>
+			))
+		}
+	</div>
+</Layout>

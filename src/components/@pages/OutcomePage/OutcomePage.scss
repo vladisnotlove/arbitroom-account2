@@ -1,0 +1,11 @@
+@import "../../../styles/variables.scss";
+
+.content-outcome__form-variant {
+	display: grid;
+	grid-template-columns: 58% auto;
+	gap: 1rem;
+
+	&:not(.active) {
+		display: none;
+	}
+}
