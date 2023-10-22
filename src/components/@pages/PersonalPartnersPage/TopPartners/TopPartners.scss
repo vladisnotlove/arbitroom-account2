@@ -1,0 +1,51 @@
+@import "../../../../styles/mixins.scss";
+
+.top-partners__block {
+	height: 100%;
+}
+
+.top-partners__table-container {
+	overflow: auto;
+	@include scrollbar($padding: 0.25rem, $margin: 0.25rem);
+}
+
+.top-partners__chat-link {
+	display: inline-block;
+	@include with-outer-collider;
+}
+
+.top-partners__expand-btn {
+	display: none;
+}
+
+.top-partners__collapse-btn {
+	display: none;
+}
+
+// ADAPTIVE
+
+@media (max-width: $breakpoint-mobile-big) {
+	.top-partners {
+		&.expanded {
+			.top-partners__expand-btn {
+				display: none;
+			}
+
+			.top-partners__collapse-btn {
+				display: flex;
+			}
+
+			.top-partners__table-row:not(.visible) {
+				display: table-row !important;
+			}
+		}
+	}
+
+	.top-partners__table-row:not(.visible) {
+		display: none !important;
+	}
+
+	.top-partners__expand-btn {
+		display: flex;
+	}
+}

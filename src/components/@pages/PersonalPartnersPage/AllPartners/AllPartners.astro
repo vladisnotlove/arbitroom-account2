@@ -1,0 +1,64 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import Button from "components/@uikit/Button/Button.astro";
+import Icon from "components/@uikit/Icon/Icon.astro";
+import Pages from "components/@uikit/Pages/Pages.astro";
+import Table from "components/@uikit/Table/Table.astro";
+import TableBody from "components/@uikit/Table/TableBody.astro";
+import TableCell from "components/@uikit/Table/TableCell.astro";
+import TableHeader from "components/@uikit/Table/TableHeader.astro";
+import TableRow from "components/@uikit/Table/TableRow.astro";
+import "./AllPartners.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<Block className={classNames(className, "all-partners")}>
+	<BlockTitle>Все личные партнеры</BlockTitle>
+	<div class="all-partners__table-container">
+		<Table>
+			<TableHeader>
+				<TableRow>
+					<TableCell>Имя</TableCell>
+					<TableCell>Дата рег.</TableCell>
+					<TableCell>Сумма актива</TableCell>
+					<TableCell>Личн. парт.</TableCell>
+					<TableCell>Статус</TableCell>
+					<TableCell>Весь оборот</TableCell>
+					<TableCell>Контакты</TableCell>
+					<TableCell>Чат</TableCell>
+				</TableRow>
+			</TableHeader>
+			<TableBody>
+				{
+					new Array(5).fill(0).map(() => (
+						<TableRow>
+							<TableCell label="Имя">Александр Попов</TableCell>
+							<TableCell label="Дата рег.">01.10.2022</TableCell>
+							<TableCell label="Сумма актива">100 000 USDT</TableCell>
+							<TableCell label="Личн. партн.">12</TableCell>
+							<TableCell label="Статус">С3</TableCell>
+							<TableCell label="Весь оборот">643 000 USDT</TableCell>
+							<TableCell label="Контакты">anfalovakristina@mail.ru</TableCell>
+							<TableCell>
+								<a class="all-partners__chat-link" href="#">
+									<Icon iconName={"chat"} color="prime" size={"large"} />
+								</a>
+							</TableCell>
+						</TableRow>
+					))
+				}
+			</TableBody>
+		</Table>
+	</div>
+	<Pages
+		className="all-partners__pages"
+		items={[{ number: 1, active: true }, { number: 2 }, { number: 3 }, { number: 4 }, { number: 5 }]}
+	/>
+</Block>

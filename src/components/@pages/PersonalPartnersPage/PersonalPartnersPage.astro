@@ -1,8 +1,11 @@
 ---
 import Layout from "layouts/Layout/Layout.astro";
 import StatsCard from "components/@common/StatsCard/StatsCard.astro";
-import "./PersonalPartnersPage.scss";
 import MyPartnerLink from "./MyPartnerLink/MyPartnerLink.astro";
+import MyElderPartner from "./MyElderPartner/MyElderPartner.astro";
+import TopPartners from "./TopPartners/TopPartners.astro";
+import AllPartners from "./AllPartners/AllPartners.astro";
+import "./PersonalPartnersPage.scss";
 ---
 
 <Layout title="Личные партнёры" selectedMenuItem="personal-partners">
@@ -57,5 +60,8 @@ import MyPartnerLink from "./MyPartnerLink/MyPartnerLink.astro";
 			/>
 		</div>
 		<MyPartnerLink className="content-personal-partners__my-partner-link" />
+		<MyElderPartner className="content-personal-partners__my-elder-partner" />
+		<TopPartners className="content-personal-partners__top-partners" />
+		<AllPartners className="content-personal-partners__all-partners" />
 	</div>
 </Layout>

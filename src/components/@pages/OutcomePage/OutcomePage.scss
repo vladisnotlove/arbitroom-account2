@@ -24,7 +24,7 @@
 	height: 0;
 	min-height: 100%;
 
-	@include vertical-container-scrollbar();
+	@include scrollbar($margin: 0.25rem, $border: 0.25rem);
 	overflow-y: auto;
 	overflow-x: hidden;
 }

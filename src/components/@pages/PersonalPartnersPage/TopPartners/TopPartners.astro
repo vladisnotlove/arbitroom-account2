@@ -1,0 +1,63 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import Button from "components/@uikit/Button/Button.astro";
+import Icon from "components/@uikit/Icon/Icon.astro";
+import Table from "components/@uikit/Table/Table.astro";
+import TableBody from "components/@uikit/Table/TableBody.astro";
+import TableCell from "components/@uikit/Table/TableCell.astro";
+import TableHeader from "components/@uikit/Table/TableHeader.astro";
+import TableRow from "components/@uikit/Table/TableRow.astro";
+import WithToggleClass from "components/@uikit/WithToggleClass/WithToggleClass.astro";
+import "./TopPartners.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<div class={classNames(className, "top-partners")} id="topPartners">
+	<Block className="top-partners__block">
+		<BlockTitle>Топ 10 личных партнеров</BlockTitle>
+		<div class="top-partners__table-container">
+			<Table>
+				<TableHeader>
+					<TableRow>
+						<TableCell>Имя</TableCell>
+						<TableCell>Статус</TableCell>
+						<TableCell>Сумма актива</TableCell>
+						<TableCell>Весь оборот</TableCell>
+						<TableCell>Чат</TableCell>
+					</TableRow>
+				</TableHeader>
+				<TableBody>
+					{
+						new Array(10).fill(0).map((_item, index) => (
+							<TableRow className={classNames("top-partners__table-row", { visible: index < 5 })}>
+								<TableCell label="Имя">Александр Попов</TableCell>
+								<TableCell label="Статус">С3</TableCell>
+								<TableCell label="Сумма актива">100 000 USDT</TableCell>
+								<TableCell label="Весь оборот">643 000 USDT</TableCell>
+								<TableCell>
+									<a class="top-partners__chat-link" href="#">
+										<Icon iconName={"chat"} color="prime" size={"large"} />
+									</a>
+								</TableCell>
+							</TableRow>
+						))
+					}
+				</TableBody>
+			</Table>
+		</div>
+	</Block>
+	<WithToggleClass className="expanded" target="#topPartners">
+		<Button className={"top-partners__expand-btn"} variant="text">Показать всех</Button>
+	</WithToggleClass>
+
+	<WithToggleClass className="expanded" target="#topPartners">
+		<Button className={"top-partners__collapse-btn"} variant="text">Скрыть</Button>
+	</WithToggleClass>
+</div>

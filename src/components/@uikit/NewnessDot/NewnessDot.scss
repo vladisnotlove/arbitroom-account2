@@ -1,0 +1,9 @@
+@import "../../../styles/variables.scss";
+
+.newness-dot {
+	display: inline-block;
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 50%;
+	background: $color-prime-main;
+}

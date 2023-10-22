@@ -1,0 +1,11 @@
+@import "../../../../styles/mixins.scss";
+
+.all-partners__table-container {
+	border-bottom: 1px solid $color-divider;
+	@include scrollbar($padding: 0.25rem, $margin: 0.25rem);
+	overflow: auto;
+}
+
+.all-partners__chat-link {
+	@include with-outer-collider;
+}

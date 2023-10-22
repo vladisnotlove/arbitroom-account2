@@ -1,0 +1,62 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockContent from "components/@uikit/Block/BlockContent.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import Button from "components/@uikit/Button/Button.astro";
+import Icon from "components/@uikit/Icon/Icon.astro";
+import NewnessDot from "components/@uikit/NewnessDot/NewnessDot.astro";
+import "./MyElderPartner.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<Block className={classNames(className, "my-elder-partner")}>
+	<BlockTitle className={"my-elder-partner__title"}>
+		Мой старший партнёр
+		<div class="my-elder-partner__socials">
+			<a class="my-elder-partner__social" href="#">
+				<Icon iconName={"social-telegram"} />
+			</a>
+			<a class="my-elder-partner__social" href="#">
+				<Icon iconName={"social-vk"} />
+			</a>
+			<a class="my-elder-partner__social" href="#">
+				<Icon iconName={"social-facebook"} />
+			</a>
+			<a class="my-elder-partner__social" href="#">
+				<Icon iconName={"social-youtube"} />
+			</a>
+		</div>
+	</BlockTitle>
+	<BlockContent className={"my-elder-partner__content"}>
+		<div class={"my-elder-partner__main"}>
+			<div class="my-elder-partner__badge">
+				<img class="my-elder-partner__badge-avatar" src={"/_layout-assets/img/profile.png"} alt="" />
+				<div class="my-elder-partner__badge-body">
+					<div class="my-elder-partner__badge-name">
+						kris_anfalova
+						<NewnessDot />
+					</div>
+					<div class="my-elder-partner__badge-level">4 уровень</div>
+				</div>
+			</div>
+			<Button variant={"contained"} className="my-elder-partner__chat-btn" size={"medium"}>Написать в чат</Button>
+		</div>
+
+		<div class="my-elder-partner__main-socials">
+			<a class="my-elder-partner__main-social" href="#">
+				<Icon iconName={"social-telegram"} />
+				 Telegram_login
+			</a>
+			<a class="my-elder-partner__main-social" href="#">
+				<Icon iconName={"social-mail"} />
+				 anfalovakristina@mail.ru
+			</a>
+		</div>
+	</BlockContent>
+</Block>

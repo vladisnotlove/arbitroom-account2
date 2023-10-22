@@ -1,0 +1,104 @@
+@import "../../../../styles/mixins.scss";
+
+// title
+
+.my-elder-partner__title {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+}
+
+.my-elder-partner__socials {
+	display: flex;
+	align-items: center;
+	gap: 1.25rem;
+}
+
+.my-elder-partner__social {
+	& > .svg-icon {
+		width: 2rem;
+		height: 2rem;
+		color: $color-prime-main;
+	}
+}
+
+// content
+
+.my-elder-partner__content {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+// main (badge + chat btn)
+
+.my-elder-partner__main {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	column-gap: 1rem;
+	row-gap: 1.5rem;
+}
+
+// badge
+
+.my-elder-partner__badge {
+	flex-grow: 100;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.my-elder-partner__badge-avatar {
+	width: 4rem;
+	height: 4rem;
+	border-radius: 50%;
+}
+
+.my-elder-partner__badge-body {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.my-elder-partner__badge-name {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	@include typography-body1;
+}
+
+.my-elder-partner__badge-level {
+	@include typography-body2-text;
+	color: $color-text-secondary;
+}
+
+// chat btn
+
+.my-elder-partner__chat-btn {
+	flex-grow: 1;
+	padding: 0.625rem 0.75rem !important;
+}
+
+// main socials
+
+.my-elder-partner__main-socials {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 1.25rem;
+}
+
+.my-elder-partner__main-social {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+
+	& > .svg-icon {
+		width: 2rem;
+		height: 2rem;
+		color: $color-prime-main;
+	}
+}

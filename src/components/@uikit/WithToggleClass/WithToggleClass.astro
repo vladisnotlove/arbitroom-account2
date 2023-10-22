@@ -1,0 +1,18 @@
+---
+import WithAttributes from "../WithAttributes/WithAttributes.astro";
+
+export interface Props {
+	className: string;
+	target: string;
+}
+
+const { className, target } = Astro.props;
+---
+
+<WithAttributes attributes={{ "data-toggle-class": className, "data-target": target }}>
+	<slot />
+</WithAttributes>
+
+<script>
+	import "./WithToggleClass";
+</script>
