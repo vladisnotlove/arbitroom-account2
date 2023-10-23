@@ -6,7 +6,7 @@
 	grid-template-areas:
 		"mb mb mb ob ob ob"
 		"s s s s s s"
-		"f f . . . .";
+		"f f b b . .";
 	gap: 1rem;
 }
 
@@ -32,6 +32,10 @@
 
 .content-dashboard__fillness {
 	grid-area: f;
+}
+
+.content-dashboard__blocks-work {
+	grid-area: b;
 }
 
 // ADAPTIVE

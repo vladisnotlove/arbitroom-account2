@@ -16,10 +16,11 @@ export interface Props {
 	variant?: "default" | "langing";
 	title: string;
 	selectedMenuItem?: SideMenuProps["selected"];
-	hasMediaViewer?: boolean;
+	withMediaViewer?: boolean;
+	withChartJs?: boolean;
 }
 
-const { variant = "default", title, selectedMenuItem, hasMediaViewer } = Astro.props;
+const { variant = "default", title, selectedMenuItem, withMediaViewer, withChartJs } = Astro.props;
 ---
 
 <!doctype html>
@@ -32,6 +33,17 @@ const { variant = "default", title, selectedMenuItem, hasMediaViewer } = Astro.p
 		<link rel="icon" type="image/png" sizes="32x32" href={"/favicon-32x32.png"} />
 		<link rel="icon" type="image/png" sizes="16x16" href={"/favicon-16x16.png"} />
 		<link rel="manifest" href="/site.webmanifest" />
+		{
+			withChartJs && (
+				<script
+					is:inline
+					src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.js"
+					integrity="sha512-6HrPqAvK+lZElIZ4mZ64fyxIBTsaX5zAFZg2V/2WT+iKPrFzTzvx6QAsLW2OaLwobhMYBog/+bvmIEEGXi0p1w=="
+					crossorigin="anonymous"
+					referrerpolicy="no-referrer"
+				/>
+			)
+		}
 	</head>
 	<body>
 		<!-- LOADER -->
@@ -46,7 +58,7 @@ const { variant = "default", title, selectedMenuItem, hasMediaViewer } = Astro.p
 
 		<!-- MEDIA VIEWER -->
 		{
-			hasMediaViewer && (
+			withMediaViewer && (
 				<>
 					<MediaViewer />
 				</>

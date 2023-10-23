@@ -1,0 +1,42 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockContent from "components/@uikit/Block/BlockContent.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import "./BlocksWork.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<Block className={classNames(className, "blocks-work")} id="blocksWork">
+	<BlockTitle>Работа блоков</BlockTitle>
+	<BlockContent className="blocks-work__content">
+		<div class="blocks-work__tabs" id="blocksWorkTabs">
+			<div class="blocks-work__tab green active">1</div>
+			<div class="blocks-work__tab blue">2</div>
+			<div class="blocks-work__tab purple">3</div>
+		</div>
+	</BlockContent>
+	<div class="blocks-work__tab-contents" id="blocksWorkTabContents">
+		<div class="blocks-work__tab-content active">
+			<canvas class="blocks-work__chart" data-source="/_fake/blocksWorkChartData/green.json" data-variant="green"
+			></canvas>
+		</div>
+		<div class="blocks-work__tab-content">
+			<canvas class="blocks-work__chart" data-source="/_fake/blocksWorkChartData/blue.json" data-variant="blue"
+			></canvas>
+		</div>
+		<div class="blocks-work__tab-content">
+			<canvas class="blocks-work__chart" data-source="/_fake/blocksWorkChartData/purple.json" data-variant="purple"
+			></canvas>
+		</div>
+	</div>
+</Block>
+
+<script>
+	import "./BlocksWork";
+</script>

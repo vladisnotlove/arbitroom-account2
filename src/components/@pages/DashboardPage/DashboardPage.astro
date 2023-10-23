@@ -4,11 +4,12 @@ import SwiperSlide from "components/@uikit/Swiper/SwiperSlide.astro";
 import Layout from "layouts/Layout/Layout.astro";
 import Banner from "./Banner/Banner.astro";
 import StatsCard from "components/@common/StatsCard/StatsCard.astro";
-import "./DashboardPage.scss";
 import Fillness from "./Fillness/Fillness.astro";
+import BlocksWork from "./BlocksWork/BlocksWork.astro";
+import "./DashboardPage.scss";
 ---
 
-<Layout title="Dashboard" selectedMenuItem="dashboard">
+<Layout title="Dashboard" selectedMenuItem="dashboard" withChartJs>
 	<div class="content-dashboard">
 		<div class="content-dashboard__main-banner">
 			<Banner src="/_layout-assets/img/banners/01.png" />
@@ -79,5 +80,10 @@ import Fillness from "./Fillness/Fillness.astro";
 			/>
 		</div>
 		<Fillness className="content-dashboard__fillness" />
+		<BlocksWork className="content-dashboard__blocks-work" />
 	</div>
 </Layout>
+
+<script>
+	import "utils/configChartJs";
+</script>
