@@ -1,0 +1,57 @@
+@import "../../../styles/mixins.scss";
+
+.content-dashboard {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-areas:
+		"mb mb mb ob ob ob"
+		"s s s s s s";
+	gap: 1rem;
+}
+
+.content-dashboard__main-banner {
+	grid-area: mb;
+}
+
+.content-dashboard__other-banners {
+	grid-area: ob;
+}
+
+.content-dashboard__stats {
+	grid-area: s;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+
+	& > * {
+		flex-basis: 120px;
+		flex-grow: 1;
+	}
+}
+
+// ADAPTIVE
+
+@media (max-width: 720px) {
+	.content-dashboard {
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+		grid-template-areas:
+			"mb mb mb mb mb mb"
+			"ob ob ob ob ob ob"
+			"s s s s s s";
+	}
+}
+
+@media (max-width: $breakpoint-mobile-big) {
+	.content-dashboard {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.content-dashboard__stats {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		gap: 1rem;
+	}
+}

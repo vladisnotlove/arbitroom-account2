@@ -1,5 +1,81 @@
 ---
+import Swiper from "components/@uikit/Swiper/Swiper.astro";
+import SwiperSlide from "components/@uikit/Swiper/SwiperSlide.astro";
 import Layout from "layouts/Layout/Layout.astro";
+import Banner from "./Banner/Banner.astro";
+import StatsCard from "components/@common/StatsCard/StatsCard.astro";
+import "./DashboardPage.scss";
 ---
 
-<Layout title="Dashboard" selectedMenuItem="dashboard">test</Layout>
+<Layout title="Dashboard" selectedMenuItem="dashboard">
+	<div class="content-dashboard">
+		<div class="content-dashboard__main-banner">
+			<Banner src="/_layout-assets/img/banners/01.png" />
+		</div>
+		<div class="content-dashboard__other-banners">
+			<Swiper navigation pagination>
+				<SwiperSlide>
+					<Banner src="/_layout-assets/img/banners/02.png" />
+				</SwiperSlide>
+				<SwiperSlide>
+					<Banner src="/_layout-assets/img/banners/02.png" />
+				</SwiperSlide>
+				<SwiperSlide>
+					<Banner src="/_layout-assets/img/banners/02.png" />
+				</SwiperSlide>
+				<SwiperSlide>
+					<Banner src="/_layout-assets/img/banners/02.png" />
+				</SwiperSlide>
+			</Swiper>
+		</div>
+		<div class="content-dashboard__stats">
+			<StatsCard
+				title="Блоки активов"
+				icon="info"
+				items={[
+					{
+						value: "2500",
+						unit: "USDT",
+						name: "Текущие активы",
+					},
+					{
+						value: "52",
+						unit: "USDT",
+						name: "Текущий вывод",
+					},
+				]}
+			/>
+			<StatsCard
+				title="Партнёрская информация"
+				icon="money"
+				items={[
+					{
+						value: "А3",
+						name: "Мой статус",
+					},
+					{
+						value: "3500",
+						unit: "USDT",
+						name: "Парт. вознаграждение",
+					},
+				]}
+			/>
+			<StatsCard
+				title="Моя структура"
+				icon="channel-share"
+				items={[
+					{
+						value: "100",
+						unit: "чел.",
+						name: "Общ кол-во партнёров",
+					},
+					{
+						value: "100 500",
+						unit: "USDT",
+						name: "Общ оборот структуры",
+					},
+				]}
+			/>
+		</div>
+	</div>
+</Layout>

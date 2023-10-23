@@ -1,0 +1,13 @@
+---
+import classNames from "classnames";
+import "./Banner.scss";
+
+export interface Props {
+	className?: string;
+	src: string;
+}
+
+const { className, src } = Astro.props;
+---
+
+<img class={classNames(className, "banner")} src={src} />
