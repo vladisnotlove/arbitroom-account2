@@ -77,3 +77,9 @@
 .blocks-work__chart-container {
 	padding: 1rem;
 }
+
+@media (max-width: $breakpoint-mobile-big) {
+	.blocks-work__chart-container {
+		max-height: 334px;
+	}
+}

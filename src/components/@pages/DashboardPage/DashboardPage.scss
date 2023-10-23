@@ -7,7 +7,8 @@
 		"mb mb mb ob ob ob"
 		"s s s s s s"
 		"f f b b d d"
-		"i i i i a a";
+		"i i i i a a"
+		"o o o o o o";
 	gap: 1rem;
 }
 
@@ -51,6 +52,10 @@
 	grid-area: a;
 }
 
+.content-dashboard__operations {
+	grid-area: o;
+}
+
 // ADAPTIVE
 
 @media (max-width: 800px) {
@@ -61,7 +66,8 @@
 			"s s s s s s"
 			"f f f b b b "
 			"d d d a a a"
-			"i i i i i i";
+			"i i i i i i"
+			"o o o o o o";
 	}
 }
 

@@ -8,8 +8,10 @@ import Fillness from "./Fillness/Fillness.astro";
 import BlocksWork from "./BlocksWork/BlocksWork.astro";
 import Distribution from "./Distribution/Distribution.astro";
 import IncomeMetric from "./IncomeMetric/IncomeMetric.astro";
-import "./DashboardPage.scss";
 import AvgIncome from "./AvgIncome/AvgIncome.astro";
+import Operations from "components/@common/Operations/Operations.astro";
+
+import "./DashboardPage.scss";
 ---
 
 <Layout title="Dashboard" selectedMenuItem="dashboard" withChartJs>
@@ -87,6 +89,7 @@ import AvgIncome from "./AvgIncome/AvgIncome.astro";
 		<Distribution className="content-dashboard__distribution" />
 		<IncomeMetric className="content-dashboard__income-metric" />
 		<AvgIncome className="content-dashboard__avg-income" />
+		<Operations className="content-dashboard__operations" />
 	</div>
 </Layout>
 

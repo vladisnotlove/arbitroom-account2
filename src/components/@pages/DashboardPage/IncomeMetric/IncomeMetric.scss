@@ -106,7 +106,7 @@
 
 @container income-metric  (width < 450px) {
 	.income-metric__scroll-container {
-		@include scrollbar($margin: 0.25, $padding: 0.25rem);
+		@include scrollbar($margin: 0.25rem, $padding: 0.25rem);
 		overflow: auto;
 	}
 
