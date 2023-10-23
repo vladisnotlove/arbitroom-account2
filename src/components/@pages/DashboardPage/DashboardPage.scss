@@ -6,7 +6,8 @@
 	grid-template-areas:
 		"mb mb mb ob ob ob"
 		"s s s s s s"
-		"f f b b d d";
+		"f f b b d d"
+		"i i i i . .";
 	gap: 1rem;
 }
 
@@ -42,6 +43,10 @@
 	grid-area: d;
 }
 
+.content-dashboard__income-metric {
+	grid-area: i;
+}
+
 // ADAPTIVE
 
 @media (max-width: 720px) {
@@ -52,7 +57,8 @@
 			"ob ob ob ob ob ob"
 			"s s s s s s"
 			"f f f f f f"
-			"d d d d d d";
+			"d d d d d d"
+			"i i i i i i";
 	}
 }
 

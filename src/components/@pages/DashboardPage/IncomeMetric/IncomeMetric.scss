@@ -1,0 +1,105 @@
+@import "../../../../styles/mixins.scss";
+
+// stats
+
+.income-metric {
+	container-type: inline-size;
+	container-name: income-metric;
+}
+
+.income-metric__stats {
+	display: flex;
+	border-top: 1px solid $color-divider;
+	border-bottom: 1px solid $color-divider;
+}
+
+.income-metric__stat {
+	position: relative;
+	flex-basis: 120px;
+	flex-grow: 1;
+
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	justify-content: space-between;
+	gap: 0.5rem;
+
+	padding: 1rem 1.5rem;
+	border-inline-end: 1px solid $color-divider;
+	overflow: hidden;
+
+	&:last-child {
+		border-inline-end: none;
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		transform: translate(40%, 40%);
+		width: 144px;
+		height: 140px;
+		background: white;
+		opacity: 0.24;
+		filter: blur(50px);
+	}
+
+	&.green::before {
+		background: $color-green;
+	}
+
+	&.blue::before {
+		background: $color-blue;
+	}
+
+	&.purple::before {
+		background: $color-purple;
+	}
+}
+
+.income-metric__stat-title {
+	@include typography-subtitle1;
+}
+
+.income-metric__stat-value {
+	display: flex;
+	align-items: first baseline;
+	gap: 0.5rem;
+	margin-bottom: 0.25rem;
+
+	@include typography-h5;
+}
+
+.income-metric__stat-value-unit {
+	@include typography-body2;
+}
+
+.income-metric__stat-name {
+	@include typography-caption;
+	color: $color-text-more-secondary;
+}
+
+// chart
+
+.income-metric__chart-container {
+	padding: 1rem;
+}
+
+// ADAPTIVE
+
+@container income-metric  (width < 500px) {
+	.income-metric__stats {
+		flex-direction: column;
+	}
+
+	.income-metric__stat {
+		gap: 0.25rem;
+		border-right: none;
+		border-bottom: 1px solid $color-divider;
+
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+}

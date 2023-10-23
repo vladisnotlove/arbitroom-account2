@@ -1,0 +1,56 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockContent from "components/@uikit/Block/BlockContent.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import "./IncomeMetric.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<Block className={classNames(className, "income-metric")} id="incomeMetric">
+	<BlockTitle>Метрика доходности</BlockTitle>
+	<div class="income-metric__stats">
+		<div class="income-metric__stat green">
+			<div class="income-metric__stat-title">Зеленый блок актива</div>
+			<div class="income-metric__stat-content">
+				<div class="income-metric__stat-value">
+					3500
+					<div class="income-metric__stat-value-unit">USDT</div>
+				</div>
+				<div class="income-metric__stat-name">Доход за всё время</div>
+			</div>
+		</div>
+		<div class="income-metric__stat blue">
+			<div class="income-metric__stat-title">Синий блок актива</div>
+			<div class="income-metric__stat-content">
+				<div class="income-metric__stat-value">
+					3500
+					<div class="income-metric__stat-value-unit">USDT</div>
+				</div>
+				<div class="income-metric__stat-name">Доход за всё время</div>
+			</div>
+		</div>
+		<div class="income-metric__stat purple">
+			<div class="income-metric__stat-title">Фиолетовый блок актива</div>
+			<div class="income-metric__stat-content">
+				<div class="income-metric__stat-value">
+					3500
+					<div class="income-metric__stat-value-unit">USDT</div>
+				</div>
+				<div class="income-metric__stat-name">Доход за всё время</div>
+			</div>
+		</div>
+	</div>
+	<div class="income-metric__chart-container">
+		<canvas class="income-metric__chart" data-source="/_fake/dashboard/income-metric.json"></canvas>
+	</div>
+</Block>
+
+<script>
+	import "./IncomeMetric";
+</script>

@@ -1,3 +1,5 @@
+import createGradient from "utils/createGradient";
+
 type TBlockWorksData = {
 	yUnit: string;
 	x: number[];
@@ -9,16 +11,6 @@ const varintToColors: Record<string, [string, string] | undefined> = {
 	blue: ["#01E0FF", "#01E0FF1F"],
 	purple: ["#AB29FA", "#AB29FA1F"],
 };
-
-function createGradient(startColor: string, endColor: string) {
-	const canvas = document.createElement("canvas");
-	const ctx = canvas.getContext("2d");
-	const gradient = ctx.createLinearGradient(0, 0, 0, 260);
-	gradient.addColorStop(0, startColor);
-	gradient.addColorStop(1, endColor);
-	canvas.remove();
-	return gradient;
-}
 
 window.addEventListener("load", () => {
 	const root = document.getElementById("blocksWork");
@@ -61,6 +53,16 @@ window.addEventListener("load", () => {
 									backgroundColor: colors ? createGradient(...colors) : undefined,
 								},
 							],
+						},
+						options: {
+							scales: {
+								y: {
+									ticks: {
+										callback: (value) => `${value} ${data.yUnit}`,
+										maxTicksLimit: 11,
+									},
+								},
+							},
 						},
 					});
 				}

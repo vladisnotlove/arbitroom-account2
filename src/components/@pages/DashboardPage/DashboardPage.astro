@@ -6,8 +6,9 @@ import Banner from "./Banner/Banner.astro";
 import StatsCard from "components/@common/StatsCard/StatsCard.astro";
 import Fillness from "./Fillness/Fillness.astro";
 import BlocksWork from "./BlocksWork/BlocksWork.astro";
-import "./DashboardPage.scss";
 import Distribution from "./Distribution/Distribution.astro";
+import IncomeMetric from "./IncomeMetric/IncomeMetric.astro";
+import "./DashboardPage.scss";
 ---
 
 <Layout title="Dashboard" selectedMenuItem="dashboard" withChartJs>
@@ -83,6 +84,7 @@ import Distribution from "./Distribution/Distribution.astro";
 		<Fillness className="content-dashboard__fillness" />
 		<BlocksWork className="content-dashboard__blocks-work" />
 		<Distribution className="content-dashboard__distribution" />
+		<IncomeMetric className="content-dashboard__income-metric" />
 	</div>
 </Layout>
 
