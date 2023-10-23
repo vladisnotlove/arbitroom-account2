@@ -1,4 +1,4 @@
-type TData = {
+type TBlockWorksData = {
 	yUnit: string;
 	x: number[];
 	y: number[];
@@ -48,7 +48,7 @@ window.addEventListener("load", () => {
 
 		fetch(sourceUrl)
 			.then((response) => response.json())
-			.then((data: TData) => {
+			.then((data: TBlockWorksData) => {
 				if (window.Chart) {
 					const colors = varintToColors[variant];
 					new window.Chart(chart, {

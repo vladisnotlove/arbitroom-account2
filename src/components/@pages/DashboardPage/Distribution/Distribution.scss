@@ -1,0 +1,28 @@
+@import "../../../../styles/mixins.scss";
+
+// chart
+
+.distribution__chart-container {
+	width: 224px;
+	aspect-ratio: 1;
+	margin: 1.5rem auto;
+}
+
+// stats
+
+.distribution__stats {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 3rem;
+}
+
+.distribution__stat-label {
+	@include typography-caption;
+	text-align: center;
+	color: $color-text-secondary;
+}
+
+.distribution__stat-value {
+	@include typography-h6;
+	text-align: center;
+}

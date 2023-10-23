@@ -6,7 +6,7 @@
 	grid-template-areas:
 		"mb mb mb ob ob ob"
 		"s s s s s s"
-		"f f b b . .";
+		"f f b b d d";
 	gap: 1rem;
 }
 
@@ -38,6 +38,10 @@
 	grid-area: b;
 }
 
+.content-dashboard__distribution {
+	grid-area: d;
+}
+
 // ADAPTIVE
 
 @media (max-width: 720px) {
@@ -47,7 +51,8 @@
 			"mb mb mb mb mb mb"
 			"ob ob ob ob ob ob"
 			"s s s s s s"
-			"f f f f f f";
+			"f f f f f f"
+			"d d d d d d";
 	}
 }
 

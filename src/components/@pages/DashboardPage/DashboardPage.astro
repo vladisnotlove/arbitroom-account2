@@ -7,6 +7,7 @@ import StatsCard from "components/@common/StatsCard/StatsCard.astro";
 import Fillness from "./Fillness/Fillness.astro";
 import BlocksWork from "./BlocksWork/BlocksWork.astro";
 import "./DashboardPage.scss";
+import Distribution from "./Distribution/Distribution.astro";
 ---
 
 <Layout title="Dashboard" selectedMenuItem="dashboard" withChartJs>
@@ -81,6 +82,7 @@ import "./DashboardPage.scss";
 		</div>
 		<Fillness className="content-dashboard__fillness" />
 		<BlocksWork className="content-dashboard__blocks-work" />
+		<Distribution className="content-dashboard__distribution" />
 	</div>
 </Layout>
 

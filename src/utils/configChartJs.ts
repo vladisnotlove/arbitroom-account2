@@ -1,5 +1,6 @@
 if (window.Chart) {
 	const defaults = window.Chart.defaults;
+	const overrides = window.Chart.overrides;
 
 	defaults.font = {
 		...defaults.font,
@@ -7,7 +8,7 @@ if (window.Chart) {
 		size: 9,
 	};
 
-	defaults.animations = {};
+	// bar
 
 	defaults.borderColor = "transparent";
 	defaults.scales.category = {
@@ -34,6 +35,19 @@ if (window.Chart) {
 	defaults.elements.bar = {
 		...defaults.elements.bar,
 		borderRadius: 16,
+	};
+
+	// doughnut
+	defaults.datasets.doughnut = {
+		...defaults.datasets.doughnut,
+		borderColor: "transparent",
+		spacing: 4,
+	};
+
+	overrides.doughnut = {
+		...overrides.doughnut,
+		radius: "100%",
+		cutout: "84%",
 	};
 
 	defaults.aspectRatio = 1;

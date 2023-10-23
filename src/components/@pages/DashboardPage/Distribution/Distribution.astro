@@ -1,0 +1,40 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockContent from "components/@uikit/Block/BlockContent.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import "./Distribution.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<Block className={classNames(className, "distribution")} id="distribution">
+	<BlockTitle>Распределение</BlockTitle>
+	<BlockContent>
+		<div class="distribution__chart-container">
+			<canvas class="distribution__chart" data-source="/_fake/dashboard/distribution.json"></canvas>
+		</div>
+		<div class="distribution__stats">
+			<div class="distribution__stat">
+				<div class="distribution__stat-label">Зеленый блок</div>
+				<div class="distribution__stat-value">23%</div>
+			</div>
+			<div class="distribution__stat">
+				<div class="distribution__stat-label">Синий блок</div>
+				<div class="distribution__stat-value">19%</div>
+			</div>
+			<div class="distribution__stat">
+				<div class="distribution__stat-label">Фиолетовый блок</div>
+				<div class="distribution__stat-value">33%</div>
+			</div>
+		</div>
+	</BlockContent>
+</Block>
+
+<script>
+	import "./Distribution";
+</script>
