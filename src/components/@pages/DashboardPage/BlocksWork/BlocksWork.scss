@@ -74,12 +74,6 @@
 	}
 }
 
-.blocks-work__tab-contents {
+.blocks-work__chart-container {
 	padding: 1rem;
-}
-
-.blocks-work__tab-content {
-	&:not(.active) {
-		display: none;
-	}
 }

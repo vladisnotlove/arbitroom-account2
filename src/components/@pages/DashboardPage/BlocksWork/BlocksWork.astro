@@ -12,28 +12,17 @@ export interface Props {
 const { className } = Astro.props;
 ---
 
-<Block className={classNames(className, "blocks-work")} id="blocksWork">
+<Block className={classNames(className, "blocks-work")} id="blocksWork" data-source="/_fake/dashboard/blocks-work.json">
 	<BlockTitle>Работа блоков</BlockTitle>
 	<BlockContent className="blocks-work__content">
 		<div class="blocks-work__tabs" id="blocksWorkTabs">
-			<div class="blocks-work__tab green active">1</div>
-			<div class="blocks-work__tab blue">2</div>
-			<div class="blocks-work__tab purple">3</div>
+			<div class="blocks-work__tab green active" data-variant="green">Зелёный</div>
+			<div class="blocks-work__tab blue" data-variant="blue">Синий</div>
+			<div class="blocks-work__tab purple" data-variant="purple">Фиолетовый</div>
 		</div>
 	</BlockContent>
-	<div class="blocks-work__tab-contents" id="blocksWorkTabContents">
-		<div class="blocks-work__tab-content active">
-			<canvas class="blocks-work__chart" data-source="/_fake/dashboard/blocks-work/green.json" data-variant="green"
-			></canvas>
-		</div>
-		<div class="blocks-work__tab-content">
-			<canvas class="blocks-work__chart" data-source="/_fake/dashboard/blocks-work/blue.json" data-variant="blue"
-			></canvas>
-		</div>
-		<div class="blocks-work__tab-content">
-			<canvas class="blocks-work__chart" data-source="/_fake/dashboard/blocks-work/purple.json" data-variant="purple"
-			></canvas>
-		</div>
+	<div class="blocks-work__chart-container">
+		<canvas class="blocks-work__chart"></canvas>
 	</div>
 </Block>
 

@@ -1,56 +1,77 @@
 import createGradient from "utils/createGradient";
 
 type TBlockWorksData = {
-	yUnit: string;
-	x: number[];
-	y: number[];
+	green: {
+		yUnit: string;
+		x: number[];
+		y: number[];
+	};
+	blue: {
+		yUnit: string;
+		x: number[];
+		y: number[];
+	};
+	purple: {
+		yUnit: string;
+		x: number[];
+		y: number[];
+	};
 };
 
-const varintToColors: Record<string, [string, string] | undefined> = {
-	green: ["#25FF01", "#25FF011F"],
-	blue: ["#01E0FF", "#01E0FF1F"],
-	purple: ["#AB29FA", "#AB29FA1F"],
+const varintToColors: Record<string, { gradientStart: string; gradientEnd: string }> = {
+	green: {
+		gradientStart: "#25FF01",
+		gradientEnd: "#25FF011F",
+	},
+	blue: {
+		gradientStart: "#01E0FF",
+		gradientEnd: "#01E0FF1F",
+	},
+	purple: {
+		gradientStart: "#AB29FA",
+		gradientEnd: "#AB29FA1F",
+	},
 };
 
 window.addEventListener("load", () => {
 	const root = document.getElementById("blocksWork");
-
-	// set tabs logic
+	const sourceUrl = root.getAttribute("data-source");
 	const tabs = root.querySelectorAll(".blocks-work__tab");
-	const contents = root.querySelectorAll(".blocks-work__tab-content");
+	const chart = root.querySelector(".blocks-work__chart");
 
-	tabs.forEach((tab, index) => {
-		const content = contents[index];
-		tab.addEventListener("click", () => {
-			tabs.forEach((tab) => tab.classList.remove("active"));
-			contents.forEach((content) => content.classList.remove("active"));
+	if (!sourceUrl || !window.Chart || !tabs || !(chart instanceof HTMLCanvasElement)) return;
 
-			tab.classList.add("active");
-			content.classList.add("active");
-		});
-	});
+	fetch(sourceUrl)
+		.then((response) => response.json())
+		.then((allData: TBlockWorksData) => {
+			let chartInstance;
 
-	// set charts logic
-	const charts = root.querySelectorAll(".blocks-work__chart");
-	charts.forEach((chart) => {
-		const sourceUrl = chart.getAttribute("data-source");
-		const variant = chart.getAttribute("data-variant");
+			const updateChartData = (tab: Element) => {
+				const variant = tab.getAttribute("data-variant");
+				const data = allData[variant];
 
-		if (!sourceUrl || !variant || !(chart instanceof HTMLCanvasElement)) return;
+				if (!data) return;
 
-		fetch(sourceUrl)
-			.then((response) => response.json())
-			.then((data: TBlockWorksData) => {
-				if (window.Chart) {
-					const colors = varintToColors[variant];
-					new window.Chart(chart, {
+				const { gradientStart, gradientEnd } = varintToColors[variant];
+
+				if (chartInstance !== undefined) {
+					chartInstance.data.labels = data.x;
+					chartInstance.data.datasets = [
+						{
+							data: data.y,
+							backgroundColor: createGradient(gradientStart, gradientEnd),
+						},
+					];
+					chartInstance.update();
+				} else {
+					chartInstance = new window.Chart(chart, {
 						type: "bar",
 						data: {
 							labels: data.x,
 							datasets: [
 								{
 									data: data.y,
-									backgroundColor: colors ? createGradient(...colors) : undefined,
+									backgroundColor: createGradient(gradientStart, gradientEnd),
 								},
 							],
 						},
@@ -63,9 +84,27 @@ window.addEventListener("load", () => {
 									},
 								},
 							},
+							responsive: true,
+							maintainAspectRatio: false,
 						},
 					});
 				}
+			};
+
+			tabs.forEach((tab) => {
+				if (tab.classList.contains("active")) {
+					// change chart data
+					updateChartData(tab);
+				}
+
+				tab.addEventListener("click", () => {
+					// set active tab
+					tabs.forEach((tab) => tab.classList.remove("active"));
+					tab.classList.add("active");
+
+					// change chart data
+					updateChartData(tab);
+				});
 			});
-	});
+		});
 });

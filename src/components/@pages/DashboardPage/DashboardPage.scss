@@ -53,19 +53,19 @@
 
 // ADAPTIVE
 
-@media (max-width: 720px) {
+@media (max-width: 800px) {
 	.content-dashboard {
 		grid-template-areas:
 			"mb mb mb mb mb mb"
 			"ob ob ob ob ob ob"
 			"s s s s s s"
-			"b b b d d d "
-			"f f f a a a"
+			"f f f b b b "
+			"d d d a a a"
 			"i i i i i i";
 	}
 }
 
-@media (max-width: $breakpoint-mobile-big) {
+@media (max-width: 580px) {
 	.content-dashboard {
 		display: flex;
 		flex-direction: column;

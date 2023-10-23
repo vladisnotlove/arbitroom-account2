@@ -103,3 +103,15 @@
 		}
 	}
 }
+
+@container income-metric  (width < 450px) {
+	.income-metric__scroll-container {
+		@include scrollbar($margin: 0.25, $padding: 0.25rem);
+		overflow: auto;
+	}
+
+	.income-metric__chart-container {
+		min-width: 600px;
+		max-height: 400px;
+	}
+}

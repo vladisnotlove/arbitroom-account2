@@ -74,6 +74,10 @@ window.addEventListener("load", () => {
 						],
 					},
 					options: {
+						interaction: {
+							intersect: false,
+							mode: "index",
+						},
 						scales: {
 							x: {
 								ticks: {

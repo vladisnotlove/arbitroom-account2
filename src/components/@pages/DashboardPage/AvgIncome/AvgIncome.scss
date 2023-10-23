@@ -35,6 +35,7 @@
 
 	display: flex;
 	align-items: first baseline;
+	gap: 0.5rem;
 
 	@include typography-h5;
 }
@@ -48,4 +49,14 @@
 .avg-income__chart-container {
 	flex-basis: 0;
 	flex-grow: 1;
+	max-height: 156px;
+}
+
+// ADAPTIVE
+
+@media (max-width: $breakpoint-mobile-big) {
+	.avg-income__chart-container {
+		min-height: 104px;
+		max-height: 104px;
+	}
 }
