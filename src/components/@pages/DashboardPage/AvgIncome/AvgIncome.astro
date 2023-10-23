@@ -1,0 +1,67 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import "./AvgIncome.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<Block className={classNames(className, "avg-income")} id="avgIncome" data-source="/_fake/dashboard/avg-income.json">
+	<BlockTitle className="avg-income__title">Средний доход в день</BlockTitle>
+	<div class="avg-income__chart-blocks">
+		<div class="avg-income__chart-block">
+			<div class="avg-income__chart-stats">
+				<div class="avg-income__chart-stat">
+					0,92
+					<div class="avg-income__chart-stat-unit">%</div>
+				</div>
+				<div class="avg-income__chart-stat">
+					12
+					<div class="avg-income__chart-stat-unit">USDT</div>
+				</div>
+			</div>
+			<div class="avg-income__chart-container">
+				<canvas class="avg-income__chart" data-variant="green"> </canvas>
+			</div>
+		</div>
+		<div class="avg-income__chart-block">
+			<div class="avg-income__chart-stats">
+				<div class="avg-income__chart-stat">
+					0,92
+					<div class="avg-income__chart-stat-unit">%</div>
+				</div>
+				<div class="avg-income__chart-stat">
+					12
+					<div class="avg-income__chart-stat-unit">USDT</div>
+				</div>
+			</div>
+			<div class="avg-income__chart-container">
+				<canvas class="avg-income__chart" data-variant="blue"> </canvas>
+			</div>
+		</div>
+		<div class="avg-income__chart-block">
+			<div class="avg-income__chart-stats">
+				<div class="avg-income__chart-stat">
+					0,92
+					<div class="avg-income__chart-stat-unit">%</div>
+				</div>
+				<div class="avg-income__chart-stat">
+					12
+					<div class="avg-income__chart-stat-unit">USDT</div>
+				</div>
+			</div>
+			<div class="avg-income__chart-container">
+				<canvas class="avg-income__chart" data-variant="purple"> </canvas>
+			</div>
+		</div>
+	</div>
+</Block>
+
+<script>
+	import "./AvgIncome";
+</script>

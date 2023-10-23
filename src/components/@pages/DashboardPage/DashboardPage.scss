@@ -7,7 +7,7 @@
 		"mb mb mb ob ob ob"
 		"s s s s s s"
 		"f f b b d d"
-		"i i i i . .";
+		"i i i i a a";
 	gap: 1rem;
 }
 
@@ -47,17 +47,20 @@
 	grid-area: i;
 }
 
+.content-dashboard__avg-income {
+	grid-area: a;
+}
+
 // ADAPTIVE
 
 @media (max-width: 720px) {
 	.content-dashboard {
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 		grid-template-areas:
 			"mb mb mb mb mb mb"
 			"ob ob ob ob ob ob"
 			"s s s s s s"
-			"f f f f f f"
-			"d d d d d d"
+			"b b b d d d "
+			"f f f a a a"
 			"i i i i i i";
 	}
 }

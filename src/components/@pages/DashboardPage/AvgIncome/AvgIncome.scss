@@ -1,0 +1,51 @@
+@import "../../../../styles/variables.scss";
+
+.avg-income__title {
+}
+
+// blocks
+
+.avg-income__chart-blocks {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.avg-income__chart-block {
+	flex-basis: 0;
+	flex-grow: 1;
+
+	display: flex;
+	flex-direction: column;
+
+	border-top: 1px solid $color-divider;
+}
+
+// stats
+
+.avg-income__chart-stats {
+	flex-basis: 0;
+	display: flex;
+	padding: 1.25rem 1.5rem 1rem 1.5rem;
+}
+
+.avg-income__chart-stat {
+	flex-basis: 0;
+	flex-grow: 1;
+
+	display: flex;
+	align-items: first baseline;
+
+	@include typography-h5;
+}
+
+.avg-income__chart-stat-unit {
+	@include typography-body2;
+}
+
+// chart
+
+.avg-income__chart-container {
+	flex-basis: 0;
+	flex-grow: 1;
+}

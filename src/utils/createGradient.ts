@@ -1,10 +1,12 @@
+import { ChartArea } from "chart.js";
+
 function createGradient(
 	startColor: string,
 	endColor: string,
 	options: { height?: number; startPercent?: number } = {}
 ) {
 	const height = options.height ?? 260;
-	const startPercent = options.startPercent ?? 0;
+	const startPercent = options.startPercent ?? 0.1;
 
 	const canvas = document.createElement("canvas");
 	const ctx = canvas.getContext("2d");

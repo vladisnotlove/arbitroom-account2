@@ -9,6 +9,7 @@ import BlocksWork from "./BlocksWork/BlocksWork.astro";
 import Distribution from "./Distribution/Distribution.astro";
 import IncomeMetric from "./IncomeMetric/IncomeMetric.astro";
 import "./DashboardPage.scss";
+import AvgIncome from "./AvgIncome/AvgIncome.astro";
 ---
 
 <Layout title="Dashboard" selectedMenuItem="dashboard" withChartJs>
@@ -85,6 +86,7 @@ import "./DashboardPage.scss";
 		<BlocksWork className="content-dashboard__blocks-work" />
 		<Distribution className="content-dashboard__distribution" />
 		<IncomeMetric className="content-dashboard__income-metric" />
+		<AvgIncome className="content-dashboard__avg-income" />
 	</div>
 </Layout>
 

@@ -18,6 +18,7 @@
 	border-right: 1px solid $color-divider;
 	cursor: pointer;
 	overflow: hidden;
+	z-index: 2;
 
 	&:first-child {
 		border-top-left-radius: inherit;
@@ -49,6 +50,7 @@
 		transition: opacity $animation-normal;
 
 		filter: blur(18.66666603088379px);
+		z-index: -1;
 	}
 
 	&.green::before {
