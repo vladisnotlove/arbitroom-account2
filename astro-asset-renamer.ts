@@ -60,6 +60,8 @@ const astroAssetRenamer = (
 							const assetPathInWebsite = pth.normalize(parts[1]);
 							const assetPath = pth.join(dir, assetPathInWebsite);
 
+							if (parts[1].startsWith("http://") || parts[1].startsWith("https://")) return;
+
 							candidates.push({
 								htmlPath: toPosix(htmlPath),
 								htmlPathInWebsite: toPosix(htmlPathInWebsite),

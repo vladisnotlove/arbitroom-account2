@@ -73,7 +73,9 @@ export default defineConfig({
 				return page.path.replace(page.extname, asset.extname);
 			}
 		}),
-		astroHtmlRelativePaths(),
+		astroHtmlRelativePaths({
+			attributeNames: ["href", "src", "data-source"],
+		}),
 		astroCssRelativePaths(),
 	],
 });

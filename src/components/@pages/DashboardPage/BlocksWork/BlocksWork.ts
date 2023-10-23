@@ -59,15 +59,7 @@ window.addEventListener("load", () => {
 					chartInstance.data.datasets = [
 						{
 							data: data.y,
-							backgroundColor: (context) => {
-								debugger;
-								const { element } = context;
-
-								const { y, base } = element;
-								const barHeight = Math.abs(y - base);
-
-								return createGradient(gradientStart, gradientEnd, { height: barHeight });
-							},
+							backgroundColor: createGradient(gradientStart, gradientEnd),
 						},
 					];
 					chartInstance.update();
