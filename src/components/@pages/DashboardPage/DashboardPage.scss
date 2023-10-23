@@ -5,7 +5,8 @@
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 	grid-template-areas:
 		"mb mb mb ob ob ob"
-		"s s s s s s";
+		"s s s s s s"
+		"f f . . . .";
 	gap: 1rem;
 }
 
@@ -29,6 +30,10 @@
 	}
 }
 
+.content-dashboard__fillness {
+	grid-area: f;
+}
+
 // ADAPTIVE
 
 @media (max-width: 720px) {
@@ -37,7 +42,8 @@
 		grid-template-areas:
 			"mb mb mb mb mb mb"
 			"ob ob ob ob ob ob"
-			"s s s s s s";
+			"s s s s s s"
+			"f f f f f f";
 	}
 }
 

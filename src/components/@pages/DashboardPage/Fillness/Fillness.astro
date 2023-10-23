@@ -1,0 +1,41 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockContent from "components/@uikit/Block/BlockContent.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import "./Fillness.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<Block className={classNames(className, "fillness")}>
+	<BlockTitle>Заполненность</BlockTitle>
+	<BlockContent>
+		<div class="fillness__progress">
+			<div class="fillness__progress-title">75%</div>
+			<div class="fillness__progress-value" data-percent="75"></div>
+		</div>
+		<div class="fillness__stats">
+			<div class="fillness__stat">
+				<div class="fillness__stat-label">Зеленый блок</div>
+				<div class="fillness__stat-value">6 из 8</div>
+			</div>
+			<div class="fillness__stat">
+				<div class="fillness__stat-label">Синий блок</div>
+				<div class="fillness__stat-value">6 из 8</div>
+			</div>
+			<div class="fillness__stat">
+				<div class="fillness__stat-label">Фиолетовый блок</div>
+				<div class="fillness__stat-value">6 из 8</div>
+			</div>
+		</div>
+	</BlockContent>
+</Block>
+
+<script>
+	import "./Fillness";
+</script>

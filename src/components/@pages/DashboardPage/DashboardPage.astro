@@ -5,6 +5,7 @@ import Layout from "layouts/Layout/Layout.astro";
 import Banner from "./Banner/Banner.astro";
 import StatsCard from "components/@common/StatsCard/StatsCard.astro";
 import "./DashboardPage.scss";
+import Fillness from "./Fillness/Fillness.astro";
 ---
 
 <Layout title="Dashboard" selectedMenuItem="dashboard">
@@ -77,5 +78,6 @@ import "./DashboardPage.scss";
 				]}
 			/>
 		</div>
+		<Fillness className="content-dashboard__fillness" />
 	</div>
 </Layout>
