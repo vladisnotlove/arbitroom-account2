@@ -289,14 +289,15 @@
 
 .board__frame {
 	position: absolute;
-	top: -16px;
+	top: 0;
 	right: 94px;
 
 	width: 335px;
 	height: 100%;
 
 	background-image: url("/_layout-assets/img/_parts/board/frame.svg");
-	background-size: cover;
+	background-size: 100% 100%;
+	background-position: top left;
 }
 
 .board__row {
