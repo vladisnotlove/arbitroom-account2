@@ -16,6 +16,10 @@
 	overflow: auto;
 	@include scrollbar;
 
+	&:last-child {
+		border-bottom: none;
+	}
+
 	.chip {
 		white-space: nowrap;
 	}

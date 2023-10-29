@@ -10,14 +10,17 @@ import TableCell from "components/@uikit/Table/TableCell.astro";
 import Chip from "components/@uikit/Chip/Chip.astro";
 import Pages from "components/@uikit/Pages/Pages.astro";
 import Button from "components/@uikit/Button/Button.astro";
-import { data, columns } from "./data";
+import { data as _data, columns } from "./data";
 import "./Operations.scss";
 
 export interface Props {
 	className?: string;
+	variant?: "default" | "top10";
 }
 
-const { className } = Astro.props;
+const { className, variant } = Astro.props;
+
+const data = variant === "top10" ? [..._data, ..._data] : _data;
 ---
 
 <Block className={classNames(className, "operations")}>
@@ -51,8 +54,12 @@ const { className } = Astro.props;
 			</TableBody>
 		</Table>
 	</div>
-	<Pages
-		className="operations__pages"
-		items={[{ number: 1, active: true }, { number: 2 }, { number: 3 }, { number: 4 }, { number: 5 }]}
-	/>
+	{
+		variant !== "top10" && (
+			<Pages
+				className="operations__pages"
+				items={[{ number: 1, active: true }, { number: 2 }, { number: 3 }, { number: 4 }, { number: 5 }]}
+			/>
+		)
+	}
 </Block>
