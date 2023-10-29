@@ -48,10 +48,10 @@
 
 .board__cooler-left-fan {
 	position: absolute;
-	top: 33.36px;
-	left: 32.55px;
+	top: math.div(33.36, 279) * 100%;
+	left: math.div(32.5, 400) * 100%;
 
-	height: 171px;
+	height: math.div(171, 279) * 100%;
 	aspect-ratio: 1;
 
 	&::before,
@@ -71,7 +71,7 @@
 
 	&::before {
 		background-image: url("/_layout-assets/img/_parts/board/cooler-fan.png");
-		animation: fan-rotation 5s infinite linear;
+		animation: fan-rotation 6s infinite linear;
 	}
 
 	&::after {
@@ -105,10 +105,10 @@
 
 .board__cooler-right-fan {
 	position: absolute;
-	top: 33.36px;
-	right: 32.55px;
+	top: math.div(33.36, 279) * 100%;
+	right: math.div(32.5, 400) * 100%;
 
-	height: 171px;
+	height: math.div(171, 279) * 100%;
 	aspect-ratio: 1;
 
 	&::before,
@@ -128,8 +128,8 @@
 
 	&::before {
 		background-image: url("/_layout-assets/img/_parts/board/cooler-fan.png");
-		animation: fan-rotation 5s infinite linear;
-		animation-delay: -2s;
+		animation: fan-rotation 6s infinite linear;
+		animation-delay: -3s;
 	}
 
 	&::after {
@@ -153,13 +153,63 @@
 		position: absolute;
 		top: 50%;
 		left: 50%;
-
-		width: 135.739856802%;
-		height: 128.716013683%;
 		transform: translate(-50%, -50%);
+
+		height: math.div(340, 283) * 100%;
+		aspect-ratio: 1;
 
 		background-image: url("/_layout-assets/img/_parts/board/processor.png");
 		background-size: 100% 100%;
+	}
+}
+
+.board__processor-light {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	height: math.div(340, 283) * 100%;
+	aspect-ratio: 1;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url("/_layout-assets/img/_parts/board/processor-light1.png");
+		background-size: 100% 100%;
+		animation: processor-pulse 2s infinite;
+		animation-delay: -0.5s;
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url("/_layout-assets/img/_parts/board/processor-light2.png");
+		background-size: 100% 100%;
+		animation: processor-pulse 2s infinite;
+	}
+}
+
+@keyframes processor-pulse {
+	0% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1);
 	}
 }
 
