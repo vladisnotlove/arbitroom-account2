@@ -4,6 +4,12 @@ const getFinishDate = (el: Element) => {
 	return finishDate;
 };
 
+const getStartDate = (el: Element) => {
+	const str = el.getAttribute("data-timer-start-date");
+	const startDate = str ? new Date(str) : undefined;
+	return startDate;
+};
+
 const getFormat = (el: Element) => {
 	const str = el.getAttribute("data-timer-format");
 	return str || "hhhh:mm:ss";
@@ -11,13 +17,19 @@ const getFormat = (el: Element) => {
 
 const updateTimer = (timer: Element) => {
 	const finishDate = getFinishDate(timer);
+	const startDate = getStartDate(timer);
 	const format = getFormat(timer);
 
-	if (!finishDate) return;
+	if (!finishDate && !startDate) return;
 
-	const finish = finishDate.getTime();
 	const now = Date.now();
-	let diff = finish - now;
+
+	let diff = 0;
+	if (finishDate) {
+		diff = finishDate.getTime() - now;
+	} else if (startDate) {
+		diff = now - startDate.getTime();
+	}
 	diff = diff > 0 ? diff : 0;
 
 	let seconds = String(Math.floor(diff / 1000) % 60).padStart(2, "0");
@@ -39,8 +51,9 @@ window.addEventListener("load", () => {
 
 	timers.forEach((timer) => {
 		const finishDate = getFinishDate(timer);
-		if (!finishDate) {
-			console.warn("timer has no finish date", timer);
+		const startDate = getStartDate(timer);
+		if (!finishDate && !startDate) {
+			console.warn("timer has no finish date adn start date", timer);
 			return;
 		}
 

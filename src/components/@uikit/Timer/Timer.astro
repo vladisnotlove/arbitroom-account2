@@ -6,15 +6,17 @@ export type Props = Record<string, any> & {
 	className?: string;
 	format?: string; // available literals: dd, hh, hhhh, mm, ss
 	finishDate?: Date;
+	startDate?: Date;
 	placeholder?: string;
 };
 
-const { className, finishDate, format, placeholder, ...props } = Astro.props;
+const { className, finishDate, startDate, format, placeholder, ...props } = Astro.props;
 ---
 
 <div
 	class={classNames(className, "timer")}
 	data-timer-finish-date={finishDate?.toString()}
+	data-timer-start-date={startDate?.toString()}
 	data-timer-format={format}
 	{...props}
 >
