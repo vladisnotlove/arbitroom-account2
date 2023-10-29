@@ -83,7 +83,13 @@
 	}
 
 	&.small {
-		@include paddings-and-attachs(0.375rem);
+		@include paddings-and-attachs(0.25rem);
+
+		.pseudo-svg,
+		svg {
+			width: 1rem;
+			height: 1rem;
+		}
 	}
 
 	&.large {
