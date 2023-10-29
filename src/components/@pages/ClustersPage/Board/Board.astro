@@ -11,9 +11,13 @@ const { className } = Astro.props;
 
 <div class={classNames(className, "board")}>
 	<div class="board__top">
-		<div class="board__cooler-left"></div>
+		<div class="board__cooler-left">
+			<div class="board__cooler-left-fan"></div>
+		</div>
 		<div class="board__processor"></div>
-		<div class="board__cooler-right"></div>
+		<div class="board__cooler-right">
+			<div class="board__cooler-right-fan"></div>
+		</div>
 		<div class="board__wire-top-left"></div>
 		<div class="board__wire-top-right"></div>
 	</div>

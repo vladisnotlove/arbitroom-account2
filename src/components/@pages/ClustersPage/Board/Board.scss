@@ -24,15 +24,58 @@
 	&::before {
 		content: "";
 		position: absolute;
-		top: 0;
-		left: 0;
-		transform: translateX(-4.716981132%) translateY(-6.081081081%);
+		top: 50%;
+		left: 50%;
+		transform: translateX(-50%) translateY(-50%);
 
-		height: 106.093189964%;
-		aspect-ratio: 424 / 296;
+		height: math.div(400, 279) * 100%;
+		aspect-ratio: 600 / 400;
 
-		background-image: url("/_layout-assets/img/_parts/board/cooler-left.png");
+		background-image: url("/_layout-assets/img/_parts/board/cooler-left-background.png");
 		background-size: 100% 100%;
+		background-repeat: no-repeat;
+	}
+}
+
+@keyframes fan-rotation {
+	0% {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+	100% {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+
+.board__cooler-left-fan {
+	position: absolute;
+	top: 33.36px;
+	left: 32.55px;
+
+	height: 171px;
+	aspect-ratio: 1;
+
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		height: math.div(200, 171) * 100%;
+		aspect-ratio: 1;
+
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+	}
+
+	&::before {
+		background-image: url("/_layout-assets/img/_parts/board/cooler-fan.png");
+		animation: fan-rotation 5s infinite linear;
+	}
+
+	&::after {
+		background-image: url("/_layout-assets/img/_parts/board/cooler-fan-light.png");
 	}
 }
 
@@ -47,15 +90,50 @@
 	&::before {
 		content: "";
 		position: absolute;
-		top: 0;
-		right: 0;
-		transform: translateX(4.716981132%) translateY(-6.081081081%);
+		top: 50%;
+		left: 50%;
+		transform: translateX(-50%) translateY(-50%);
 
-		height: 106.093189964%;
-		aspect-ratio: 424 / 296;
+		height: math.div(400, 279) * 100%;
+		aspect-ratio: 600 / 400;
 
-		background-image: url("/_layout-assets/img/_parts/board/cooler-right.png");
+		background-image: url("/_layout-assets/img/_parts/board/cooler-right-background.png");
 		background-size: 100% 100%;
+		background-repeat: no-repeat;
+	}
+}
+
+.board__cooler-right-fan {
+	position: absolute;
+	top: 33.36px;
+	right: 32.55px;
+
+	height: 171px;
+	aspect-ratio: 1;
+
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		height: math.div(200, 171) * 100%;
+		aspect-ratio: 1;
+
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+	}
+
+	&::before {
+		background-image: url("/_layout-assets/img/_parts/board/cooler-fan.png");
+		animation: fan-rotation 5s infinite linear;
+		animation-delay: -2s;
+	}
+
+	&::after {
+		background-image: url("/_layout-assets/img/_parts/board/cooler-fan-light.png");
 	}
 }
 
@@ -387,7 +465,6 @@
 	// chip
 
 	.board__chip {
-		min-width: 100px;
 		max-width: 140px;
 		width: 100%;
 		height: auto;
