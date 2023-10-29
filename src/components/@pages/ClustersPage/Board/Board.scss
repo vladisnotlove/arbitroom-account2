@@ -163,6 +163,21 @@
 	}
 }
 
+@keyframes processor-pulse {
+	0% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1);
+	}
+}
+
 .board__processor-light {
 	position: absolute;
 	top: 50%;
@@ -195,21 +210,6 @@
 		background-image: url("/_layout-assets/img/_parts/board/processor-light2.png");
 		background-size: 100% 100%;
 		animation: processor-pulse 2s infinite;
-	}
-}
-
-@keyframes processor-pulse {
-	0% {
-		opacity: 0;
-		transform: scale(1);
-	}
-	50% {
-		opacity: 1;
-		transform: scale(1.1);
-	}
-	100% {
-		opacity: 0;
-		transform: scale(1);
 	}
 }
 
@@ -307,6 +307,21 @@
 
 // chip
 
+@keyframes chip-pulse {
+	0% {
+		opacity: 0.2;
+	}
+	45% {
+		opacity: 1;
+	}
+	55% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0.2;
+	}
+}
+
 .board__chip {
 	display: flex;
 	flex-direction: column;
@@ -324,6 +339,7 @@
 	font-size: 1rem;
 	line-height: normal;
 
+	&::after,
 	&::before {
 		content: "";
 		position: absolute;
@@ -343,6 +359,12 @@
 			background-image: url("/_layout-assets/img/_parts/board/chips/green.svg");
 			background-size: 100% 100%;
 		}
+
+		&::after {
+			background-image: url("/_layout-assets/img/_parts/board/chips/green-light.svg");
+			background-size: 100% 100%;
+			animation: chip-pulse 4s infinite linear;
+		}
 	}
 
 	&.blue {
@@ -351,6 +373,12 @@
 		&::before {
 			background-image: url("/_layout-assets/img/_parts/board/chips/blue.svg");
 			background-size: 100% 100%;
+		}
+
+		&::after {
+			background-image: url("/_layout-assets/img/_parts/board/chips/blue-light.svg");
+			background-size: 100% 100%;
+			animation: chip-pulse 4s infinite;
 		}
 	}
 
@@ -361,6 +389,12 @@
 			background-image: url("/_layout-assets/img/_parts/board/chips/purple.svg");
 			background-size: 100% 100%;
 		}
+
+		&::after {
+			background-image: url("/_layout-assets/img/_parts/board/chips/purple-light.svg");
+			background-size: 100% 100%;
+			animation: chip-pulse 4s infinite;
+		}
 	}
 
 	&.closed {
@@ -370,6 +404,20 @@
 			background-image: url("/_layout-assets/img/_parts/board/chips/closed.svg");
 			background-size: 100% 100%;
 		}
+	}
+}
+
+$delta: math.div(1, 4);
+
+@for $i from 1 through 8 {
+	.board__row:nth-child(#{$i}) > .board__chip:nth-child(1)::after {
+		animation-delay: -#{($i * 3 + 1) * $delta}s;
+	}
+	.board__row:nth-child(#{$i}) > .board__chip:nth-child(2)::after {
+		animation-delay: -#{($i * 3 + 2) * $delta}s;
+	}
+	.board__row:nth-child(#{$i}) > .board__chip:nth-child(3)::after {
+		animation-delay: -#{($i * 3 + 3) * $delta}s;
 	}
 }
 
