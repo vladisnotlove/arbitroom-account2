@@ -1,0 +1,27 @@
+---
+import Button from "components/@uikit/Button/Button.astro";
+import Dialog from "components/@uikit/Dialog/Dialog.astro";
+import DialogActions from "components/@uikit/Dialog/DialogActions.astro";
+import DialogContent from "components/@uikit/Dialog/DialogContent.astro";
+import DialogTitle from "components/@uikit/Dialog/DialogTitle.astro";
+import Field from "components/@uikit/Field/Field.astro";
+import Input from "components/@uikit/Input/Input.astro";
+import "./EnableGoogleAuthenticatorDialog.scss";
+---
+
+<Dialog as="form" className="enableGADialog" id="enableGoogleAuthenticationDialog" maxWidth="xs" fullWidth>
+	<DialogTitle>Отсканируйте QR</DialogTitle>
+	<DialogContent>
+		<div class="enableGADialog__tip">
+			<div class="enableGADialog__tip-text">Воспользуйтесь приложением Google Authenticator</div>
+			<img class="enableGADialog__tip-qrcode" src="/_layout-assets/img/qrcode.png" alt="" />
+			<div class="enableGADialog__tip-code">RJIORSQMNWSK62DO</div>
+		</div>
+		<Field>
+			<Input name="answer" placeholder="Ответ на ключевой вопрос" />
+		</Field>
+	</DialogContent>
+	<DialogActions>
+		<Button variant="contained" type="submit" fullWidth>Отключить</Button>
+	</DialogActions>
+</Dialog>

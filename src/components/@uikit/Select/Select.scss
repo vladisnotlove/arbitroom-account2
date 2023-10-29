@@ -1,0 +1,106 @@
+@import "../../../styles/mixins.scss";
+
+// select
+
+.select {
+	input {
+		display: none;
+	}
+
+	&.open {
+		.select__menu {
+			opacity: 1;
+			pointer-events: auto;
+			transition: opacity $animation-normal;
+		}
+
+		.select__trigger-icon {
+			transform: rotate(180deg);
+			transition: transform $animation-normal;
+		}
+	}
+
+	&.contained {
+		.select__trigger {
+			border-bottom: none;
+			padding: 0.75rem;
+			@include paper();
+		}
+	}
+}
+
+.select__trigger {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 0.75rem;
+
+	border: none;
+	border-bottom: 1px solid $color-text-secondary;
+	padding: 0.75rem 0;
+	fill: $color-text-prime;
+	@include typography-body2;
+	cursor: pointer;
+
+	&:focus {
+		outline: none;
+		border-color: $color-prime-main;
+	}
+}
+
+.select__trigger-value {
+	margin-right: auto;
+	&:empty:before {
+		content: attr(data-placeholder);
+		color: $color-text-more-secondary;
+	}
+}
+
+.select__trigger-icon {
+	transition: transform $animation-normal;
+}
+
+.select__menu {
+	@include paper;
+	@include paper-elevation1;
+
+	background: $color-select-background;
+
+	position: fixed;
+	padding: 0.625rem 0;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity $animation-normal;
+	z-index: $z-index-popper;
+	max-height: calc(100vh - 4rem);
+	overflow: auto;
+	@include scrollbar;
+}
+
+.select__menu-item {
+	position: relative;
+	padding: 0.625rem 1rem;
+	cursor: pointer;
+	transition: background $animation-normal;
+	@include typography-body2-text;
+
+	&:hover {
+		background: $color-action-hover;
+		transition: background $animation-fast;
+	}
+
+	&.selected::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: change-color($color-prime-main, $alpha: 0.08);
+		transition: background $animation-fast;
+	}
+}
+
+.select__overlay {
+	@include overlay($z-index-popper - 1);
+}

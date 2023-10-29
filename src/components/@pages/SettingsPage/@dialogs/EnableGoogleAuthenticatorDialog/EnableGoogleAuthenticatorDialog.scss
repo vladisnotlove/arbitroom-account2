@@ -1,0 +1,24 @@
+@import "../../../../../styles/variables.scss";
+
+.enableGADialog__tip {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+.enableGADialog__tip-text {
+	@include typography-body2;
+	text-align: center;
+}
+.enableGADialog__tip-qrcode {
+	width: 176px;
+	aspect-ratio: 1;
+	max-width: 100%;
+}
+
+.enableGADialog__tip-code {
+	@include typography-body2;
+	text-align: center;
+}

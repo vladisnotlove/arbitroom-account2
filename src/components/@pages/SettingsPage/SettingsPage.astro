@@ -13,7 +13,11 @@ import ChangePasswordDialog from "./@dialogs/ChangePasswordDialog/ChangePassword
 import WithOpenModal from "components/@uikit/Modal/WithOpenModal.astro";
 import ChangeWalletDialog from "./@dialogs/ChangeWalletDialog/ChangeWalletDialog.astro";
 import ChangeUserdataDialog from "./@dialogs/ChangeUserdataDialog/ChangeUserdataDialog.astro";
+import EnableEmailVerificationDialog from "./@dialogs/EnableEmailVerificationDialog/EnableEmailVerificationDialog.astro";
+import ConfirmEmailVerificationDialog from "./@dialogs/ConfirmEmailVerificationDialog/ConfirmEmailVerificationDialog.astro";
+import DisableGoogleAuthenticatorDialog from "./@dialogs/DisableGoogleAuthenticatorDialog/DisableGoogleAuthenticatorDialog.astro";
 import "./SettingsPage.scss";
+import EnableGoogleAuthenticatorDialog from "./@dialogs/EnableGoogleAuthenticatorDialog/EnableGoogleAuthenticatorDialog.astro";
 ---
 
 <Layout title="Настройки" selectedMenuItem="settings">
@@ -21,6 +25,10 @@ import "./SettingsPage.scss";
 		<ChangeUserdataDialog />
 		<ChangePasswordDialog />
 		<ChangeWalletDialog />
+		<EnableEmailVerificationDialog />
+		<ConfirmEmailVerificationDialog />
+		<EnableGoogleAuthenticatorDialog />
+		<DisableGoogleAuthenticatorDialog />
 	</Fragment>
 
 	<div class="content-settings">

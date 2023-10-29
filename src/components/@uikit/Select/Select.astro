@@ -1,0 +1,49 @@
+---
+import classNames from "classnames";
+import Icon from "../Icon/Icon.astro";
+import InputUrlSync from "../InputUrlSync/InputUrlSync.astro";
+import "./Select.scss";
+
+export type Props = {
+	className?: string;
+	items: Array<{
+		value: string;
+		label: string;
+	}>;
+	name?: string;
+	value?: string;
+	placeholder?: string;
+	urlSync?: boolean;
+	urlSyncOnlyInit?: boolean;
+};
+
+const { className, items, value, name, placeholder, urlSync, urlSyncOnlyInit } = Astro.props;
+---
+
+<div class={classNames(className, "select")}>
+	{
+		urlSync ? (
+			<InputUrlSync name={name} value={value || ""} onlyInit={urlSyncOnlyInit} />
+		) : (
+			<input name={name} value={value || ""} />
+		)
+	}
+	<div class="select__trigger" tabindex="0">
+		<slot name="startAdornment" />
+		<div class="select__trigger-value" data-placeholder={placeholder}></div>
+		<Icon className={"select__trigger-icon"} iconName={"chevron-bottom"} />
+	</div>
+	<div class="select__menu">
+		{
+			items.map(({ label, value }) => (
+				<div class="select__menu-item" data-value={value}>
+					{label}
+				</div>
+			))
+		}
+	</div>
+</div>
+
+<script>
+	import "./Select";
+</script>

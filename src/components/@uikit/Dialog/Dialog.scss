@@ -5,7 +5,7 @@
 	flex-direction: column;
 	max-width: 100%;
 	@include paper;
-	background: $color-background;
+	background: $color-dialog-background;
 
 	&.large {
 		.dialog__title {

@@ -1,0 +1,54 @@
+---
+import Button from "components/@uikit/Button/Button.astro";
+import Dialog from "components/@uikit/Dialog/Dialog.astro";
+import DialogActions from "components/@uikit/Dialog/DialogActions.astro";
+import DialogContent from "components/@uikit/Dialog/DialogContent.astro";
+import DialogTitle from "components/@uikit/Dialog/DialogTitle.astro";
+import Field from "components/@uikit/Field/Field.astro";
+import Input from "components/@uikit/Input/Input.astro";
+import Select from "components/@uikit/Select/Select.astro";
+---
+
+<Dialog as="form" id="disableGoogleAuthenticationDialog" maxWidth="xs" fullWidth>
+	<DialogTitle>Отключить Google Authenticator</DialogTitle>
+	<DialogContent>
+		<Field marginBottom={1.5}>
+			<Select
+				items={[
+					{ label: "Любимое блюдо", value: "1" },
+					{ label: "Почтовый индекс", value: "2" },
+					{ label: "Дата рождения бабушки", value: "3" },
+					{ label: "Ваше прозвище в школе", value: "4" },
+					{ label: "Номер паспорта", value: "5" },
+					{ label: "Пять последних цифр кред. карты", value: "6" },
+				]}
+				name="question"
+				placeholder="Выберите вопрос для ключевой фразы"
+			/>
+		</Field>
+		<Field>
+			<Input name="answer" placeholder="Ответ на ключевой вопрос" />
+		</Field>
+	</DialogContent>
+	<DialogActions>
+		<Button variant="contained" type="submit" fullWidth>Отключить</Button>
+	</DialogActions>
+</Dialog>
+
+<!-- fake script -->
+<script is:inline>
+	window.addEventListener("load", () => {
+		const form = document.getElementById("disableGoogleAuthenticationDialog");
+		const gauth = document.querySelector(".two-factor-auth__content > div.two-factor-auth__item:nth-child(2)");
+
+		form.addEventListener("submit", (e) => {
+			e.preventDefault();
+
+			form.classList.remove("open");
+			document.documentElement.classList.remove("modal-open");
+
+			gauth.classList.add("turn-off");
+			gauth.classList.remove("turn-on");
+		});
+	});
+</script>

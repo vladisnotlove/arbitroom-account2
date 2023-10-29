@@ -8,17 +8,17 @@ import Field from "components/@uikit/Field/Field.astro";
 import Input from "components/@uikit/Input/Input.astro";
 ---
 
-<Dialog as="form" id="changeWalletDialog" maxWidth="xs" fullWidth>
-	<DialogTitle>Изменить адрес кошелька</DialogTitle>
+<Dialog as="form" id="confirmEmailVerificationDialog" maxWidth="xs" fullWidth>
+	<DialogTitle>Подключить проверку через почту</DialogTitle>
 	<DialogContent>
-		<Field marginBottom={1.5}>
-			<Input name="walletAddress" placeholder="Адрес кошелька" value="0x29D7d1dd5B6f9C864d9db560D72a28qwerqv" />
-		</Field>
+		<div style="font-size: 1rem; font-weight: 500; line-height: 1.5rem; margin-bottom: 2rem">
+			Введите код, отправленный на example@mail.ru
+		</div>
 		<Field>
-			<Input name="code" placeholder="Код с Google Authenticator" />
+			<Input name="code" placeholder="Код подтверждения" />
 		</Field>
 	</DialogContent>
 	<DialogActions>
-		<Button variant="contained" type="submit" fullWidth>Сохранить</Button>
+		<Button variant="contained" type="submit" fullWidth>Подтвердить</Button>
 	</DialogActions>
 </Dialog>

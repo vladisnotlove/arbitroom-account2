@@ -11,14 +11,14 @@ import Input from "components/@uikit/Input/Input.astro";
 <Dialog as="form" id="changeUserdataDialog" maxWidth="xs" fullWidth>
 	<DialogTitle>Изменить личные данные</DialogTitle>
 	<DialogContent>
-		<Field label="Логин" marginBottom={1.5}>
-			<Input name="login" placeholder="kris_anfalova" value="kris_anfalova" />
-		</Field>
 		<Field label="Ваше имя" marginBottom={1.5}>
 			<Input name="name" placeholder="Кристина" value="Кристина" />
 		</Field>
-		<Field label="Электронная почта">
+		<Field label="Электронная почта" marginBottom={1.5}>
 			<Input name="email" placeholder="anfalovakristina@mail.ru" value="anfalovakristina@mail.ru" />
+		</Field>
+		<Field>
+			<Input name="code" placeholder="Код с Google Authenticator" />
 		</Field>
 	</DialogContent>
 	<DialogActions>

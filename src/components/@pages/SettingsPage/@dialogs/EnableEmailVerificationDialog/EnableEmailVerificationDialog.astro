@@ -1,0 +1,38 @@
+---
+import Button from "components/@uikit/Button/Button.astro";
+import Dialog from "components/@uikit/Dialog/Dialog.astro";
+import DialogActions from "components/@uikit/Dialog/DialogActions.astro";
+import DialogContent from "components/@uikit/Dialog/DialogContent.astro";
+import DialogTitle from "components/@uikit/Dialog/DialogTitle.astro";
+import Field from "components/@uikit/Field/Field.astro";
+import Input from "components/@uikit/Input/Input.astro";
+---
+
+<Dialog as="form" id="enableEmailVerificationDialog" maxWidth="xs" fullWidth>
+	<DialogTitle>Подключить проверку через почту</DialogTitle>
+	<DialogContent>
+		<div style="font-size: 1rem; font-weight: 500; line-height: 1.5rem; margin-bottom: 2rem">
+			Введите электронную почту. На неё будет отправлен код подтверждения
+		</div>
+		<Field>
+			<Input name="email" placeholder="Электронная почта" />
+		</Field>
+	</DialogContent>
+	<DialogActions>
+		<Button variant="contained" type="submit" fullWidth>Отправить код</Button>
+	</DialogActions>
+</Dialog>
+
+<!-- fake script -->
+<script is:inline>
+	window.addEventListener("load", () => {
+		const form1 = document.getElementById("enableEmailVerificationDialog");
+		const form2 = document.getElementById("confirmEmailVerificationDialog");
+
+		form1.addEventListener("submit", (e) => {
+			e.preventDefault();
+			form1.classList.remove("open");
+			form2.classList.add("open");
+		});
+	});
+</script>
