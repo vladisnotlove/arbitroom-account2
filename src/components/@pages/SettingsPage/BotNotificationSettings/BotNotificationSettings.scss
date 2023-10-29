@@ -36,3 +36,9 @@
 		grid-template-columns: 1fr;
 	}
 }
+
+@media screen and (max-width: 650px) {
+	.bot-notification-settings__save {
+		width: 100%;
+	}
+}
