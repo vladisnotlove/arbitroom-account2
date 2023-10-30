@@ -1,0 +1,18 @@
+---
+import classNames from "classnames";
+import Button from "components/@uikit/Button/Button.astro";
+import WithOpenModal from "components/@uikit/Modal/WithOpenModal.astro";
+import "./LoginOverlay.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<div class={classNames(className, "login-overlay")}>
+	<WithOpenModal modal="#loginDialog">
+		<Button variant="contained">Войти / Зарегистрироваться</Button>
+	</WithOpenModal>
+</div>

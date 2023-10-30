@@ -6,23 +6,29 @@ export interface Props {
 	className?: string;
 	label?: string;
 	labelSize?: "large";
+	error?: boolean;
 	fullWidth?: boolean;
+	helperText?: string;
 	marginBottom?: 1 | 1.5 | 2;
 }
 
-const { className, label, labelSize, fullWidth, marginBottom } = Astro.props;
+const { className, label, labelSize, error, fullWidth, helperText, marginBottom } = Astro.props;
 ---
 
 <div
 	class={classNames(className, "field", {
 		"full-width": fullWidth,
+		error,
 	})}
 	style={{
-		marginBottom: marginBottom + "rem",
+		...(marginBottom && {
+			marginBottom: marginBottom + "rem",
+		}),
 	}}
 >
 	{label && <div class={classNames("field__label", labelSize)}>{label}</div>}
 	<div class="field__input-wrapper">
 		<slot />
 	</div>
+	{helperText && <div class="field__helper-text">{helperText}</div>}
 </div>

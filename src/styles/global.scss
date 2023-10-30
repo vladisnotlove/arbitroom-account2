@@ -10,6 +10,7 @@ html {
 	scroll-behavior: smooth;
 	@include scrollbar($track-color: $color-background, $track-border-radius: 0);
 	font-family: Golos;
+	font-size: 16px;
 
 	min-height: 100vh;
 	background-image: url("/_layout-assets/img/background.svg"),
@@ -21,5 +22,5 @@ html {
 
 body {
 	color: $color-text-prime;
-	font-size: 16px;
+	@include typography-body2;
 }

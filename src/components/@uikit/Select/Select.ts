@@ -28,8 +28,10 @@ window.addEventListener("load", () => {
 			return;
 		}
 
+		document.body.append(menu);
+
 		const popper = createPopper(trigger, menu, {
-			strategy: "fixed",
+			strategy: "absolute",
 			modifiers: [sameWidth],
 		});
 

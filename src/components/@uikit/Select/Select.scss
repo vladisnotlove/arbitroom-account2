@@ -8,12 +8,6 @@
 	}
 
 	&.open {
-		.select__menu {
-			opacity: 1;
-			pointer-events: auto;
-			transition: opacity $animation-normal;
-		}
-
 		.select__trigger-icon {
 			transform: rotate(180deg);
 			transition: transform $animation-normal;
@@ -75,6 +69,12 @@
 	max-height: calc(100vh - 4rem);
 	overflow: auto;
 	@include scrollbar;
+
+	&.open {
+		opacity: 1;
+		pointer-events: auto;
+		transition: opacity $animation-normal;
+	}
 }
 
 .select__menu-item {

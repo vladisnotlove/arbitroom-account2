@@ -1,0 +1,26 @@
+---
+import Button from "components/@uikit/Button/Button.astro";
+import Dialog from "components/@uikit/Dialog/Dialog.astro";
+import DialogActions from "components/@uikit/Dialog/DialogActions.astro";
+import DialogContent from "components/@uikit/Dialog/DialogContent.astro";
+import DialogSubactions from "components/@uikit/Dialog/DialogSubactions.astro";
+import DialogTitle from "components/@uikit/Dialog/DialogTitle.astro";
+import Field from "components/@uikit/Field/Field.astro";
+import Input from "components/@uikit/Input/Input.astro";
+import WithOpenModal from "components/@uikit/Modal/WithOpenModal.astro";
+---
+
+<Dialog as="form" id="restorePasswordDialog" size="large" maxWidth="sm" fullWidth>
+	<DialogTitle>Забыли пароль?</DialogTitle>
+	<DialogContent>
+		<Field>
+			<Input name="email" placeholder="Электронная почта" />
+		</Field>
+	</DialogContent>
+	<DialogActions>
+		<Button variant="contained" type="submit" fullWidth>Восстановление пароля</Button>
+	</DialogActions>
+	<DialogSubactions>
+		<span style="text-decoration: underline; cursor: pointer">Или введите секретную фразу</span>
+	</DialogSubactions>
+</Dialog>

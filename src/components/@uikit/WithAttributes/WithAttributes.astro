@@ -2,7 +2,7 @@
 import { parse, HTMLElement } from "node-html-parser";
 
 export interface Props {
-	attributes: Record<string, string | ((prev: string | undefined) => string | undefined)>;
+	attributes: Record<string, string | undefined | ((prev: string | undefined) => string | undefined)>;
 }
 
 const { attributes } = Astro.props;

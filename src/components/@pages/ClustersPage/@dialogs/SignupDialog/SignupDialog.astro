@@ -1,0 +1,72 @@
+---
+import Button from "components/@uikit/Button/Button.astro";
+import Dialog from "components/@uikit/Dialog/Dialog.astro";
+import DialogActions from "components/@uikit/Dialog/DialogActions.astro";
+import DialogContent from "components/@uikit/Dialog/DialogContent.astro";
+import DialogSubactions from "components/@uikit/Dialog/DialogSubactions.astro";
+import DialogTitle from "components/@uikit/Dialog/DialogTitle.astro";
+import Field from "components/@uikit/Field/Field.astro";
+import Input from "components/@uikit/Input/Input.astro";
+import WithOpenModal from "components/@uikit/Modal/WithOpenModal.astro";
+import Select from "components/@uikit/Select/Select.astro";
+import "./SignupDialog.scss";
+import Checkbox from "components/@uikit/Checkbox/Checkbox.astro";
+---
+
+<Dialog as="form" className="signup-dialog" id="signupDialog" size="large" maxWidth="sm" fullWidth>
+	<DialogTitle>Регистрация на платформе</DialogTitle>
+	<div class="signup-dialog__no-inviter">Для регистрации необходима партнерская ссылка</div>
+	<div class="signup-dialog__inviter">
+		<div class="signup-dialog__inviter-name">
+			<div class="signup-dialog__inviter-name-label">Вас пригласил:</div>
+			<div class="signup-dialog__inviter-name-value">Иван Иванов</div>
+		</div>
+		<div class="signup-dialog__inviter-email">info_ivanoooov@gmail.com</div>
+	</div>
+	<DialogContent>
+		<Field marginBottom={1.5}>
+			<Input name="login" placeholder="Ваш логин" />
+		</Field>
+		<Field marginBottom={1.5}>
+			<Input name="name" placeholder="Фамилия и имя" />
+		</Field>
+		<Field marginBottom={1.5}>
+			<Input name="email" placeholder="Электронная почта" />
+		</Field>
+		<Field marginBottom={1.5}>
+			<Input name="password" type="password" placeholder="Пароль" />
+		</Field>
+		<Field marginBottom={1.5}>
+			<Input name="confirmPassword" type="password" placeholder="Повторите пароль" />
+		</Field>
+		<Field marginBottom={2}>
+			<Select
+				items={[
+					{ label: "Любимое блюдо", value: "1" },
+					{ label: "Почтовый индекс", value: "2" },
+					{ label: "Дата рождения бабушки", value: "3" },
+					{ label: "Ваше прозвище в школе", value: "4" },
+					{ label: "Номер паспорта", value: "5" },
+					{ label: "Пять последних цифр кред. карты", value: "6" },
+				]}
+				name="question"
+				placeholder="Выберите вопрос для ключевой фразы"
+			/>
+		</Field>
+		<Field marginBottom={1}>
+			<Checkbox name="termsOfUse">Я прочел(а) и согласен(а) с пользовательским соглашением</Checkbox>
+		</Field>
+		<Field>
+			<Checkbox name="privacyPolicy">Я прочел(а) и согласен(а) с политикой конфиденциальности</Checkbox>
+		</Field>
+	</DialogContent>
+	<DialogActions>
+		<Button variant="contained" type="submit" fullWidth>Регистрация на платформе</Button>
+	</DialogActions>
+	<DialogSubactions>
+		Уже есть аккаунт?
+		<WithOpenModal modal="#loginDialog" closeOthers>
+			<span style="text-decoration: underline; cursor: pointer">Войти с логином и паролем</span>
+		</WithOpenModal>
+	</DialogSubactions>
+</Dialog>

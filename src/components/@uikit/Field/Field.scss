@@ -33,8 +33,28 @@
 			}
 		}
 
-		.field__helperText {
+		.field__helper-text {
 			color: $color-text-more-secondary;
+		}
+	}
+
+	&.error {
+		.field__label {
+			color: $color-error-main;
+		}
+
+		// input
+
+		.input {
+			border-color: $color-error-main;
+
+			input {
+				color: $color-error-main;
+			}
+		}
+
+		.field__helper-text {
+			color: $color-error-main;
 		}
 	}
 }
@@ -47,7 +67,7 @@
 	}
 }
 
-.field__helperText {
+.field__helper-text {
 	@include typography-caption;
 }
 

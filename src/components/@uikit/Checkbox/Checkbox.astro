@@ -1,0 +1,21 @@
+---
+import classNames from "classnames";
+import Icon from "../Icon/Icon.astro";
+import "./Checkbox.scss";
+
+export interface Props extends Record<string, any> {
+	className?: string;
+	name?: string;
+}
+
+const { className, name, ...props } = Astro.props;
+---
+
+<label class={classNames(className, "checkbox")} {...props}>
+	<input type="checkbox" name={name} />
+	<div class="checkbox__mark">
+		<Icon className={"checkbox__empty-icon"} iconName={"checkbox-empty"} />
+		<Icon className={"checkbox__checked-icon"} iconName={"checkbox"} />
+	</div>
+	<slot />
+</label>

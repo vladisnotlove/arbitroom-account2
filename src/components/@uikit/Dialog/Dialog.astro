@@ -8,15 +8,17 @@ export interface Props {
 	className?: string;
 	maxWidth?: "lg" | "sm" | "xs" | "440";
 	fullWidth?: boolean;
+	size?: "medium" | "large";
 	id: string;
 }
 
-const { className, as, id, maxWidth, fullWidth } = Astro.props;
+const { className, as, id, maxWidth, fullWidth, size = "medium" } = Astro.props;
 ---
 
 <Modal as={as} id={id}>
 	<div
 		class={classNames(className, "dialog", {
+			large: size === "large",
 			[`max-width-${maxWidth}`]: maxWidth !== undefined,
 			"full-width": fullWidth,
 		})}

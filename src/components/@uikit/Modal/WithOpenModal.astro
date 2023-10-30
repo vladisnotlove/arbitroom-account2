@@ -3,12 +3,13 @@ import WithAttributes from "../WithAttributes/WithAttributes.astro";
 
 export interface Props {
 	modal: string;
+	closeOthers?: boolean;
 }
 
-const { modal } = Astro.props;
+const { modal, closeOthers } = Astro.props;
 ---
 
-<WithAttributes attributes={{ "data-open-modal": modal }}>
+<WithAttributes attributes={{ "data-open-modal": modal, "data-close-others": closeOthers ? "true" : undefined }}>
 	<slot />
 </WithAttributes>
 

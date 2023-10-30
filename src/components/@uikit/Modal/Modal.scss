@@ -22,6 +22,7 @@ html.modal-open {
 
 	z-index: $z-index-modal;
 	overflow-y: auto;
+	@include scrollbar;
 
 	pointer-events: none;
 	opacity: 0;

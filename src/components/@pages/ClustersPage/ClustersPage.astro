@@ -5,10 +5,25 @@ import ClusterStats from "./ClusterStats/ClusterStats.astro";
 import ClusterTimers from "./ClusterTimers/ClusterTimers.astro";
 import DailyRewards from "./DailyRewards/DailyRewards.astro";
 import Board from "./Board/Board.astro";
+import LoginOverlay from "./LoginOverlay/LoginOverlay.astro";
+import LoginDialog from "./@dialogs/LoginDialog/LoginDialog.astro";
+import RestoreDialog from "./@dialogs/RestoreDialog/RestoreDialog.astro";
 import "./ClustersPage.scss";
+import SignupDialog from "./@dialogs/SignupDialog/SignupDialog.astro";
 ---
 
-<Layout title="Кластеры" variant="langing">
+<Layout htmlClassName="login-overlay-open" title="Кластеры" variant="langing">
+	<Fragment slot="modals">
+		<LoginDialog />
+		<RestoreDialog />
+		<SignupDialog />
+	</Fragment>
+
+	<Fragment slot="beforeMain">
+		<!-- LOGIN OVERLAY -->
+		<LoginOverlay />
+	</Fragment>
+
 	<div class="content-clusters">
 		<div class="content-clusters__menu">
 			<ClusterSummary className="content-clusters__cluster-summary" />

@@ -9,7 +9,7 @@
 
 	&.large {
 		.dialog__title {
-			padding: 3rem;
+			padding: 3rem 3rem 2rem 3rem;
 			@include typography-h4;
 		}
 
@@ -26,7 +26,15 @@
 		}
 
 		.dialog__actions {
-			padding: 2rem 3rem 3rem 3rem;
+			padding: 2rem 3rem 0 3rem;
+
+			&:last-child {
+				padding-bottom: 3rem;
+			}
+		}
+
+		.dialog__subactions {
+			padding: 1.5rem 3rem 3rem 3rem;
 		}
 	}
 
@@ -53,12 +61,16 @@
 
 .dialog__title {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: space-between;
 	gap: 1rem;
 	padding: 1.5rem;
 
 	@include typography-h6;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	-ms-word-break: break-all;
+	word-break: break-word;
 }
 
 .dialog__content {
@@ -80,4 +92,13 @@
 	justify-content: flex-start;
 	gap: 1rem;
 	padding: 1.5rem;
+
+	&:last-child {
+		padding-top: 1.5rem;
+	}
+}
+
+.dialog__subactions {
+	padding: 1rem 1.5rem 1.5rem 1.5rem;
+	text-align: center;
 }

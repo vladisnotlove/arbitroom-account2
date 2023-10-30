@@ -1,0 +1,56 @@
+---
+import Button from "components/@uikit/Button/Button.astro";
+import Dialog from "components/@uikit/Dialog/Dialog.astro";
+import DialogActions from "components/@uikit/Dialog/DialogActions.astro";
+import DialogContent from "components/@uikit/Dialog/DialogContent.astro";
+import DialogSubactions from "components/@uikit/Dialog/DialogSubactions.astro";
+import DialogTitle from "components/@uikit/Dialog/DialogTitle.astro";
+import Field from "components/@uikit/Field/Field.astro";
+import Input from "components/@uikit/Input/Input.astro";
+import WithOpenModal from "components/@uikit/Modal/WithOpenModal.astro";
+---
+
+<Dialog as="form" id="loginDialog" size="large" maxWidth="sm" fullWidth>
+	<DialogTitle>Войти в личный кабинет</DialogTitle>
+	<DialogContent>
+		<Field marginBottom={1.5}>
+			<Input name="email" placeholder="Электронная почта" />
+		</Field>
+		<Field error helperText="Неверный пароль">
+			<Input name="password" type="password" placeholder="Пароль">
+				<WithOpenModal slot="end" modal="#restorePasswordDialog" closeOthers>
+					<Button variant="text" type="button" attach="full">Забыли?</Button>
+				</WithOpenModal>
+			</Input>
+		</Field>
+	</DialogContent>
+	<DialogActions>
+		<Button variant="contained" type="submit" fullWidth>Войти</Button>
+	</DialogActions>
+	<DialogSubactions>
+		Нет аккаунта?
+		<WithOpenModal modal="#signupDialog" closeOthers>
+			<span style="text-decoration: underline; cursor: pointer">Зарегистрируйтесь</span>
+		</WithOpenModal>
+	</DialogSubactions>
+</Dialog>
+
+<!-- fake script -->
+<script is:inline>
+	window.addEventListener("load", () => {
+		const form = document.getElementById("loginDialog");
+		const loginOverlay = document.querySelector(".login-overlay");
+
+		form.addEventListener("submit", (e) => {
+			e.preventDefault();
+
+			// close login overlay
+			document.documentElement.classList.remove("login-overlay-open");
+			loginOverlay.setAttribute("hidden", "");
+
+			// close modal
+			document.documentElement.classList.remove("modal-open");
+			form.classList.remove("open");
+		});
+	});
+</script>

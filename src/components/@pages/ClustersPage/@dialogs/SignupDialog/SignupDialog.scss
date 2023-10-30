@@ -1,0 +1,24 @@
+@import "../../../../../styles/variables.scss";
+
+.signup-dialog__no-inviter {
+	padding: 0 3rem 2rem 3rem;
+	@include typography-body2;
+	color: $color-prime-main;
+}
+
+.signup-dialog__inviter {
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: 0 3rem 2rem 3rem;
+}
+
+.signup-dialog__inviter-name {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.signup-dialog__inviter-name-label {
+	color: $color-text-more-secondary;
+}

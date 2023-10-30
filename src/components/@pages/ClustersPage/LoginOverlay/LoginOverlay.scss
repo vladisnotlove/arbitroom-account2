@@ -1,0 +1,30 @@
+@import "../../../../styles/variables.scss";
+
+html.login-overlay-open {
+	overflow: hidden;
+	padding-right: $scrollbar-width;
+
+	@media (hover: none) {
+		padding-right: 0;
+	}
+}
+
+.login-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+
+	background: rgba(0, 0, 0, 0.5);
+	-webkit-backdrop-filter: blur(2rem);
+	backdrop-filter: blur(2rem);
+
+	z-index: $z-index-modal - 20;
+}
