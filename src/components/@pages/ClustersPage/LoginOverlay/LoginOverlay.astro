@@ -11,6 +11,7 @@ export interface Props {
 const { className } = Astro.props;
 ---
 
+<!-- LOGIN OVERLAY -->
 <div class={classNames(className, "login-overlay")}>
 	<WithOpenModal modal="#loginDialog">
 		<Button variant="contained">Войти / Зарегистрироваться</Button>

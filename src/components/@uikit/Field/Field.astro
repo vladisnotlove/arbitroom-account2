@@ -20,11 +20,11 @@ const { className, label, labelSize, error, fullWidth, helperText, marginBottom 
 		"full-width": fullWidth,
 		error,
 	})}
-	style={{
-		...(marginBottom && {
-			marginBottom: marginBottom + "rem",
-		}),
-	}}
+	style={marginBottom
+		? {
+				marginBottom: marginBottom + "rem",
+		  }
+		: undefined}
 >
 	{label && <div class={classNames("field__label", labelSize)}>{label}</div>}
 	<div class="field__input-wrapper">
