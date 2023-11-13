@@ -11,6 +11,23 @@ const toPosix = (path: string) => {
 	return path.split(pth.sep).join(pth.posix.sep);
 };
 
+const incrementName = (path) => {
+	const { dir, name, ext } = pth.parse(path);
+	const endNumberStr = (name.match(/\d+$/g) ?? [])[0];
+	let newPath = "";
+
+	if (!endNumberStr) {
+		newPath = pth.join(dir, name + "1" + ext);
+	} else {
+		const endNumber = parseFloat(endNumberStr);
+		const newEndNumber = endNumber + 1;
+		const newEndNumberStr = ("" + newEndNumber).padStart(endNumberStr.length, "0");
+		newPath = pth.join(dir, name.replace(endNumberStr, newEndNumberStr) + ext);
+	}
+
+	return toPosix(newPath);
+};
+
 // MAIN
 
 const astroAssetRenamer = (
@@ -111,7 +128,13 @@ const astroAssetRenamer = (
 						// rename asset
 						const { assetPath } = candidates[0];
 						const assetBasename = pth.basename(assetPath);
-						const newAssetPath = assetPath.replace(assetBasename, newAssetBasename);
+						let newAssetPath = assetPath.replace(assetBasename, newAssetBasename);
+						let iteration = 0;
+
+						while (fs.existsSync(newAssetPath) && assetPath !== newAssetPath && iteration < 1000) {
+							newAssetPath = incrementName(newAssetPath);
+							iteration++;
+						}
 
 						if (fs.existsSync(newAssetPath) && assetPath !== newAssetPath) {
 							throw new Error(
@@ -122,7 +145,7 @@ const astroAssetRenamer = (
 						fs.mkdirSync(pth.dirname(newAssetPath), { recursive: true });
 						fs.renameSync(assetPath, newAssetPath);
 
-						// update links in html
+						// update links in all html pages
 						candidates.forEach(({ htmlPath, link }) => {
 							const newLink = link.replace(assetBasename, newAssetBasename);
 							const html = fs.readFileSync(htmlPath, "utf8");

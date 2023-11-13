@@ -62,16 +62,19 @@ export default defineConfig({
 			// ignore common.js, common.css
 			if (asset.basename.includes("_common.js")) return null;
 			if (asset.basename.includes("_common.css")) return null;
-			// rename hoisted.19h1jh1.js -> [path_to_page].js
 
+			// rename hoisted5.js -> <path to page>.js
+			let result = "";
 			if (page.path === "index.html") {
-				return "index" + asset.extname;
+				result = "index" + asset.extname;
 			} else if (page.basename === "index.html") {
 				const pageFolder = pathLib.dirname(page.path);
-				return pageFolder + asset.extname;
+				result = pageFolder + asset.extname;
 			} else {
-				return page.path.replace(page.extname, asset.extname);
+				result = page.path.replace(page.extname, asset.extname);
 			}
+
+			return result;
 		}),
 		astroHtmlRelativePaths({
 			attributeNames: ["href", "src", "data-source"],
