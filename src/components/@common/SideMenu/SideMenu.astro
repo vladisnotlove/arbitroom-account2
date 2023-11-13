@@ -12,6 +12,7 @@ type MenuItem = {
 		| "actives"
 		| "outcome"
 		| "personal-partners"
+		| "structure"
 		| "statuses"
 		| "operations"
 		| "settings"
@@ -72,6 +73,13 @@ const menuItems: (MenuItem | MenuGroup)[] = [
 				href: "/personal-partners",
 				icon: "people",
 				label: "Личные партнёры",
+			},
+			{
+				type: "item",
+				key: "structure",
+				href: "/structure",
+				icon: "table",
+				label: "Анализ структуры",
 			},
 			{
 				type: "item",
