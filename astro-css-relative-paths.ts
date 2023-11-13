@@ -24,7 +24,7 @@ const CssUrl = {
 
 function astroCssRelativePaths(): AstroIntegration {
 	return {
-		name: "absolute-to-relative",
+		name: "css-relative-paths",
 		hooks: {
 			"astro:build:done": async ({ dir: dirUrl }) => {
 				try {

@@ -17,7 +17,7 @@ function astroHtmlRelativePaths(
 	const attributeNames = options.attributeNames || ["href", "src"];
 
 	return {
-		name: "absolute-to-relative",
+		name: "html-relative-paths",
 		hooks: {
 			"astro:config:done": ({ config }) => {
 				astroConfig = config;

@@ -44,13 +44,7 @@ const htmlFormatter = (filePath, options) => {
 		fs.writeFileSync(filePath, result);
 		let rootDir = path.basename(path.dirname(filePath));
 		rootDir === "dist" ? (rootDir = "") : (rootDir = rootDir + "/");
-		console.log(
-			chalk.green(
-				`${rootDir}${path.basename(filePath)} ${chalk.white.dim(
-					"Beautified!"
-				)}`
-			)
-		);
+		console.log(chalk.green(`${rootDir}${path.basename(filePath)} ${chalk.white.dim("Beautified!")}`));
 	} catch (err) {
 		if (err.code === "ENOENT") {
 			console.log(chalk.red.bold(filePath));
@@ -63,7 +57,7 @@ const htmlFormatter = (filePath, options) => {
 
 export default function (options = { ...defaultConfig }) {
 	return {
-		name: "astro-html-beautifier",
+		name: "html-beautifier",
 		hooks: {
 			"astro:build:done": async ({ dir }) => {
 				console.log("");
