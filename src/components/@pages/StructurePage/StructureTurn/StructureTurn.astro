@@ -1,0 +1,54 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import Icon from "components/@uikit/Icon/Icon.astro";
+import Pages from "components/@uikit/Pages/Pages.astro";
+import Table from "components/@uikit/Table/Table.astro";
+import TableBody from "components/@uikit/Table/TableBody.astro";
+import TableCell from "components/@uikit/Table/TableCell.astro";
+import TableHeader from "components/@uikit/Table/TableHeader.astro";
+import TableRow from "components/@uikit/Table/TableRow.astro";
+import "./StructureTurn.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<Block className={classNames(className, "structure-turn")}>
+	<BlockTitle>Оборот структуры</BlockTitle>
+	<div class="structure-turn__table-container">
+		<Table>
+			<TableHeader>
+				<TableRow>
+					<TableCell>Команда</TableCell>
+					<TableCell>Оборот</TableCell>
+					<TableCell>Зачетный оборот</TableCell>
+					<TableCell>Статус</TableCell>
+					<TableCell>Чат</TableCell>
+				</TableRow>
+			</TableHeader>
+			<TableBody>
+				{
+					new Array(5).fill(0).map(() => (
+						<TableRow>
+							<TableCell label="Команда">Александр Попов</TableCell>
+							<TableCell label="Оборот">6 130 000 USDT</TableCell>
+							<TableCell label="Зачетный оборот">6 130 000 USDT</TableCell>
+							<TableCell label="Статус">С3</TableCell>
+							<TableCell label="Чат">
+								<a href="#">
+									<Icon iconName="chat" color="prime" />
+								</a>
+							</TableCell>
+						</TableRow>
+					))
+				}
+			</TableBody>
+		</Table>
+	</div>
+	<Pages items={[{ number: 1, active: true }, { number: 2 }, { number: 3 }, { number: 4 }, { number: 5 }]} />
+</Block>

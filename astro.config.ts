@@ -35,8 +35,8 @@ export default defineConfig({
 			},
 		},
 	},
-	// setup chunkFilesNames only for client build
 	integrations: [
+		// setup chunkFilesNames only for client build
 		{
 			name: "setup-rollup-options",
 			hooks: {
@@ -77,7 +77,7 @@ export default defineConfig({
 			return result;
 		}),
 		astroHtmlRelativePaths({
-			attributeNames: ["href", "src", "data-source"],
+			attributeNames: ["href", "src", "data-source", "data-change-source"],
 		}),
 		astroCssRelativePaths(),
 	],

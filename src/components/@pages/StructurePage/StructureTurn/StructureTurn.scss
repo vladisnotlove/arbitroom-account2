@@ -1,0 +1,6 @@
+@import "../../../../styles/mixins.scss";
+
+.structure-turn__table-container {
+	overflow: auto;
+	@include scrollbar($padding: 0.25rem, $margin: 0.25rem);
+}

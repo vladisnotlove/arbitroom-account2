@@ -1,0 +1,53 @@
+---
+import classNames from "classnames";
+import Block from "components/@uikit/Block/Block.astro";
+import BlockTitle from "components/@uikit/Block/BlockTitle.astro";
+import ToggleButtonGroup from "components/@uikit/ToggleButtonGroup/ToggleButtonGroup.astro";
+import PartnersTable from "../PartnersTable/PartnersTable.astro";
+import Button from "components/@uikit/Button/Button.astro";
+import "./TopPartners.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<div class={classNames(className, "top-partners")}>
+	<Block className="top-partners__block">
+		<BlockTitle className="top-partners__title">
+			Топ 10 личных партнеров
+			<ToggleButtonGroup
+				name="tab"
+				items={[
+					{
+						text: "Статус",
+						value: "status",
+						attributes: { "data-change-source": "/_fake/structure/partners/top-status.json" },
+					},
+					{
+						text: "Депозит",
+						value: "deposit",
+						attributes: { "data-change-source": "/_fake/structure/partners/top-deposit.json" },
+					},
+					{
+						text: "Кол-во партнеров",
+						value: "amount",
+						attributes: { "data-change-source": "/_fake/structure/partners/top-amount.json" },
+					},
+				]}
+				value="status"
+			/>
+		</BlockTitle>
+		<div class="top-partners__table-container">
+			<PartnersTable source="/_fake/structure/partners/top-status.json" />
+		</div>
+	</Block>
+	<Button className="top-partners__expand-btn" variant="text">Показать всех</Button>
+	<Button className="top-partners__collapse-btn" variant="text">Скрыть часть</Button>
+</div>
+
+<script>
+	import "./TopPartners";
+</script>

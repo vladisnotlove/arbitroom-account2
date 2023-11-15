@@ -1,0 +1,53 @@
+@import "../../../../styles/mixins.scss";
+
+.top-partners__table-container {
+	overflow: auto;
+	@include scrollbar($padding: 0.25rem, $margin: 0.25rem);
+}
+
+.top-partners__collapse-btn,
+.top-partners__expand-btn {
+	visibility: hidden;
+	position: absolute;
+	margin-top: 0.25rem;
+	width: 100%;
+}
+
+.top-partners__title {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+// ADAPTIVE
+
+@media (max-width: $breakpoint-mobile-big) {
+	.top-partners {
+		.table__body > .table__row:nth-child(-n + 5) {
+			visibility: hidden;
+			position: absolute;
+		}
+
+		&.expanded {
+			.table__body > .table__row:nth-child(-n + 5) {
+				visibility: visible;
+				position: relative;
+			}
+
+			.top-partners__expand-btn {
+				visibility: hidden;
+				position: absolute;
+			}
+
+			.top-partners__collapse-btn {
+				visibility: visible;
+				position: relative;
+			}
+		}
+	}
+
+	.top-partners__expand-btn {
+		visibility: visible;
+		position: static;
+	}
+}

@@ -1,0 +1,43 @@
+@import "../../../../styles/variables.scss";
+
+.partners-table {
+	position: relative;
+
+	&.loading {
+		.partners-table__loader {
+			visibility: visible;
+			opacity: 1;
+			transition:
+				opacity $animation-slow,
+				visibility 0s;
+		}
+		.partners-table__table {
+			opacity: 0;
+		}
+	}
+}
+
+.partners-table__loader {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	color: $color-text-secondary;
+
+	visibility: hidden;
+	opacity: 0;
+	transition:
+		opacity $animation-slow,
+		visibility 0s $animation-slow;
+}
+
+.partners-table__spinner {
+	width: 3rem;
+}
+
+.partners-table__table {
+	transition: opacity $animation-slow;
+}

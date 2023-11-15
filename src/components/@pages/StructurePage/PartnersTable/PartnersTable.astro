@@ -1,0 +1,69 @@
+---
+import classNames from "classnames";
+import Icon from "components/@uikit/Icon/Icon.astro";
+import Spinner from "components/@uikit/Spinner/Spinner.astro";
+import Table from "components/@uikit/Table/Table.astro";
+import TableBody from "components/@uikit/Table/TableBody.astro";
+import TableCell from "components/@uikit/Table/TableCell.astro";
+import TableHeader from "components/@uikit/Table/TableHeader.astro";
+import TableRow from "components/@uikit/Table/TableRow.astro";
+import "./PartnersTable.scss";
+
+export interface Props {
+	className?: string;
+	source: string;
+}
+
+const { className, source } = Astro.props;
+---
+
+<div class={classNames(className, "partners-table", "loading")} data-source={source}>
+	<div class="partners-table__loader">
+		<Spinner className="partners-table__spinner" />
+		 Загрузка...
+	</div>
+	<Table className="partners-table__table">
+		<TableHeader>
+			<TableRow>
+				<TableCell>Имя</TableCell>
+				<TableCell>Дата рег.</TableCell>
+				<TableCell>Статус</TableCell>
+				<TableCell>Уровень</TableCell>
+				<TableCell>Весь оборот</TableCell>
+				<TableCell>Чат</TableCell>
+			</TableRow>
+		</TableHeader>
+		<TableBody>
+			{
+				new Array(10).fill(0).map(() => (
+					<TableRow>
+						<TableCell label="Имя" name="name">
+							&nbsp;
+						</TableCell>
+						<TableCell label="Дата рег." name="registeredDate">
+							&nbsp;
+						</TableCell>
+						<TableCell label="Статус" name="status">
+							&nbsp;
+						</TableCell>
+						<TableCell label="Уровень" name="level">
+							&nbsp;
+						</TableCell>
+						<TableCell label="Весь оборот" name="full">
+							&nbsp;
+						</TableCell>
+						<TableCell label="Чат" name="chatUrl">
+							<a href="#">
+								<Icon iconName="chat" color="prime" />
+							</a>
+						</TableCell>
+					</TableRow>
+				))
+			}
+		</TableBody>
+	</Table>
+</div>
+
+<script>
+	import "./PartnersTable";
+</script>
