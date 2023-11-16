@@ -1,0 +1,69 @@
+---
+import classNames from "classnames";
+import ChatMessage from "components/@uikit/ChatMessage/ChatMessage.astro";
+import ChatSendForm from "components/@uikit/ChatSendForm/ChatSendForm.astro";
+import Icon from "components/@uikit/Icon/Icon.astro";
+import IconButton from "components/@uikit/IconButton/IconButton.astro";
+import "./HexChat.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<div class={classNames(className, "hex-chat")}>
+	<div class="hex-chat__header">
+		<span class="hex-chat__back">
+			<Icon iconName={"arrow-left"} />
+		</span>
+		<div class="hex-chat__profile">
+			<img class="hex-chat__profile-avatar" src={"/_layout-assets/img/profile.png"} alt="" />
+			<div class="hex-chat__profile-main">
+				<span class="hex-chat__profile-name">Марина Елисеева</span>
+				<span class="hex-chat__profile-status">online</span>
+			</div>
+		</div>
+		<IconButton className="hex-chat__close" variant={"contained"} color={"gray"}>
+			<Icon iconName={"close"} />
+		</IconButton>
+	</div>
+	<div class={"hex-chat__messages"}>
+		<ChatMessage
+			text="Hello! I’ve created this chat in Figma! This is a long type of message. Use this setting to create a long message"
+			simple
+		/>
+		<ChatMessage
+			text="Hello! I’ve created this chat in Figma! This is a long type of message. Use this setting to create a long message"
+			fromMe
+			status={"read"}
+			simple
+		/>
+		<ChatMessage
+			text="Hello! I’ve created this chat in Figma! This is a long type of message. Use this setting to create a long message"
+			simple
+		/>
+		<ChatMessage
+			text="Hello! I’ve created this chat in Figma! This is a long type of message. Use this setting to create a long message"
+			fromMe
+			status={"send"}
+			simple
+		/>
+		<ChatMessage
+			text="Hello! I’ve created this chat in Figma! This is a long type of message. Use this setting to create a long message"
+			simple
+		/>
+		<ChatMessage
+			text="Hello! I’ve created this chat in Figma! This is a long type of message. Use this setting to create a long message"
+			fromMe
+			status={"send"}
+			simple
+		/>
+		<ChatMessage
+			text="Hello! I’ve created this chat in Figma! This is a long type of message. Use this setting to create a long message"
+			simple
+		/>
+	</div>
+	<ChatSendForm className={"hex-chat__send-form"} />
+</div>

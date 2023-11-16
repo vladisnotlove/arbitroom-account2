@@ -1,0 +1,86 @@
+@import "../../../../../styles/mixins.scss";
+
+.hex-chat {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	@include paper;
+	background: $color-background-light;
+}
+
+// chat: header
+
+.hex-chat__header {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	background: $color-paper;
+	padding: 0.75rem 1rem;
+}
+
+.hex-chat__profile {
+	flex-grow: 1;
+
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.hex-chat__profile-main {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.hex-chat__profile-avatar {
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 50%;
+}
+
+.hex-chat__profile-name {
+	@include typography-subtitle1;
+}
+
+.hex-chat__profile-status {
+	@include typography-caption;
+	color: $color-prime-main;
+}
+
+.hex-chat__back {
+	cursor: pointer;
+
+	& > svg {
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+}
+
+.hex-chat__close {
+	padding: 0.25rem;
+
+	& > svg {
+		width: 1rem;
+		height: 1rem;
+	}
+}
+
+// chat: main
+
+.hex-chat__messages {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	padding: 1rem;
+	min-height: 0;
+	height: 0;
+	flex-grow: 1;
+	overflow: auto;
+	@include scrollbar($padding: 0.25rem);
+}
+
+.hex-chat__send-form {
+	flex-shrink: 0;
+	margin: 1rem;
+}

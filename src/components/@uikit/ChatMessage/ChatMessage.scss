@@ -1,0 +1,130 @@
+@import "../../../styles/variables";
+
+// message
+
+.chat-message {
+	display: flex;
+	align-items: flex-end;
+
+	&.from-me {
+		align-self: flex-end;
+
+		.chat-message__avatar {
+			display: none;
+		}
+
+		.chat-message__author {
+			display: none;
+		}
+
+		.chat-message__content {
+			background: $color-prime-main;
+			color: $color-prime-contrast-text;
+		}
+
+		.chat-message__meta {
+			justify-content: flex-end;
+		}
+
+		.chat-message__status {
+			display: initial;
+		}
+	}
+
+	&.status-was-send {
+		.chat-message__status path:last-child {
+			opacity: 0;
+		}
+	}
+
+	&.status-was-read {
+		.chat-message__status path:last-child {
+			opacity: 1;
+		}
+	}
+
+	&.simple {
+		margin-top: 0 !important;
+
+		.chat-message__body {
+			margin-left: 0 !important;
+		}
+	}
+}
+
+.chat-message:not(.from-me) + .chat-message:not(.from-me),
+.chat-message.from-me + .chat-message.from-me {
+	margin-top: 1rem;
+}
+
+.chat-message:not(.from-me) + .chat-message.from-me,
+.chat-message.from-me + .chat-message:not(.from-me) {
+	margin-top: 3.5rem;
+}
+
+.chat-message__avatar {
+	flex-shrink: 0;
+	width: 2.5rem;
+	height: 2.5rem;
+	margin-right: 1rem;
+	border-radius: 50%;
+	overflow: hidden;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.chat-message__body {
+	&:first-child {
+		margin-left: 3.5rem;
+	}
+}
+
+.chat-message__author {
+	@include typography-subtitle2;
+	margin-bottom: 0.5rem;
+}
+
+.chat-message__author-name {
+	display: inline;
+}
+
+.chat-message__author-role {
+	display: inline;
+	color: $color-text-more-secondary;
+}
+
+.chat-message__content {
+	max-width: 312px;
+	padding: 0.5rem 0.75rem;
+	border-radius: 0 0.75rem 0.75rem 0.75rem;
+	margin-bottom: 0.25rem;
+	@include typography-body2-text;
+	background: $color-background;
+}
+
+.chat-message__meta {
+	display: flex;
+	align-items: center;
+	padding: 0.125rem 0.5rem;
+	gap: 0.25rem;
+}
+
+.chat-message__time {
+	font-weight: 400;
+	font-size: 0.625rem;
+	line-height: 1rem;
+	letter-spacing: 0.5px;
+	color: $color-text-secondary;
+}
+
+.chat-message__status {
+	display: none;
+
+	svg {
+		fill: $color-text-prime;
+	}
+}

@@ -32,10 +32,14 @@
 	overflow: hidden;
 }
 
+.structure__hex-chat,
 .structure__hex-details {
 	position: absolute;
 	top: 1rem;
 	right: 1rem;
+	max-width: 384px;
+	max-height: 606px;
+
 	opacity: 0;
 	visibility: hidden;
 	z-index: 200;

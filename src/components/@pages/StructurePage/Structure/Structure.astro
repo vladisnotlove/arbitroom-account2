@@ -4,6 +4,7 @@ import Button from "components/@uikit/Button/Button.astro";
 import Icon from "components/@uikit/Icon/Icon.astro";
 import Hexs from "./Hexs/Hexs.astro";
 import HexDetails from "./HexDetails/HexDetails.astro";
+import HexChat from "./HexChat/HexChat.astro";
 import "./Structure.scss";
 
 export interface Props {
@@ -36,6 +37,7 @@ const { className } = Astro.props;
 	</div>
 	<Hexs className="structure__hexs" />
 	<HexDetails className="structure__hex-details" />
+	<HexChat className="structure__hex-chat" />
 </div>
 
 <!-- fake script -->
@@ -65,6 +67,10 @@ const { className } = Astro.props;
 		chatBtn.addEventListener("click", () => {
 			details?.classList.remove("opened");
 			chat?.classList.add("opened");
+			const messages = chat?.querySelector(".hex-chat__messages");
+			if (messages) {
+				messages.scrollTop = messages.scrollHeight;
+			}
 		});
 	}
 
@@ -78,6 +84,22 @@ const { className } = Astro.props;
 	if (closeDetailsBtn) {
 		closeDetailsBtn.addEventListener("click", () => {
 			details?.classList.remove("opened");
+		});
+	}
+
+	const backBtn = chat?.querySelector(".hex-chat__back");
+	const closeChatBtn = chat?.querySelector(".hex-chat__close");
+
+	if (backBtn) {
+		backBtn.addEventListener("click", () => {
+			details?.classList.add("opened");
+			chat?.classList.remove("opened");
+		});
+	}
+
+	if (closeChatBtn) {
+		closeChatBtn.addEventListener("click", () => {
+			chat?.classList.remove("opened");
 		});
 	}
 </script>

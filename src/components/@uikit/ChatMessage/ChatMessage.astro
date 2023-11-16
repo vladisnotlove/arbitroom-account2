@@ -1,0 +1,56 @@
+---
+import classNames from "classnames";
+import "./ChatMessage.scss";
+
+export interface Props {
+	className?: string;
+	text: string;
+	fromMe?: boolean;
+	status?: "send" | "read";
+	simple?: boolean;
+}
+
+const { className, text, fromMe, status, simple } = Astro.props;
+---
+
+<div
+	class={classNames(className, "chat-message", {
+		"from-me": fromMe,
+		"status-was-send": status === "send",
+		"status-was-read": status === "read",
+		simple,
+	})}
+>
+	{
+		!simple && (
+			<div class="chat-message__avatar">
+				<img src={"/_layout-assets/img/profile.png"} alt="" />
+			</div>
+		)
+	}
+	<div class="chat-message__body">
+		{
+			!simple && (
+				<div class="chat-message__author">
+					<div class="chat-message__author-name">kris_anfalova</div>
+					<div class="chat-message__author-role">manager</div>
+				</div>
+			)
+		}
+		<div class="chat-message__content">{text}</div>
+		<div class="chat-message__meta">
+			<div class="chat-message__time">13:54</div>
+			<div class="chat-message__status">
+				<!-- icon: message status -->
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="12" viewBox="0 0 20 12">
+					<path
+						d="M13.6139 1.65706C13.8033 1.85802 13.7939 2.17446 13.5929 2.36386L5.66309 9.83775C5.42573 10.0615 5.05311 10.0546 4.82417 9.82223L2.14384 7.1019C1.95003 6.9052 1.95237 6.58863 2.14907 6.39482C2.34578 6.20101 2.66235 6.20335 2.85616 6.40005L5.26192 8.84171L12.9071 1.63614C13.108 1.44674 13.4245 1.45611 13.6139 1.65706Z"
+					></path>
+					<path
+						d="M18.5928 2.36386C18.7938 2.17446 18.8031 1.85802 18.6137 1.65706C18.4243 1.45611 18.1079 1.44674 17.9069 1.63614L10.2618 8.84171L9.54455 8.11375C9.34972 7.91602 9.03112 7.91484 8.83483 8.11112C8.64059 8.30536 8.63943 8.61993 8.83222 8.8156L9.82406 9.82223C10.053 10.0546 10.4256 10.0615 10.663 9.83775L18.5928 2.36386Z"
+					></path>
+				</svg>
+			</div>
+		</div>
+	</div>
+</div>
