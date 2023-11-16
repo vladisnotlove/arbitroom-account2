@@ -1,0 +1,23 @@
+---
+import classNames from "classnames";
+import Popper from "../Popper/Popper.astro";
+
+export interface Props {
+	triggerId: string; // need to attach trigger with popper
+	className?: string;
+}
+
+const { className, triggerId } = Astro.props;
+---
+
+<div class="emoji-picker" data-locale="ru">
+	<div class="emoji-picker__trigger-wrapper" id={triggerId}>
+		<slot />
+	</div>
+	<Popper anchorElement={"#" + triggerId} />
+	<div class="emoji-picker__menu"></div>
+</div>
+
+<script>
+	import "./EmojiPicker";
+</script>
