@@ -320,6 +320,25 @@ window.addEventListener("load", () => {
 			setIsZooming(false);
 		};
 
+		const reset = () => {
+			scale = 0.8;
+			size = new Vector(root.clientWidth, root.clientHeight).divide(scale);
+			tileSize = size.multiply(1.5);
+			position = tileSize.multiply(0.5).subtract(size.multiply(0.5));
+			tiles.forEach((tile) => tile.element?.remove());
+			tiles = [
+				{
+					position: new Vector(0, 0),
+				},
+			];
+			start = position.add(size.multiply(0.5)).divide(hexPeriod).floor().multiply(hexPeriod);
+			partners = [];
+			partnerPositions = [];
+
+			isLoading = true;
+			isZooming = false;
+		};
+
 		// set loops
 
 		// 1. show / hide tiles
@@ -477,14 +496,15 @@ window.addEventListener("load", () => {
 			() => {
 				const source = root.getAttribute("data-source") || "";
 				isLoading = true;
-				root.classList.add("loading");
+				root.classList.remove("loaded");
 				fetch(source)
 					.then((data) => data.json())
 					.then((data: THexData[]) => {
+						reset();
 						partners = data;
 						partnerPositions = getHexPositionsBySpiral(start, partners.length);
 						isLoading = false;
-						root.classList.remove("loading");
+						root.classList.add("loaded");
 					});
 			},
 			{ callOnCreate: true }

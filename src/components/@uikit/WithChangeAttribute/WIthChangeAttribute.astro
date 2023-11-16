@@ -1,0 +1,19 @@
+---
+import WithAttributes from "../WithAttributes/WithAttributes.astro";
+
+export interface Props {
+	name: string;
+	target: string;
+	value: string;
+}
+
+const { name, target, value } = Astro.props;
+---
+
+<WithAttributes attributes={{ "data-change-attribute": name, "data-attribute-value": value, "data-target": target }}>
+	<slot />
+</WithAttributes>
+
+<script>
+	import "./WithChangeAttribute";
+</script>

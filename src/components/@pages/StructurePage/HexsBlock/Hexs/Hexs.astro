@@ -1,15 +1,17 @@
 ---
 import classNames from "classnames";
+import Spinner from "components/@uikit/Spinner/Spinner.astro";
 import "./Hexs.scss";
 
 export interface Props {
 	className?: string;
+	source?: string;
 }
 
-const { className } = Astro.props;
+const { className, source = "/_fake/structure/hexs.json" } = Astro.props;
 ---
 
-<div class={classNames(className, "hexs")} data-source="/_fake/structure/hexs.json" id="hexs">
+<div class={classNames(className, "hexs")} data-source={source} id="hexs">
 	<!-- need to check if all fonts download -->
 	<div class="hexs__fonts">
 		<div style="font: 400 16px Golos">a</div>
@@ -17,6 +19,7 @@ const { className } = Astro.props;
 		<div style="font: 600 16px Golos">a</div>
 		<div style="font: 700 16px Golos">a</div>
 	</div>
+	<Spinner className="hexs__spinner" />
 	<div class="hexs__main"></div>
 </div>
 

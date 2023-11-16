@@ -1,0 +1,47 @@
+@import "../../../../../styles/mixins.scss";
+
+.hexs {
+	position: relative;
+	width: 100%;
+	height: 600px;
+	overflow: hidden;
+
+	&.loaded {
+		.hexs__spinner {
+			visibility: hidden;
+			opacity: 0;
+		}
+
+		.hexs__main {
+			opacity: 1;
+		}
+	}
+}
+
+.hexs__spinner {
+	visibility: visible;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 100;
+
+	width: 4rem;
+	height: 4rem;
+
+	opacity: 1;
+	transition: opacity $animation-normal;
+}
+
+.hexs__fonts {
+	position: fixed;
+	top: -10000px;
+}
+
+.hexs__main {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: opacity $animation-normal;
+}
