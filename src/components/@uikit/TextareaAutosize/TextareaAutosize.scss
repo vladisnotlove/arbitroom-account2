@@ -1,0 +1,7 @@
+@import "../../../styles/mixins.scss";
+
+// textarea autosize
+
+.textarea-autosize {
+	@include invisible-scrollbar;
+}

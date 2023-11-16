@@ -1,0 +1,25 @@
+---
+import classNames from "classnames";
+import "./TextareaAutosize.scss";
+
+export interface Props {
+	className?: string;
+	maxHeight?: number;
+	placeholder?: string;
+}
+
+const { className, maxHeight = 200, placeholder, ...props } = Astro.props;
+---
+
+<textarea
+	class={classNames(className, "textarea-autosize")}
+	data-textarea-autosize-max-width={`${maxHeight}px`}
+	placeholder={placeholder}
+	rows="1"
+	{...props}
+>
+</textarea>
+
+<script>
+	import "./TextareaAutosize";
+</script>
