@@ -152,7 +152,7 @@ const drawPartnerHexagon = (ctx: CanvasRenderingContext2D, position: Vector, par
 		ctx.fillText(partner.content.status, centerX, position.y + 108);
 
 		ctx.font = "500 16px Golos";
-		ctx.fillText(partner.content.name, centerX, position.y + 134);
+		ctx.fillText(partner.content.name + " " + partner.id, centerX, position.y + 134);
 
 		ctx.fillStyle = "rgba(255, 255, 255, 0.32)";
 		ctx.font = "400 12px Golos";
