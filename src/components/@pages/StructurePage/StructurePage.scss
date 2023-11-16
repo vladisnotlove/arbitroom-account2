@@ -17,10 +17,6 @@
 	}
 }
 
-.content-structure__hexs-block {
-	height: min(100vh, 860px);
-}
-
 @media (max-width: $breakpoint-tablet-small) {
 	.content-statuses__stats {
 		flex-direction: column;

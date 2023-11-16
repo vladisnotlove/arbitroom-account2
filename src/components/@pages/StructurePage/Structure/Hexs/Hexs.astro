@@ -8,7 +8,7 @@ export interface Props {
 	source?: string;
 }
 
-const { className, source = "/_fake/structure/hexs.json" } = Astro.props;
+const { className, source = "/_fake/structure/hexs/1.json" } = Astro.props;
 ---
 
 <div class={classNames(className, "hexs")} data-source={source} id="hexs">

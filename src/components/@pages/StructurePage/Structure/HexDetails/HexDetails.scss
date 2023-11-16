@@ -1,0 +1,82 @@
+@import "../../../../../styles/mixins.scss";
+
+.hex-details {
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	@include paper;
+	background-color: $color-background-light;
+}
+
+// header
+
+.hex-details__header {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.hex-details__profile {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.hex-details__profile-avatar {
+	width: 5.375rem;
+	height: 5.375rem;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.hex-details__profile-body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 0.5rem;
+}
+
+.hex-details__profile-name {
+	@include typography-h6;
+}
+
+.hex-details__profile-level {
+	@include typography-body2-text;
+	color: $color-text-secondary;
+}
+
+.hex-details__close {
+	padding: 0.25rem;
+
+	& > svg {
+		width: 1rem;
+		height: 1rem;
+	}
+}
+
+// body
+
+.hex-details__records-title {
+	@include typography-subtitle1;
+	margin-bottom: 1rem;
+}
+
+.hex-details__records {
+	display: flex;
+	flex-direction: column;
+}
+
+.hex-details__record {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0.375rem;
+
+	@include typography-body2-text;
+
+	& > span:nth-child(1) {
+		color: $color-text-more-secondary;
+	}
+}

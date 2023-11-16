@@ -1,0 +1,81 @@
+---
+import classNames from "classnames";
+import Button from "components/@uikit/Button/Button.astro";
+import Icon from "components/@uikit/Icon/Icon.astro";
+import IconButton from "components/@uikit/IconButton/IconButton.astro";
+import "./HexDetails.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<div class={classNames(className, "hex-details")}>
+	<div class="hex-details__header">
+		<div class="hex-details__profile">
+			<img class="hex-details__profile-avatar" src={"/_layout-assets/img/profile.png"} alt="" />
+			<div class="hex-details__profile-body">
+				<div class="hex-details__profile-name">Марина Елисеева</div>
+				<div class="hex-details__profile-level">Партнер: Уровень 1</div>
+			</div>
+		</div>
+		<IconButton className="hex-details__close" variant={"contained"} color={"gray"}>
+			<Icon iconName={"close"} />
+		</IconButton>
+	</div>
+	<Button className="hex-details__chat-btn" variant={"contained"} size={"medium"} color="neutral" fullWidth>
+		Написать в чат
+	</Button>
+	<div class="hex-details__body">
+		<div class="hex-details__records-title">Сводная информация</div>
+		<div class="hex-details__records">
+			<div class="hex-details__record">
+				<span>Актив в пуле</span>
+				<span>5 000 USDT</span>
+			</div>
+			<div class="hex-details__record">
+				<span>Копилка открыта на</span>
+				<span>2 500 USDT</span>
+			</div>
+			<div class="hex-details__record">
+				<span>Личные партнеры</span>
+				<span>14 чел</span>
+			</div>
+			<div class="hex-details__record">
+				<span>Квалификация</span>
+				<span>B1</span>
+			</div>
+			<div class="hex-details__record">
+				<span>Зачетный оборот</span>
+				<span>80 000 USDT</span>
+			</div>
+			<div class="hex-details__record">
+				<span>Общий оборот</span>
+				<span>320 000 USDT</span>
+			</div>
+			<div class="hex-details__record">
+				<span>Кол-во всех партнеров</span>
+				<span>127 чел</span>
+			</div>
+			<div class="hex-details__record">
+				<span>Глубина партнеров</span>
+				<span>15 уровней</span>
+			</div>
+			<div class="hex-details__record">
+				<span>Топ 3 партнера со структуры</span>
+				<span>B3 A3 A1</span>
+			</div>
+		</div>
+	</div>
+	<Button
+		className="hex-details__structure"
+		variant={"text"}
+		size={"medium"}
+		fullWidth
+		data-change-hexs-source={"/_fake/structure/hexs/4.json"}
+	>
+		Посмотреть структуру
+	</Button>
+</div>

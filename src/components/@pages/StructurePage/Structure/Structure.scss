@@ -1,0 +1,69 @@
+@import "../../../../styles/mixins.scss";
+
+.structure {
+	position: relative;
+
+	min-height: max(calc(100vh - 4rem), 860px);
+	height: 0; // need for .structure__hexs
+}
+
+.structure__navigation {
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+
+	display: flex;
+	gap: 0.5rem;
+
+	z-index: 3;
+
+	& > .button {
+		background: $color-background-light !important;
+
+		& > svg {
+			display: none;
+		}
+	}
+}
+
+.structure__hexs {
+	height: 100%;
+	@include paper;
+	overflow: hidden;
+}
+
+.structure__hex-details {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	opacity: 0;
+	visibility: hidden;
+	z-index: 200;
+	transition:
+		opacity $animation-normal,
+		visibility 0s $animation-normal;
+
+	&.opened {
+		opacity: 1;
+		visibility: visible;
+		transition:
+			opacity $animation-normal,
+			visibility 0s;
+	}
+}
+
+@media (max-width: $breakpoint-mobile-big) {
+	.structure__navigation {
+		& > .button {
+			padding: 0.75rem;
+
+			& > *:not(svg) {
+				display: none;
+			}
+
+			& > svg {
+				display: block;
+			}
+		}
+	}
+}

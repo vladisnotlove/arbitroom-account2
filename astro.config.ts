@@ -77,7 +77,7 @@ export default defineConfig({
 			return result;
 		}),
 		astroHtmlRelativePaths({
-			attributeNames: ["href", "src", "data-source", "data-change-source"],
+			attributeNames: ["href", "src", "data-source", "data-change-source", "data-change-hexs-source"],
 		}),
 		astroCssRelativePaths(),
 	],

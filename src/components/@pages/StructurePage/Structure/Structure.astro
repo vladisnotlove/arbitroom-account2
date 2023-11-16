@@ -1,0 +1,87 @@
+---
+import classNames from "classnames";
+import Button from "components/@uikit/Button/Button.astro";
+import Icon from "components/@uikit/Icon/Icon.astro";
+import Hexs from "./Hexs/Hexs.astro";
+import HexDetails from "./HexDetails/HexDetails.astro";
+import "./Structure.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<div class={classNames(className, "structure")}>
+	<div class="structure__navigation">
+		<Button
+			variant={"contained"}
+			color={"neutral"}
+			size={"medium"}
+			data-change-hexs-source={"/_fake/structure/hexs/2.json"}
+		>
+			<Icon iconName={"person"} />
+			<span>Мой аккаунт</span>
+		</Button>
+		<Button
+			variant={"contained"}
+			color={"neutral"}
+			size={"medium"}
+			data-change-hexs-source={"/_fake/structure/hexs/3.json"}
+		>
+			<Icon iconName={"arrow-left"} />
+			<span>Шаг назад</span>
+		</Button>
+	</div>
+	<Hexs className="structure__hexs" />
+	<HexDetails className="structure__hex-details" />
+</div>
+
+<!-- fake script -->
+<script is:inline>
+	const hexsBlock = document.querySelector(".structure");
+	const hexs = hexsBlock?.querySelector(".hexs");
+
+	const details = hexsBlock?.querySelector(".hex-details");
+	const chat = hexsBlock?.querySelector(".hex-chat");
+
+	if (hexs) {
+		hexs.addEventListener("hex-select", (e) => {
+			const data = e.detail.data;
+			if (data) {
+				details?.classList.add("opened");
+				chat?.classList.remove("opened");
+				console.log(data);
+			}
+		});
+	}
+
+	const chatBtn = details?.querySelector(".hex-details__chat-btn");
+	const structureBtn = details?.querySelector(".hex-details__structure-btn");
+	const closeDetailsBtn = details?.querySelector(".hex-details__close");
+
+	if (chatBtn) {
+		chatBtn.addEventListener("click", () => {
+			details?.classList.remove("opened");
+			chat?.classList.add("opened");
+		});
+	}
+
+	if (structureBtn) {
+		structureBtn.addEventListener("click", () => {
+			details?.classList.remove("opened");
+			chat?.classList.remove("opened");
+		});
+	}
+
+	if (closeDetailsBtn) {
+		closeDetailsBtn.addEventListener("click", () => {
+			details?.classList.remove("opened");
+		});
+	}
+</script>
+
+<script>
+	import "./Structure";
+</script>
