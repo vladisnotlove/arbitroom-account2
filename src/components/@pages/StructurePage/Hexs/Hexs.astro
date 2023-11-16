@@ -1,0 +1,25 @@
+---
+import classNames from "classnames";
+import "./Hexs.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<div class={classNames(className, "hexs")} data-source="/_fake/structure/hexs.json" id="hexs">
+	<!-- need to check if all fonts download -->
+	<div class="hexs__fonts">
+		<div style="font: 400 16px Golos">a</div>
+		<div style="font: 500 16px Golos">a</div>
+		<div style="font: 600 16px Golos">a</div>
+		<div style="font: 700 16px Golos">a</div>
+	</div>
+	<div class="hexs__main"></div>
+</div>
+
+<script>
+	import "./Hexs";
+</script>

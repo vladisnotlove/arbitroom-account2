@@ -1,0 +1,42 @@
+@import "../../../../styles/mixins.scss";
+
+.hexs-block {
+	position: relative;
+	@include paper;
+	overflow: hidden;
+}
+
+.hexs-block__navigation {
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+
+	display: flex;
+	gap: 0.5rem;
+
+	z-index: 3;
+
+	& > .button {
+		background: $color-background-light !important;
+
+		& > svg {
+			display: none;
+		}
+	}
+}
+
+@media (max-width: $breakpoint-mobile-big) {
+	.hexs-block__navigation {
+		& > .button {
+			padding: 0.75rem;
+
+			& > *:not(svg) {
+				display: none;
+			}
+
+			& > svg {
+				display: block;
+			}
+		}
+	}
+}

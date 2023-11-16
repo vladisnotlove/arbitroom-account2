@@ -1,0 +1,27 @@
+---
+import classNames from "classnames";
+import Button from "components/@uikit/Button/Button.astro";
+import Icon from "components/@uikit/Icon/Icon.astro";
+import Hexs from "../Hexs/Hexs.astro";
+import "./HexsBlock.scss";
+
+export interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<div class={classNames(className, "hexs-block")}>
+	<div class="hexs-block__navigation">
+		<Button as="a" variant={"contained"} href={"#"} color={"neutral"} size={"medium"}>
+			<Icon iconName={"person"} />
+			<span>Мой аккаунт</span>
+		</Button>
+		<Button as="a" variant={"contained"} href={"#"} color={"neutral"} size={"medium"}>
+			<Icon iconName={"arrow-left"} />
+			<span>Шаг назад</span>
+		</Button>
+	</div>
+	<Hexs className="hexs-block__hexs" />
+</div>

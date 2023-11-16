@@ -1,0 +1,19 @@
+@import "../../../../styles/mixins.scss";
+
+.hexs {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.hexs__fonts {
+	position: fixed;
+	top: -10000px;
+}
+
+.hexs__hexs-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}

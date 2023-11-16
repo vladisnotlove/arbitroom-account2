@@ -2,8 +2,9 @@
 import StatsCard from "components/@common/StatsCard/StatsCard.astro";
 import Layout from "layouts/Layout/Layout.astro";
 import TopPartners from "./TopPartners/TopPartners.astro";
-import "./StructurePage.scss";
 import StructureTurn from "./StructureTurn/StructureTurn.astro";
+import HexsBlock from "./HexsBlock/HexsBlock.astro";
+import "./StructurePage.scss";
 ---
 
 <Layout title="Анализ структуры" selectedMenuItem="structure">
@@ -57,7 +58,7 @@ import StructureTurn from "./StructureTurn/StructureTurn.astro";
 				]}
 			/>
 		</div>
-		<div class="content-structure__hexes">hexes</div>
+		<HexsBlock className="content-structure__hexs-block" />
 		<TopPartners className="content-structure__top-partners" />
 		<StructureTurn className="content-structure__structure-turn" />
 	</div>
